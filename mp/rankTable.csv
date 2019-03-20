@@ -1,0 +1,8 @@
+0,Player,0,0,CJ_PLAYER,CJ_PLAYER,rank_player,1,;,;,;,;,;,1,Player,;,CJ_PLAYER
+1,VIP,-30,-10,CJ_VIP,CJ_VIP,rank_vip,25000,;,;,;,;,;,16,VIP,;,CJ_VIP
+2,Friend,-30,-10,CJ_FRIEND,CJ_FRIEND,rank_friend,50000,;,;,;,;,;,17,Friend,;,CJ_FRIEND
+3,Member,-30,-10,CJ_MEMBER,CJ_MEMBER,rank_member,100000,;,;,;,;,;,18,Member,;,CJ_MEMBER
+4,Admin,-30,-10,CJ_ADMIN,CJ_ADMIN,rank_admin,150000,;,;,;,;,;,19,Admin,;,CJ_ADMIN
+5,Senior,-30,-10,CJ_SENIOR,CJ_SENIOR,rank_senior,200000,;,;,;,;,;,20,Senior,;,CJ_SENIOR
+6,Master,-30,-10,CJ_MASTER,CJ_MASTER,rank_master,250000,;,;,;,;,;,21,Master,;,CJ_MASTER
+7,Leader,-30,-10,CJ_LEADER,CJ_LEADER,rank_leader,300000,;,;,;,;,;,22,Leader,;,CJ_LEADER

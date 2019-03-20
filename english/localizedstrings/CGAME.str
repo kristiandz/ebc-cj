@@ -1,0 +1,16 @@
+REFERENCE           YOUKILLED
+LANG_ENGLISH        "Uhh You Killed &&1"
+
+REFERENCE           SB_SCORE
+LANG_ENGLISH        "Saves"
+
+REFERENCE           SB_KILLS
+LANG_ENGLISH        "Loads"
+
+REFERENCE           SB_ASSISTS
+LANG_ENGLISH        "Jumps"
+
+REFERENCE           SB_DEATHS
+LANG_ENGLISH        "FPS"
+
+ENDMARKER
