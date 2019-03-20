@@ -1,0 +1,8 @@
+#include "ui/menudef.h"
+
+{
+	menuDef 
+	{
+		name 			"cj"
+	}
+}

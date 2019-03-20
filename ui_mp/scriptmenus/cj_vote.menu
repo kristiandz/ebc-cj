@@ -1,0 +1,1056 @@
+/*******************************************************************************************\
+   TODO:
+   -Add more slideshow images
+   -Finer slideshow transitions
+\*******************************************************************************************/
+
+#include "ui/menudefinition.h";
+{
+    menuDef
+    {
+        name                      "cj_vote"
+        rect                      0 0 640 480 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+		focusColor                1 0 0 1
+        onOpen                    { }
+        onClose                   { }
+        onESC                     { close self ; }
+		
+        execKey                   "" { scriptMenuResponse char_backspace  }
+        execKey                   " " { scriptMenuResponse "char_ "  }
+        execKey                   "-" { scriptMenuResponse char__ ;  }
+        execKey                   "z" { scriptMenuResponse char_z ;  }
+        execKey                   "y" { scriptMenuResponse char_y ;  }
+        execKey                   "x" { scriptMenuResponse char_x ;  }
+        execKey                   "w" { scriptMenuResponse char_w ;  }
+        execKey                   "v" { scriptMenuResponse char_v ;  }
+        execKey                   "u" { scriptMenuResponse char_u ;  }
+        execKey                   "t" { scriptMenuResponse char_t ;  }
+        execKey                   "s" { scriptMenuResponse char_s ;  }
+        execKey                   "r" { scriptMenuResponse char_r ;  }
+        execKey                   "q" { scriptMenuResponse char_q ;  }
+        execKey                   "p" { scriptMenuResponse char_p ;  }
+        execKey                   "o" { scriptMenuResponse char_o ;  }
+        execKey                   "n" { scriptMenuResponse char_n ;  }
+        execKey                   "m" { scriptMenuResponse char_m ;  }
+        execKey                   "l" { scriptMenuResponse char_l ;  }
+        execKey                   "k" { scriptMenuResponse char_k ;  }
+        execKey                   "j" { scriptMenuResponse char_j ;  }
+        execKey                   "i" { scriptMenuResponse char_i ;  }
+        execKey                   "h" { scriptMenuResponse char_h ;  }
+        execKey                   "g" { scriptMenuResponse char_g ;  }
+        execKey                   "f" { scriptMenuResponse char_f ;  }
+        execKey                   "e" { scriptMenuResponse char_e ;  }
+        execKey                   "d" { scriptMenuResponse char_d ;  }
+        execKey                   "c" { scriptMenuResponse char_c ;  }
+        execKey                   "b" { scriptMenuResponse char_b ;  }
+        execKey                   "a" { scriptMenuResponse char_a ;  }
+        execKey                   "0" { scriptMenuResponse char_0 ;  }
+        execKey                   "9" { scriptMenuResponse char_9 ;  }
+        execKey                   "8" { scriptMenuResponse char_8 ;  }
+        execKey                   "7" { scriptMenuResponse char_7 ;  }
+        execKey                   "6" { scriptMenuResponse char_6 ;  }
+        execKey                   "5" { scriptMenuResponse char_5 ;  }
+        execKey                   "4" { scriptMenuResponse char_4 ;  }
+        execKey                   "3" { scriptMenuResponse char_3 ;  }
+        execKey                   "2" { scriptMenuResponse char_2 ;  }
+        execKey                   "1" { scriptMenuResponse char_1 ;  }
+		
+		// Background inside
+        itemDef
+        {
+            name                      "bg"
+            rect                      35 60 590 340 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            foreColor                 1 1 1 0.75
+            textScale                 0.55
+            exp                       material ( ( "semtex_background" ) );
+            visible 				  1                            
+        }
+		// Frame 
+        itemDef
+        {
+            name                      "frame"
+            rect                      35 60 590 340 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            foreColor                 1 1 1 1
+            textScale                 0.55
+            exp                       material ( ( "cj_frame" ) );
+            visible 				  1                 
+        }
+		// Long line separator
+		itemDef 
+		{
+			style					  WINDOW_STYLE_FILLED
+			rect					  65 140 525 1 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+			backcolor				  1 0 0 0.8
+			visible					  1	
+		}
+		// Small separator middle top
+		itemDef 
+		{
+			style					  WINDOW_STYLE_FILLED
+			rect					  330 120 1 15 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+			backcolor				  1 0 0 0.9
+			visible					  1	
+		}
+		// Long separator middle bottom
+		itemDef 
+		{
+			style					  WINDOW_STYLE_FILLED
+			rect					  330 146 1 225 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+			backcolor				  1 0 0 0.2
+			visible					  1	
+		}
+		// Selected map text
+		itemDef
+        {
+            rect                      410 135 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            borderSize                1
+            foreColor                 1 1 1 1
+            textFont                  UI_FONT_NORMAL
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textScale                 0.3
+            exp                       text ( "Selected Map: ");
+            visible 				  1                               
+        }
+		// Top title
+        itemDef
+        {
+            name                      "text_objective_titlevotes"
+            rect                      335 97 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            borderSize                1
+            foreColor                 1 1 1 1
+            textFont                  UI_FONT_OBJECTIVE
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textScale                 0.5
+            textStyle                 2
+            text                      "Voting Menu"
+            visible 				  1             
+        }
+		// Slideshow frame
+		itemDef
+        {
+            rect                      365 156 210 119 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 1
+            textScale                 0.55
+            exp                       material ("cj_frame");
+            visible 				  1
+        }
+		// Slideshow image 1
+        itemDef
+        {
+            rect                      370 160 199 112 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 0.2
+			exp                       material ("slideshow1");
+			exp 					  forecolor A ((stat(1120)/10))
+			visible					  when(stat(1121)==1)
+        }
+		// Slideshow image 2
+		itemDef
+        {
+            rect                      370 160 199 112 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 0.2
+            exp                       material ("slideshow2");
+			exp 					  forecolor A ((stat(1120)/10))
+			visible					  when(stat(1121)==2)
+        }
+		// Slideshow image 3
+		itemDef
+        {
+            rect                      370 160 199 112 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 0.2
+            exp                       material ("slideshow3");
+			exp 					  forecolor A ((stat(1120)/10))
+			visible					  when(stat(1121)==3)             
+        }
+		// Page Count
+        itemDef
+        {
+            rect                      178 378 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            borderSize                1
+            foreColor                 1 1 1 1
+            textFont                  UI_FONT_NORMAL
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textScale                 0.3
+            exp                       text ( ( dvarstring( "ui_cj_map_list_pagecount" ) ) );
+            visible 				  1               
+        }
+		// Selected map text 
+        itemDef
+        {
+            rect                      520 135 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            borderSize                1
+            foreColor                 1 1 1 1
+            textFont                  UI_FONT_NORMAL
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+			textStyle                 ITEM_TEXTSTYLE_BLINK
+            textScale                 0.3
+            exp                       text ( ( dvarstring( "ui_cj_map_list_select" ) ) );
+            visible 				  1               
+        }
+		// Text input section 
+        itemDef
+        {
+            rect                      78 136 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            borderSize                1
+            foreColor                 1 1 1 1
+            textFont                  UI_FONT_NORMAL
+            textScale                 0.3
+            textStyle                 ITEM_TEXTSTYLE_BLINK
+            exp                       text ( ( dvarstring( "ui_cj_map_list_textfield" ) ) );
+            visible 				  1                
+        }
+		// +10 Minutes Button
+        itemDef
+        {
+            name                      "BounceOn10min"
+            rect                      367 328 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 1
+            textScale                 0.55
+            exp                       material ( ( "button_on" ) );
+            visible 				  1            
+        }
+        itemDef
+        {
+            name                      "BounceOff10min"
+            rect                      367 328 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 1
+            textScale                 0.55
+            exp                       material ( ( "button_off" ) );
+            visible 				  1               
+        }
+        itemDef
+        {
+            name                      "buttontext10min"
+            rect                      367 346 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            borderSize                1
+            foreColor                 1 1 1 1
+            textFont                  UI_FONT_OBJECTIVE
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textScale                 0.33
+            textStyle                 4
+            text                      " 10 minutes"
+            visible 				  1            
+        }
+        itemDef
+        {
+            rect                      367 328 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textAlignY                10
+            textScale                 0.8
+            text                      ""
+            mouseEnter                { play mouse_over ; hide BounceOff10min ; show BounceOn10min ;  }
+            mouseExit                 { show BounceOff10min ; hide BounceOn10min ;  }
+            action                    { play mouse_click ; close vote_menu ; scriptMenuResponse vote_extend10 ; close self  }
+            visible 				  1                 
+        }
+        itemDef
+        {
+            rect                      376 345 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            borderSize                1
+            foreColor                 1 1 1 1
+            textFont                  UI_FONT_OBJECTIVE
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textScale                 0.28
+            text                      "+"
+            visible 			  	  1                 
+        }
+		// +20 Minutes Button
+        itemDef
+        {
+            name                      "BounceOn20min"
+            rect                      367 355 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 1
+            textScale                 0.55
+            exp                       material ( ( "button_on" ) );
+            visible 				  1               
+        }
+        itemDef
+        {
+            name                      "BounceOff20min"
+            rect                      367 355 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 1
+            textScale                 0.55
+            exp                       material ( ( "button_off" ) );
+            visible 				  1                
+        }
+        itemDef
+        {
+            name                      "buttontext20min"
+            rect                      367 373 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            borderSize                1
+            foreColor                 1 1 1 1
+            textFont                  UI_FONT_OBJECTIVE
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textScale                 0.33
+            textStyle                 4
+            text                      " 20 minutes"
+            visible 			      1                
+        }
+        itemDef
+        {
+            rect                      367 355 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textAlignY                10
+            textScale                 0.8
+            text                      ""
+            mouseEnter                { play mouse_over ; hide BounceOff20min ; show BounceOn20min ;  }
+            mouseExit                 { show BounceOff20min ; hide BounceOn20min ;  }
+            action                    { play mouse_click ; close vote_menu ; scriptMenuResponse vote_extend20 ; close self  }
+            visible 				  1                 
+        }
+        itemDef
+        {
+            rect                      376 373 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            borderSize                1
+            foreColor                 1 1 1 1
+            textFont                  UI_FONT_OBJECTIVE
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textScale                 0.28
+            text                      "+"
+            visible 				  1                 
+        }
+		// Rotate Map
+        itemDef
+        {
+            name                      "BounceOnrotatemap"
+            rect                      475 355 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 1
+            textScale                 0.55
+            exp                       material ( ( "button_on" ) );
+            visible 				  1             
+        }
+        itemDef
+        {
+            name                      "BounceOffrotatemap"
+            rect                      475 355 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 1
+            textScale                 0.55
+            exp                       material ( ( "button_off" ) );
+            visible 				  1                
+        }
+        itemDef
+        {
+            name                      "buttontextrotatemap"
+            rect                      475 373 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            borderSize                1
+            foreColor                 1 1 1 1
+            textFont                  UI_FONT_OBJECTIVE
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textScale                 0.33
+            textStyle                 4
+            text                      "end map"
+            visible 				  1             
+        }
+        itemDef
+        {
+            rect                      475 355 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textAlignY                10
+            textScale                 0.8
+            text                      ""
+            mouseEnter                { play mouse_over ; hide BounceOffrotatemap ; show BounceOnrotatemap ;  }
+            mouseExit                 { show BounceOffrotatemap ; hide BounceOnrotatemap ;  }
+            action                    { play mouse_click ; close vote_menu ; scriptMenuResponse vote_rotate ; close self  }
+            visible 				  1			
+        }
+		// Random map button
+        itemDef
+        {
+            name                      "BounceOnrandommap"
+            rect                      475 328 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 1
+            textScale                 0.55
+            exp                       material ( ( "button_on" ) );
+            visible 				  1               
+        }
+        itemDef
+        {
+            name                      "BounceOffrandommap"
+            rect                      475 328 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 1
+            textScale                 0.55
+            exp                       material ( ( "button_off" ) );
+            visible 				  1                                
+        }
+        itemDef
+        {
+            name                      "buttontextrandommap"
+            rect                      475 346 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            borderSize                1
+            foreColor                 1 1 1 1
+            textFont                  UI_FONT_OBJECTIVE
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textScale                 0.33
+            textStyle                 4
+            text                      "random map"
+            visible 				  1             
+        }
+        itemDef
+        {
+            rect                      475 328 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textAlignY                10
+            textScale                 0.8
+            text                      ""
+            mouseEnter                { play mouse_over ; hide BounceOffrandommap ; show BounceOnrandommap ;  }
+            mouseExit                 { show BounceOffrandommap ; hide BounceOnrandommap ;  }
+            action                    { play mouse_click ; close vote_menu ; scriptMenuResponse vote_random ; close self  }
+            visible 				  1                 
+        }
+		// Next button for maplist
+        itemDef
+        {
+            name                      "BounceOnnext"
+            rect                      225 364 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 1
+            textScale                 0.55
+            exp                       material ( ( "button_on" ) );
+            visible 				  1               
+        }
+        itemDef
+        {
+            name                      "BounceOffnext"
+            rect                      225 364 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 1
+            textScale                 0.55
+            exp                       material ( ( "button_off" ) );
+            visible 				  1                
+        }
+        itemDef
+        {
+            name                      "buttontextnext"
+            rect                      225 377 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            borderSize                1
+            foreColor                 1 1 1 1
+            textFont                  UI_FONT_OBJECTIVE
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textScale                 0.3
+            textStyle                 4
+            text                      "next"
+            visible 				  1               
+        }
+        itemDef
+        {
+            rect                      225 364 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textAlignY                10
+            textScale                 0.8
+            text                      ""
+            mouseEnter                { play mouse_over ; hide BounceOffnext ; show BounceOnnext ;  }
+            mouseExit                 { show BounceOffnext ; hide BounceOnnext ;  }
+            action                    { play mouse_click ; scriptMenuResponse vote_next ;  }
+            visible 				  1                 
+        }
+		// Previous button maplist
+        itemDef
+        {
+            name                      "BounceOnprev"
+            rect                      85 364 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 1
+            textScale                 0.55
+            exp                       material ( ( "button_on" ) );
+            visible					  1             
+        }
+        itemDef
+        {
+            name                      "BounceOffprev"
+            rect                      85 364 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 1
+            textScale                 0.55
+            exp                       material ( ( "button_off" ) );
+            visible 				  1             
+        }
+        itemDef
+        {
+            name                      "buttontextprev"
+            rect                      85 377 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            borderSize                1
+            foreColor                 1 1 1 1
+            textFont                  UI_FONT_OBJECTIVE
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textScale                 0.3
+            textStyle                 4
+            text                      "prev"
+            visible 				  1               
+        }
+        itemDef
+        {
+            rect                      85 364 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textAlignY                10
+            textScale                 0.8
+            text                      ""
+            mouseEnter                { play mouse_over ; hide BounceOffprev ; show BounceOnprev ;  }
+            mouseExit                 { show BounceOffprev ; hide BounceOnprev ;  }
+            action                    { play mouse_click ; scriptMenuResponse vote_prev ;  }
+            visible 				  1                 
+        }
+		// Call vote button
+        itemDef
+        {
+            name                      "BounceOncallvote"
+            rect                      367 290 213 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 1
+            textScale                 0.55
+            exp                       material ( ( "button_on" ) );
+            visible 				  1            
+        }
+        itemDef
+        {
+            name                      "BounceOffcallvote"
+            rect                      367 290 213 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 1
+            textScale                 0.55
+            exp                       material ( ( "button_off" ) );
+            visible 				  1             
+        }
+        itemDef
+        {
+            name                      "buttontextcallvote"
+            rect                      367 309 213 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            borderSize                1
+            foreColor                 1 1 1 1
+            textFont                  UI_FONT_OBJECTIVE
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textScale                 0.33
+            textStyle                 4
+            text                      "vote for selected map"
+            visible				 	  1             
+        }
+        itemDef
+        {
+            rect                      367 295 213 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlign                 ITEM_ALIGN_LEGACY_CENTER
+            textAlignY                10
+            textScale                 0.8
+            text                      ""
+            mouseEnter                { play mouse_over ; hide BounceOffcallvote ; show BounceOncallvote ;  }
+            mouseExit                 { show BounceOffcallvote ; hide BounceOncallvote ;  }
+            action                    { play mouse_click ; close vote_menu ; scriptMenuResponse vote_callvote ; close self  }
+            visible 				  1                 
+        }
+		// Maplist items
+        itemDef
+        {
+            rect                      90 162 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_0 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 0 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 0 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      90 174 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_1 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 1 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 1 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      90 186 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_2 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 2 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 2 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      90 198 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_3 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 3 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 3 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      90 210 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_4 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 4 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 4 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      90 222 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_5 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 5 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 5 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      90 234 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_6 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 6 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 6 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      90 246 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_7 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 7 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 7 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      90 258 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_8 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 8 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 8 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      90 270 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_9 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 9 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 9 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      90 282 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_10 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 10 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 10 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      90 294 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_11 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 11 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 11 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      90 306 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_12 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 12 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 12 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      90 318 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_13 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 13 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 13 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      90 330 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_14 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 14 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 14 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      220 162 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_15 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 15 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 15 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      220 174 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_16 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 16 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 16 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      220 186 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_17 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 17 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 17 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      220 198 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_18 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 18 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 18 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      220 210 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_19 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 19 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 19 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      220 222 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_20 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 20 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 20 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      220 234 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_21 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 21 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 21 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      220 246 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_22 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 22 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 22 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      220 258 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_23 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 23 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 23 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      220 270 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_24 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 24 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 24 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      220 282 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_25 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 25 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 25 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      220 294 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_26 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 26 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 26 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      220 306 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_27 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 27 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 27 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      220 318 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_28 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 28 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 28 ) != "" ) )
+        }
+        itemDef
+        {
+            rect                      220 330 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_FILLED
+            borderSize                1
+            foreColor                 1 1 1 1
+            type                      ITEM_TYPE_BUTTON
+            textFont                  UI_FONT_NORMAL
+            textAlignY                10
+            textScale                 0.3
+            mouseEnter                { play mouse_over ;  }
+            action                    { play mouse_click ; scriptmenuresponse vote_select_29 ;  }
+            exp                       text ( ( dvarstring( "ui_cj_map_list_" + 29 ) ) );
+            visible                   when ( ( dvarstring( "ui_cj_map_list_" + 29 ) != "" ) )
+        }
+    }
+}

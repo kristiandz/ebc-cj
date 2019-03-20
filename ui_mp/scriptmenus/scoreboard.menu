@@ -1,0 +1,9 @@
+#include "ui/menudef.h"
+	
+{	
+	menuDef
+	{
+		name			"scoreboard"
+		rect			0 0 640 480
+	}
+}

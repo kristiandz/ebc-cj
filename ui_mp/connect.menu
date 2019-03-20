@@ -1,0 +1,181 @@
+/*******************************************************************************************\
+   TODO:
+   - Add finer control for image transitions / slideshows
+   - Check for different aspect ratio issues
+   NOTICE:
+   - Image transitions are controled with a cos function which change the transparency
+   which is set at ui/bg.inc, and is shared across few menus.
+\*******************************************************************************************/
+
+#include "ui/menudef.h"
+#include "ui_mp/common_macro.inc"
+{
+	menuDef 
+	{
+		name			"connect"
+		style			WINDOW_STYLE_SHADER
+		fullScreen		0
+		focusColor		COLOR_FOCUSED
+		visible			1		
+		backcolor		1 1 1 1
+		rect			FULLSCREEN
+		// Background 
+		#include "ui/bg.inc"
+		
+		// Loaded map shader
+		itemDef
+		{
+			rect			-100 50 200 100 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			forecolor		1 1 1 1
+			style			WINDOW_STYLE_SHADER
+			background		"$levelBriefing"
+			visible 		1
+			border			1
+			borderColor		0 0 0 1
+			decoration
+		}
+		// Loadbar frame shader
+		itemDef 
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			-237 -81 260 34 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			origin 			107 0
+			background		"semtex_loadbar"
+			backcolor		0 0 0 0.7
+			border			1
+			borderColor		0 0 0 1
+			visible			1	
+			decoration	
+		}
+		// Loadbar fill shader
+		itemDef 
+		{
+			name			"loadbar"
+			style			WINDOW_STYLE_LOADBAR
+			rect			-235 -79 256 32 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			origin 			107 0
+			background		"loadtext"
+			visible			1	
+		}
+		// Bottom and Top Fill 
+		itemDef 
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 1000 25 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+			backcolor		0 0 0 0.6
+			visible			1	
+		}
+		itemDef 
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 -35 1000 37 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
+			backcolor		0 0 0 0.6
+			visible			1	
+		}
+		// Thin red bars top/bottom
+		itemDef 
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 25 1000 1 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+			backcolor		0.8 0 0 1
+			visible			1	
+		}
+		itemDef 
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 -35 1000 1 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
+			backcolor		0.8 0 0 1
+			visible			1	
+		}
+		// Thin black bars top/bottom
+		itemDef 
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 24 1000 1 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+			backcolor		0 0 0 1
+			visible			1	
+		}
+		itemDef 
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 -34 1000 1.5 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
+			backcolor		0 0 0 1
+			visible			1	
+		}
+		itemDef 
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 -36 1000 1 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
+			backcolor		0 0 0 1
+			visible			1	
+		}
+		// Fadein shader for the info section topright
+		itemDef 
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			-170 26 200 62 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			background		"gradient_fadein"
+			forecolor		0.8 0 0 0.8
+			visible			1	
+		}
+		// Fadein black bar
+		itemDef 
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 26 1000 1 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+			backcolor		0 0 0 1
+			visible			1	
+		}
+		// Text info topright 
+		itemDef
+		{
+			rect			-10 42 0 0 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			text			"Explicit Bouncers CodJumper"
+			textfont		UI_FONT_DEFAULT
+			textscale		0.3
+			textalign		ITEM_ALIGN_RIGHT
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			forecolor		1 1 1 1
+			visible 		1
+			decoration 
+		}
+		itemDef
+		{
+			rect			-10 57 0 0 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			text			"Mod by Kreator"
+			textfont		UI_FONT_DEFAULT
+			textscale		0.3
+			textalign		ITEM_ALIGN_RIGHT
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			forecolor		1 1 1 1
+			visible 		1
+			decoration 
+		}
+		itemDef
+		{
+			rect			-10 72 0 0 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			text			"Discord.gg/cMXNWcT"
+			textfont		UI_FONT_DEFAULT
+			textscale		0.3
+			textalign		ITEM_ALIGN_RIGHT
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			forecolor		1 1 1 1
+			visible 		1
+			decoration 
+		}
+
+		itemDef
+		{
+			rect			-10 87 0 0 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			text			"Mod is still in development!"
+			textfont		UI_FONT_DEFAULT
+			textscale		0.3
+			textalign		ITEM_ALIGN_RIGHT
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			forecolor		1 1 1 1
+			visible 		1
+			decoration 
+		}
+		#include "ui/safearea.menu"
+	}
+}

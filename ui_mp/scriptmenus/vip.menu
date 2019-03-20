@@ -1,0 +1,127 @@
+#include "ui/menudef.h"
+
+#define CJ_BUTTON(itemNum,textArg) \		
+		itemDef \
+		{ \
+			type 			ITEM_TYPE_BUTTON \
+			rect			30 (35+(itemNum*15)) 100 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER \
+			textfont		UI_FONT_NORMAL \
+			textscale		0.3 \
+			exp 		 	text(textArg) \
+			textaligny		15 \
+			visible			1 \
+			mouseEnter 		{ play "mouse_over"; } \
+			action 			{ play "mouse_click";  \
+			scriptMenuResponse itemNum; \
+			} \
+		} \
+		
+	#define CJ_BUTTON2(itemNum,textArg) \		
+		itemDef \
+		{ \
+			type 			ITEM_TYPE_BUTTON \
+			rect			150 (35+(itemNum*15)-(15*12)) 100 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER \
+			textfont		UI_FONT_NORMAL \
+			textscale		0.3 \
+			exp 		 	text(textArg) \
+			textaligny		15 \
+			visible			1 \
+			mouseEnter 		{ play "mouse_over"; } \
+			action 			{ play "mouse_click";  \
+			scriptMenuResponse itemNum; \
+			} \
+		} \
+		
+{
+	menuDef 
+	{
+		name 			"vip"
+		rect			-150 -125 300 265 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+		focuscolor		COLOR_FOCUSED
+		style			WINDOW_STYLE_SHADER
+		blurWorld		3.0
+		visible			1
+		
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 300 265 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			background		"semtex_background"
+			forecolor		1 1 1 0.75
+			visible		    1
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 300 265 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			forecolor		1 1 1 1
+			background		"cj_frame"
+			visible			1
+		}
+		
+		itemDef
+		{
+			rect			30 35 0 0
+			forecolor		1 1 1 1
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_DEFAULT
+			text			"VIP Model Changer" 
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			rect 			30 32 120 0.7
+			style			WINDOW_STYLE_FILLED
+			backcolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			type 			ITEM_TYPE_BUTTON
+			rect			-25 230 300 265 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			forecolor		1 1 1 1
+			text			"Close"
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_DEFAULT
+			textalign		ITEM_ALIGN_RIGHT
+			textaligny		15
+			mouseEnter 		{ play "mouse_over"; }
+			action 			{ play "mouse_click"; close self; }
+			visible			1
+		}
+		itemDef
+		{
+			rect			30 (35+(14*15)) 100 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER 
+			forecolor		1 1 1 1
+			exp text		"Current: ^1"+dvarString("currentmodel")
+			textfont		UI_FONT_NORMAL
+			textscale		0.3
+			visible			1
+			decoration
+		}
+
+		CJ_BUTTON(0,"Default")
+		CJ_BUTTON(1,"Minecraft Steve")
+		CJ_BUTTON(2,"Duke Nukem")
+		CJ_BUTTON(3,"Zoey")
+		CJ_BUTTON(4,"Captain Price")
+		CJ_BUTTON(5,"Rifleman")
+		CJ_BUTTON(6,"Zakhaev")
+		CJ_BUTTON(7,"Makarov")
+		CJ_BUTTON(8,"MasterChief")
+		CJ_BUTTON(9,"Shepherd")
+		CJ_BUTTON(10,"Farmer")
+		CJ_BUTTON(11,"Juggernaut")
+		CJ_BUTTON2(12,"Vin Diesel")
+		CJ_BUTTON2(13,"Terminator")
+		CJ_BUTTON2(14,"Ghosts Recon")
+		CJ_BUTTON2(15,"GTA IV Nico")
+		CJ_BUTTON2(16,"50 Cent")
+		CJ_BUTTON2(17,"Badass Terrorist")
+		CJ_BUTTON2(18,"Zack")
+		CJ_BUTTON2(19,"Velinda")
+		
+	}
+}

@@ -1,0 +1,130 @@
+#include "ui/menudef.h"
+
+#define CJ_BUTTON(itemNum,textArg) \		
+		itemDef \
+		{ \
+			type 			ITEM_TYPE_BUTTON \
+			rect			30 (35+((1+itemNum)*22)) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER \
+			textfont		UI_FONT_NORMAL \
+			textscale		0.34 \
+			exp 		 	text(textArg) \
+			textaligny		15 \
+			visible			1 \
+			mouseEnter 		{ play "mouse_over"; } \
+			action 			{ play "mouse_click";  \
+			scriptMenuResponse itemNum; \
+			} \
+		} \
+		
+#define CJ_BUTTON2(itemNum,textArg) \		
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_FILLED \
+			type 			ITEM_TYPE_BUTTON \
+			rect			185 (35+((1+itemNum)*22)) 70 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER \
+			forecolor		1 1 1 1 \
+			background		"button_off"\
+			backcolor       1 1 1 1 \
+			visible			1 \
+			exp				text(textArg) \
+			textfont		UI_FONT_NORMAL \
+			textscale		0.3 \
+			textalign		ITEM_ALIGN_CENTER \
+			textaligny		15 \
+			mouseEnter 		{ play "mouse_over"; } \
+			action 			{ play "mouse_click"; \
+			scriptMenuResponse itemNum;  \
+			}  \
+		}
+	
+{
+	menuDef 
+	{
+		name 				"shop"
+		rect				-150 -125 640 880 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+		focuscolor			COLOR_FOCUSED
+		style				WINDOW_STYLE_EMPTY
+		blurWorld			3.0
+		visible				1
+		
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 300 265 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			background		"semtex_background"
+			forecolor		1 1 1 0.75
+			visible		    1
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 300 265 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			forecolor		1 1 1 1
+			background		"cj_frame"
+			visible			1
+		}
+		itemDef
+		{
+			rect			30 35 0 0
+			forecolor		1 1 1 1
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_DEFAULT
+			text			"Model Shop" 
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			rect 			30 32 120 0.7
+			style			WINDOW_STYLE_FILLED
+			backcolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			type 			ITEM_TYPE_BUTTON
+			rect			-25 230 300 265 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			forecolor		1 1 1 1
+			text			"Close"
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_DEFAULT
+			textalign		ITEM_ALIGN_RIGHT
+			textaligny		15
+			mouseEnter 		{ play "mouse_over"; }
+			action 			{ play "mouse_click"; close self; }
+			visible			1
+		}
+		itemDef
+		{
+			rect			30 (35+(13*15)) 100 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER 
+			forecolor		1 1 1 1
+			exp text		"Your model: ^1"+dvarString("shopmodel")
+			textfont		UI_FONT_NORMAL
+			textscale		0.3
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			rect			30 (35+(14*15)) 100 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER 
+			forecolor		1 1 1 1
+			exp text		"Your Points: ^1"+dvarString("points")
+			textfont		UI_FONT_NORMAL
+			textscale		0.3
+			visible			1
+			decoration
+		}
+		
+		CJ_BUTTON(0,dvarString("shop0"))
+		CJ_BUTTON(1,dvarString("shop1"))
+		CJ_BUTTON(2,dvarString("shop2"))
+		CJ_BUTTON(3,dvarString("shop3"))
+		CJ_BUTTON(4,dvarString("shop4"))
+		CJ_BUTTON2(0,dvarString("shop0action"))
+		CJ_BUTTON2(1,dvarString("shop1action"))
+		CJ_BUTTON2(2,dvarString("shop2action"))
+		CJ_BUTTON2(3,dvarString("shop3action"))
+		CJ_BUTTON2(4,dvarString("shop4action"))		
+	}
+}

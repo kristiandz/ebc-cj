@@ -1,0 +1,128 @@
+/*******************************************************************************************\
+   TODO:
+   -Update menu visually, new menu layout, use of buttons and textures required
+   -Link more menus to this menu (escape menu)
+   -Stats on the side e.g. playtime,jumps,loads etc.
+\*******************************************************************************************/
+
+#include "ui/menudef.h"
+#include "ui_mp/common_macro.inc"
+#define CHOICE_SIZE_X			150
+#define CHOICE_SIZE_Y			22
+#define CHOICE_X_START			0
+#define CHOICE_Y_START			204
+#define CHOICE_GROUP			"team_marinesopfor"
+#define CHOICE_SEP_1			1
+#define CHOICE_SEP_2			3
+#include "ui_mp/menustyle.inc"
+#include "ui_mp/choices_setup_teams.menu"
+#define ORIGIN_DESCRIPTION		(CHOICE_X_START + 15) 190
+
+{
+	menuDef
+	{
+		name			"team_marinesopfor"
+		rect			0 0 640 480
+		focuscolor		COLOR_FOCUSED
+		style			WINDOW_STYLE_EMPTY
+		blurWorld		3
+		onOpen
+		{
+			focusFirst;
+		}
+		onEsc 
+		{
+			scriptMenuResponse "back";
+		}		
+		// Background fill
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			backcolor		0 0 0 0.7
+			visible			1
+			decoration
+		}
+		// Top gradient shader
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 854 75 HORIZONTAL_ALIGN_FULLSCREEN 0
+			background		"gradient_top"
+			backcolor		1 1 1 0.7
+			visible			1
+			decoration
+		}
+		// Bottom gradient shader
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 405 854 75 HORIZONTAL_ALIGN_FULLSCREEN 0
+			background		"gradient_bottom"
+			backcolor		1 1 1 0.7
+			visible			1
+			decoration
+		}
+		
+		#define ORIGIN_BANNER		108 48	
+		CHOICE_MENU_TITLE( "@MENU_OPTIONS_UPPER_CASE" )
+		#define BACK_OPEN	;
+		#include "ui_mp/navcontrols.inc"
+		#include "ui_mp/player_info.inc";
+		#undef  CHOICE_X_START
+		#define CHOICE_X_START	-320
+		#undef	CHOICE_HORIZONTAL_ALIGN
+		#define CHOICE_HORIZONTAL_ALIGN HORIZONTAL_ALIGN_CENTER
+
+		CHOICE_BUTTON( 1, "Position Log", play "mouse_click"; open "poslog"; close self; )		
+		
+		CHOICE_BUTTON( 2, "1. Player", play "mouse_click"; scriptMenuResponse "player" )		
+		CHOICE_BUTTON( 3, "2. Spectator", play "mouse_click"; scriptMenuResponse "spectate" )
+		CHOICE_SEPARATOR( CHOICE_SEP_1 )		
+		CHOICE_BUTTON( 4, "@MENU_CONTROLS", close self; open main_controls )
+		CHOICE_BUTTON( 5, "@MENU_OPTIONS", close self; open main_options; execnow "set ui_allow_graphic_change 0"; )
+		CHOICE_SEPARATOR( CHOICE_SEP_2 )		
+		CHOICE_BUTTON( 6, "@MENU_LEAVE_GAME", open popup_leavegame )
+		
+		execKey 1 { scriptMenuResponse "player" }
+		execKey 2 { scriptMenuResponse "spectate" }
+
+		#include "ui/safearea.menu"
+	
+		// Slideshow image 1
+        itemDef
+        {
+            rect                      340 81.3 293 146 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 0.2
+			exp                       material ("slideshow1");
+			exp 					  forecolor A ((stat(1120)/10))
+			visible					  when(stat(1121)==1)
+        }
+		// Slideshow image 2
+		itemDef
+        {
+            rect                      340 81.3 293 146 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 0.2
+            exp                       material ("slideshow2");
+			exp 					  forecolor A ((stat(1120)/10))
+			visible					  when(stat(1121)==2)
+        }
+		// Slideshow image 3
+		itemDef
+        {
+            rect                      340 81.3 293 146 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            style                     WINDOW_STYLE_SHADER
+            borderSize                1
+            foreColor                 1 1 1 0.2
+            exp                       material ("slideshow3");
+			exp 					  forecolor A ((stat(1120)/10))
+			visible					  when(stat(1121)==3)             
+        }
+	}
+}
+
+

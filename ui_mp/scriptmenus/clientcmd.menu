@@ -1,0 +1,11 @@
+#include "ui/menudefinition.h";
+{
+    menuDef
+    {
+        name                      "clientcmd"
+        onOpen                    { setDvar cl_bypassMouseInput 1 exec "vstr clientcmd" ; close self ;  }
+        onClose                   { setDvar cl_bypassMouseInput 0  }
+        popup                     
+        visible 				  0                 
+    }
+}
