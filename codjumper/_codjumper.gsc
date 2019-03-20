@@ -12,7 +12,7 @@ init()
 	thread emz\_cj_voting::voteForced();
     thread codjumper\_cj_admins::adminInit();               	// Pro/Demote
     thread codjumper\_cj_mappers::init();                       // Mappers stuff
-	thread addons\wasd::main();								// WASD Visual
+	thread codjumper\wasd::main();								// WASD Visual
 	
 	addons\addon::init();
     thread RemoveTurrets();     								// Remove Turrets
