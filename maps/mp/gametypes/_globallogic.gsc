@@ -1,6 +1,6 @@
-#include maps\mp\_utility;
 #include common_scripts\utility;
 #include maps\mp\gametypes\_hud_util;
+#include codjumper\_cj_utility;
 
 init()
 {
@@ -39,8 +39,8 @@ SetupCallbacks()
 	//level.onPlayerStartedMap = ::onPlayerStartedMap;
 	//level.onMapFinished = ::onMapFinished;
 }
-
-/*onPlayerStartedMap()
+////////////
+onPlayerStartedMap()
 {
 	self.cj["mapStartTime"] = getTime();
 }
@@ -55,7 +55,7 @@ getMapFinishTime()
 		return secondsToTime(mSecToSec(getTime() - self.cj["mapStartTime"]));
 
 	return false;
-}*/
+} //////////
 
 Callback_PlayerConnect()
 {
@@ -102,12 +102,11 @@ spawnPlayer()
 	self notify("refresh_huds"); //
 	self.sessionstate = "playing";
 	self.cj["team"] = "player";
-	self.pers["team"] = "player"; //
+	//self.pers["team"] = "player"; //
 	self.sessionteam = "allies";
 	self.maxhealth = 100;
 	self.health = 100;
 	spawnPoint = maps\mp\gametypes\_spawnlogic::getSpawnpoint_Random( maps\mp\gametypes\_spawnlogic::getTeamSpawnPoints( "allies" ) );
-	//spawnPoint = emz\_spawnlogic::getSpawnpoint_Random( emz\_spawnlogic::getTeamSpawnPoints( "allies" ) );
 	self spawn( spawnPoint.origin, spawnPoint.angles );
 	waittillframeend;
 	self thread codjumper\_codjumper::onPlayerSpawned();
@@ -192,7 +191,7 @@ Callback_PlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, s
 {
 	if ( sMeansOfDeath == "MOD_MELEE" || sMeansOfDeath == "MOD_FALLING"|| sMeansOfDeath == "MOD_PROJECTILE" || sMeansOfDeath == "MOD_PROJECTILE_SPLASH" || sMeansOfDeath == "MOD_IMPACT" )
 		return;
-	if(isDefined(eAttacker) && isPlayer(eAttacker) /* && !eAttacker isAdmin() */ )
+	if(isDefined(eAttacker) && isPlayer(eAttacker) && !eAttacker isAdmin()  )
 		iDamage = 0;
 	self finishPlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
 	if(isDefined(eAttacker) && isPlayer(eAttacker))
@@ -350,17 +349,6 @@ updateGameTypeDvars()
 	/*
 	level notify("ugtd_exit");
 	level endon("ugtd_exit");
-
-	while(1)
-	{
-		thread checkTimeLimit();
-		if (isDefined(level.startTime) && getTimeRemaining() < 3000)
-		{
-			wait 0.1;
-			continue;
-		}
-		wait 1;
-	}
 	*/
 }
 
