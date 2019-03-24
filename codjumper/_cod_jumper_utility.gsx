@@ -24,7 +24,7 @@ setupDefaults()
 {
     self waittill("spawned");
     while(!isDefined(self.cj) || !isDefined(self.cj["hud"])) wait 0.05;
-    self.client_fps = 1337;
+    self.client_fps = int(getmaxfps());
     self.cj_block_clienthud = 0;
     self thread waitHudRefresh();
     self thread updateClientVars();
@@ -36,7 +36,7 @@ updateClientVars()
   for (;;) 
   {
       wait .05;
-      self.client_fps = getDvarInt("com_maxfps");
+      self.client_fps = int(getmaxfps());
       self.deaths = self.client_fps;
   }
 }
