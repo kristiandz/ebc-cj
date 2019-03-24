@@ -56,12 +56,12 @@ onPlayerSpawned()
     self thread setPlayerModel();
 	self thread doWelcomeMessages();
 	self thread codjumper\_graphic_menu_load::onPlayerSpawn();
-	
 	self thread emz\_hud::drawInfoHud();
 	self thread emz\shop::spawnplayer();
-	
+	waittillframeend;
 	if(!self.cj["spawned"])
 	{
+		self thread addons\_velocity::toggleSpeedHud();
 		//self thread [[level.onPlayerStartedMap]]();
 		self.cj["spawned"] = true;
 		self.cj["save"]["org0"] = self getOrigin();
@@ -69,8 +69,6 @@ onPlayerSpawned()
 		wait 0.1;
 		self execClientCommand("setfromdvar temp0 com_maxfps; setu com_maxfps 125; setfromdvar com_maxfps temp0");
 	}
-	waittillframeend;
-	self thread addons\_velocity::toggleSpeedHud();
 }
 
 _MeleeKey() 
