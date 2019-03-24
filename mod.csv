@@ -76,9 +76,8 @@ rawfile,maps/mp/gametypes/cj.gsc
 rawfile,maps/mp/gametypes/cj.txt
 rawfile,maps/mp/gametypes/dm.gsc
 rawfile,maps/mp/gametypes/dm.txt
-rawfile,mp/CoD2maps.arena
 
-material,foward_pressed
+material,forward_pressed
 material,back_pressed
 material,left_pressed
 material,right_pressed
