@@ -12,7 +12,7 @@ init()
 	thread emz\_cj_voting::voteForced();
     thread codjumper\_cj_admins::adminInit();               	// Pro/Demote
     thread codjumper\_cj_mappers::init();                       // Mappers stuff
-	thread addons\wasd::main();									// WASD Visual
+	thread codjumper\wasd::main();								// WASD Visual
 	
 	addons\addon::init();
     thread RemoveTurrets();     								// Remove Turrets
@@ -31,8 +31,6 @@ onPlayerConnect()
         player codjumper\_cj_setup::setupLanguage();
         player thread codjumper\_cj_admins::checkAdmin();
 		player thread codjumper\_menus::onMenuResponse();
-		player thread emz\_cj_voting::playerList();
-		//player thread emz\_cj_voting::mapBrowse();
     }
 }
 
