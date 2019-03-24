@@ -12,7 +12,7 @@ precache()
 	precacheShader("white");
 	precacheShader("damage_feedback");
 	precacheShader("cj_frame");
-	precacheshader("foward_pressed");
+	precacheshader("forward_pressed");
     precacheshader("back_pressed");
     precacheshader("left_pressed");
     precacheshader("right_pressed");

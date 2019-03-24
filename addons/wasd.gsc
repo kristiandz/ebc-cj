@@ -20,7 +20,7 @@ waitforconnect()
  
 onconnect()
 {		
-    forward = createnewkey(0, 125, "foward_pressed", 20, 20);
+    forward = createnewkey(0, 125, "forward_pressed", 20, 20);
     back = createnewkey(0, 147, "back_pressed", 20, 20);
     left = createnewkey(-22, 147, "left_pressed", 20, 20);
     right = createnewkey(22, 147, "right_pressed", 20, 20);
@@ -28,13 +28,13 @@ onconnect()
 	
     while(isdefined(self))
     {
-        if(isdefined(self.sessionstate) && self.sessionstate == "playing" && self GetStat(1225) == 2 || self GetStat(1225) == 1 )
+        if(isdefined(self.sessionstate) && self.sessionstate == "playing" && self GetStat(1225) == 1 )
         {
             //forward.alpha = 0.2 + 0.8 * (self forwardbuttonpressed());
             //back.alpha = 0.2 + 0.8 * (self backbuttonpressed());
-           // left.alpha = 0.2 + 0.8 * (self moveleftbuttonpressed());
+            //left.alpha = 0.2 + 0.8 * (self moveleftbuttonpressed());
             //right.alpha = 0.2 + 0.8 * (self moverightbuttonpressed());
-           // jump.alpha = 0.2 + 0.8 * (self jumpbuttonpressed());
+            //jump.alpha = 0.2 + 0.8 * (self jumpbuttonpressed());
         }
         else
         {
