@@ -47,11 +47,25 @@ player(response)
 			break;
 			
 		case "graphic_drawdistance":
-			stat = self loopthrough_cjcfg("CJ_DRAW", 16);
-			self setclientdvar("r_zfar", 250 * int(stat));
-			self setStat(1308,int(stat));
+			if(self getStat(1308) == 0 ) 	   {self setclientdvar("r_zfar", 250 );  self SetStat(1308,1 );}
+			else if(self getStat(1308) == 1 )  {self setclientdvar("r_zfar", 500 );  self SetStat(1308,2 );}
+			else if(self getStat(1308) == 2 )  {self setclientdvar("r_zfar", 750 );  self SetStat(1308,3 );}
+			else if(self getStat(1308) == 3 )  {self setclientdvar("r_zfar", 1000 ); self SetStat(1308,4 );}
+			else if(self getStat(1308) == 4 )  {self setclientdvar("r_zfar", 1250 ); self SetStat(1308,5 );}
+			else if(self getStat(1308) == 5 )  {self setclientdvar("r_zfar", 1500 ); self SetStat(1308,6 );}
+			else if(self getStat(1308) == 6 )  {self setclientdvar("r_zfar", 1750 ); self SetStat(1308,7 );}
+			else if(self getStat(1308) == 7 )  {self setclientdvar("r_zfar", 2000 ); self SetStat(1308,8 );}
+			else if(self getStat(1308) == 8 )  {self setclientdvar("r_zfar", 2250 ); self SetStat(1308,9 );}
+			else if(self getStat(1308) == 9 )  {self setclientdvar("r_zfar", 2500 ); self SetStat(1308,10);}
+			else if(self getStat(1308) == 10 ) {self setclientdvar("r_zfar", 2750 ); self SetStat(1308,11);}
+			else if(self getStat(1308) == 11 ) {self setclientdvar("r_zfar", 3000 ); self SetStat(1308,12);}
+			else if(self getStat(1308) == 12 ) {self setclientdvar("r_zfar", 3250 ); self SetStat(1308,13);}
+			else if(self getStat(1308) == 13 ) {self setclientdvar("r_zfar", 3500 ); self SetStat(1308,14);}
+			else if(self getStat(1308) == 14 ) {self setclientdvar("r_zfar", 3750 ); self SetStat(1308,15);}
+			else if(self getStat(1308) == 15 ) {self setclientdvar("r_zfar", 4000 ); self SetStat(1308,16);}
+			else if(self getStat(1308) == 16 ) {self setclientdvar("r_zfar", 0    ); self SetStat(1308,0 );}
 			break;
-		
+
 		case "sounds":
 			if(self getstat(1224) == 0 )
 			self setstat(1224,1);
