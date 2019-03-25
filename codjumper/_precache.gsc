@@ -30,6 +30,7 @@ precache()
 	precacheItem("gravitygun_mp");
 	precacheItem("no_weapon_mp");
 	precacheItem("dog_mp");
+	precacheItem("brick_blaster_mp");
 
 	//PRECACHE MENUS
 	precacheMenu("cj");
@@ -75,12 +76,11 @@ precache()
 	//PRECACHE STATUS ICONS / OTHER
 	precacheStatusIcon("hud_status_connecting" );
 	precacheStatusIcon("hud_status_spectator" );
-	
+	precacheHeadIcon( "talkingicon" );	
 	precacheLocationSelector("map_artillery_selector" );
 	
 	/*//WIP
 	precacheMenu("admin");
 	precacheShellShock("flashbang");
-	precacheHeadIcon( "talkingicon" );		
 	*/
 }
