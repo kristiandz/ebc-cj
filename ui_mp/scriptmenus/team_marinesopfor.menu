@@ -92,7 +92,7 @@
 		// Slideshow image 1
         itemDef
         {
-            rect                      340 81.3 293 146 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      62 81.3 293 146 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 0.2
@@ -103,7 +103,7 @@
 		// Slideshow image 2
 		itemDef
         {
-            rect                      340 81.3 293 146 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      62 81.3 293 146 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 0.2
@@ -114,7 +114,7 @@
 		// Slideshow image 3
 		itemDef
         {
-            rect                      340 81.3 293 146 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      62 81.3 293 146 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 0.2
@@ -124,5 +124,3 @@
         }
 	}
 }
-
-
