@@ -102,7 +102,7 @@ spawnPlayer()
 	self notify("refresh_huds"); //
 	self.sessionstate = "playing";
 	self.cj["team"] = "player";
-	//self.pers["team"] = "player"; //
+	self.pers["team"] = "player"; //
 	self.sessionteam = "allies";
 	self.maxhealth = 100;
 	self.health = 100;
@@ -154,8 +154,7 @@ Callback_StartGameType()
 	thread maps\mp\gametypes\_rank::init();
 	thread createParentHUD();
 	thread codjumper\_voting_system::initVote();
-	thread codjumper\_cod_jumper_utility::init();
-	thread emz\shop::main(); //
+	thread emz\shop::main();
 	thread emz\_holographic::init();
 }
 
