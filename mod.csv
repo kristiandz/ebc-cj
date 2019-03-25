@@ -42,13 +42,13 @@ weapon,mp/no_weapon_mp
 weapon,mp/gravitygun_mp
 weapon,mp/dog_mp
 weapon,mp/rpg_sustain_mp
+weapon,mp/brick_blaster_mp
 
 localize,CJ
 localize,CGAME
 
 stringtable,mp/rankIconTable.csv
 stringtable,mp/rankTable.csv
-stringtable,mp/CJStatsTable.csv
 stringtable,mp/modelTable.csv
 
 menufile,ui_mp/cj.txt
