@@ -1,5 +1,7 @@
 init()
 { 
+	level.ninjaServerFile = false;
+	level.authorizeMode = getDvarInt("sv_authorizemode");
 	level.getGuid = ::_getGuid;
 	level.getUserInfo = ::_getUserInfo;
 } 
