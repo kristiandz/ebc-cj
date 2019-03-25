@@ -553,8 +553,7 @@ wow()
     wow waittill("trigger", user);
 	iprintln("^5 " +user.name + "^7 is pr0!");
 	user giveWeapon( "deserteaglegold_mp");
-	user giveWeapon( "defaultweapon_mp");
-	user switchToWeapon("defaultweapon_mp");
+	user switchToWeapon("deserteaglegold_mp");
 	user setplayermodel("playermodel_dnf_duke");
 	user iprintln("^1Duke Nukem' ^7model set!");
 	wait 10;
@@ -569,8 +568,7 @@ zomg()
 	user iprintlnbold("^7Omg Noob is so fucking pro, I love him! ^2(c) you");
 	user giveweapon("colt45_mp");
     user giveweapon("brick_blaster_mp");
-    user giveweapon("defaultweapon_mp");
-	user switchtoweapon("defaultweapon_mp");
+	user switchtoweapon("brick_blaster_mp");
 	wait 1;
 	user iprintln("^2Here have some weapons xo");
 	wait 2;
