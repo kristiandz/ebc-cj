@@ -1,17 +1,11 @@
 #include codjumper\_cj_utility;
 #include common_scripts\utility;
 
-init() 
-{
-    level.cj_block_clienthud = 0;
-}
-
 waitHudRefresh()
 {
   self endon("disconnect");
   if(self.pers["team"] != "spectator")
     self thread playerHUDLoop();
-
   while(1)
   {
     self waittill("refresh_huds");
@@ -25,7 +19,6 @@ setupDefaults()
     self waittill("spawned");
     while(!isDefined(self.cj) || !isDefined(self.cj["hud"])) wait 0.05;
     self.client_fps = 1337;
-    self.cj_block_clienthud = 0;
     self thread waitHudRefresh();
     self thread updateClientVars();
 }
@@ -72,14 +65,11 @@ playerHUDLoop()
   self endon( "joined_spectators" );
   self endon( "refresh_huds");
   self destroyPlayerHUDs();
-  if(level.cj_block_clienthud || self.cj_block_clienthud) return;
   
-  //if(self codjumper\_cj_utility::get_cjcfg("CJ_HUD_FPS_CLIENT") == 1)
-  //{
-    self.cj["hud"]["fps"] = addTextHud(self, 0, -187, 1 , "center", "middle", "center","middle",2.5,0);
-    self.cj["hud"]["fps"].hidewheninmenu = 1;
-    self.cj["hud"]["fps"] setValue(self.client_fps);
-  //}
+  self.cj["hud"]["fps"] = addTextHud(self, 0, -187, 1 , "center", "middle", "center","middle",2.5,0);
+  self.cj["hud"]["fps"].hidewheninmenu = 1;
+  self.cj["hud"]["fps"] setValue(self.client_fps);
+   
   last_fps = self.client_fps;
   while(1)
   {
