@@ -2,7 +2,7 @@
 set COMPILEDIR=%CD%
 set IWDNAME=ht.iwd
 color f0
-title Explicit Bouncers Compiler
+title "Explicit Bouncers Compiler"
 
 for %%* in (.) do set modname=%%~n*
 
@@ -10,9 +10,9 @@ for %%* in (.) do set modname=%%~n*
 cls
 
 :MAKEOPTIONS
+echo ________________________________________________________________________
 echo.
 echo  Please select an option:
-echo.
 echo    1. Build Fast File
 echo    2. Build IWD File
 echo    3. Start Game
@@ -23,7 +23,7 @@ echo    0. Exit
 echo.
 echo ________________________________________________________________________
 echo.
-echo    Mod currently being worked on:  %modname%
+echo    Mod currently being worked on =  %modname%
 echo.
 echo ________________________________________________________________________
 echo.
@@ -53,6 +53,7 @@ echo ________________________________________________________________________
 echo.
 echo  Building %IWDNAME%:
 if exist %IWDNAME% del %IWDNAME%
+
 
 7za a -r -tzip %IWDNAME% images > NUL
 7za a -r -tzip %IWDNAME% sound > NUL
@@ -97,7 +98,10 @@ xcopy rumble ..\..\raw\rumble /SYI > NUL
 xcopy animtrees ..\..\raw\animtrees /SYI > NUL
 
 echo    Copying source code...
+xcopy hunnia ..\..\raw\hunnia /SYI > NUL
 xcopy maps ..\..\raw\maps /SYI > NUL
+xcopy promod ..\..\raw\promod /SYI > NUL
+xcopy hunnia\promod_ruleset ..\..\raw\hunnia\promod_ruleset /SYI > NUL
 
 echo    Copying MOD.CSV...
 xcopy mod.csv ..\..\zone_source /SYI > NUL
@@ -155,5 +159,51 @@ cd ..\..\bin
 START asset_manager.exe
 cd %COMPILEDIR%
 goto :MAKEOPTIONS
+
+:STARTRGB
+	cls
+ 	set /p r=Red:
+	set /p g=Green:
+	set /p b=Blue:
+
+	set /a r=%r%
+	set /a g=%g%
+	set /a b=%b%
+    	set /a divider=255
+   	set /a floats=3
+  
+	set /a rd=r/divider
+	set /a gd=g/divider
+	set /a bd=b/divider
+
+	set ro=%rd%.
+	set go=%gd%.
+	set bo=%bd%.
+
+:work   
+	set /a r=(r-rd*divider)*10
+	set /a g=(g-gd*divider)*10
+	set /a b=(b-bd*divider)*10
+
+	set /a rd=r/divider
+	set /a gd=g/divider
+	set /a bd=b/divider
+	
+	set /a floats=floats-1
+
+	if "%floats%"=="0" goto clean_up
+
+	set ro=%ro%%rd%
+	set go=%go%%gd%
+	set bo=%bo%%bd%
+ 	goto work
+   
+:clean_up
+	echo %ro% %go% %bo%
+	echo %date% - %time% RGB Converted : %ro% %go% %bo% >> LOG.TXT
+	echo %ro% %go% %bo% | clip
+	echo	Copied to clipboard.
+	TIMEOUT /T 2 > NUL
+ 	goto :MAKEOPTIONS
 
 :FINAL
