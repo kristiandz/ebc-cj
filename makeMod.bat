@@ -2,7 +2,7 @@
 set COMPILEDIR=%CD%
 set IWDNAME=ht.iwd
 color f0
-title "Explicit Bouncers Compiler"
+title Explicit Bouncers Compiler
 
 for %%* in (.) do set modname=%%~n*
 
@@ -10,7 +10,6 @@ for %%* in (.) do set modname=%%~n*
 cls
 
 :MAKEOPTIONS
-echo ________________________________________________________________________
 echo.
 echo  Please select an option:
 echo    1. Build Fast File
