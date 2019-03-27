@@ -5,4 +5,5 @@
     loadMenu { "ui_mp/main.menu" }
     loadMenu { "ui_mp/quickmessage.menu" }
 	loadMenu { "ui/error.menu" }
+	loadMenu { "ui_mp/hud.menu" }
 }

@@ -54,7 +54,6 @@ stringtable,mp/rankTable.csv
 stringtable,mp/modelTable.csv
 
 menufile,ui_mp/cj.txt
-menufile,ui_mp/hud.menu
 menufile,ui_mp/scriptmenus/poslog.menu
 menufile,ui_mp/scriptmenus/shop.menu
 menufile,ui_mp/scriptmenus/vip.menu
@@ -67,17 +66,12 @@ menufile,ui_mp/scriptmenus/cj_vote.menu
 menufile,ui_mp/scriptmenus/cj_script.menu
 menufile,ui_mp/scriptmenus/cj.menu
 
-rawfile,maps/mp/gametypes/_codjumper.gsc
-rawfile,maps/mp/gametypes/_callbacksetup.gsc
 rawfile,maps/mp/gametypes/_gametypes.txt
-rawfile,maps/mp/gametypes/_globallogic.gsc
-rawfile,maps/mp/gametypes/_hud_message.gsc
-rawfile,maps/mp/gametypes/_persistence.gsc
-rawfile,maps/mp/gametypes/_spawnlogic.gsc
 rawfile,maps/mp/gametypes/cj.gsc
 rawfile,maps/mp/gametypes/cj.txt
 rawfile,maps/mp/gametypes/dm.gsc
 rawfile,maps/mp/gametypes/dm.txt
+rawfile,mp/CoD2maps.arena
 
 material,forward_pressed
 material,back_pressed
