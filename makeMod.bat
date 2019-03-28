@@ -97,10 +97,7 @@ xcopy rumble ..\..\raw\rumble /SYI > NUL
 xcopy animtrees ..\..\raw\animtrees /SYI > NUL
 
 echo    Copying source code...
-xcopy hunnia ..\..\raw\hunnia /SYI > NUL
 xcopy maps ..\..\raw\maps /SYI > NUL
-xcopy promod ..\..\raw\promod /SYI > NUL
-xcopy hunnia\promod_ruleset ..\..\raw\hunnia\promod_ruleset /SYI > NUL
 
 echo    Copying MOD.CSV...
 xcopy mod.csv ..\..\zone_source /SYI > NUL
