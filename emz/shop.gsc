@@ -1,5 +1,6 @@
 main()
 {
+	wait 0.5;
 	level.modelcost[0]=1000;
 	level.modelcost[1]=2000;
 	level.modelcost[2]=3500;
@@ -44,6 +45,7 @@ spawnPlayer()
 }
 connect()
 {
+	wait 0.5;
 	self.pers["points"] = int(self getStat(2561));
 	self setClientDvars("showpoints",1,
 	"shop0","Captain Price - 1000$",

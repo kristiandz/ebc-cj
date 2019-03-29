@@ -51,6 +51,8 @@ onPlayerSpawn()
 			break;	
 	}
 	
+	wait 0.3;
+	
 	switch(fx)
 	{
 		case 1 :
@@ -102,6 +104,8 @@ onPlayerSpawn()
 			self setClientDvar( "cg_thirdpersonangle", 270 );
 			break;
 	}
+	
+	wait 0.3;
 	
 	switch(dec)
 	{
