@@ -1,10 +1,26 @@
 #include maps\mp\gametypes\_hud_util;
 #include codjumper\_cj_utility;
+#include addons\_spectator;
+#include codjumper\_cod_jumper_utility;
 
 onJoinedSpectators()
 {	
 	self thread hideInfoHud();
+    self thread getSpectatorFPS();
 }
+
+getSpectatorFPS()
+{
+    self endon("disconnect");
+    self endon("joined_team");
+    spectatedPlayer = undefined;
+
+    if(self getSpectatedPlayerEnt() > -1) spectatedPlayer = getSpectatedPlayer();
+    else if(self getSpectatedPlayerEnt() > -1 && (self attackButtonPressed() || self adsButtonPressed())) spectatedPlayer = getSpectatedPlayer();
+    if(isDefined(spectatedPlayer)) return spectatedPlayer getMaxFPS();
+    else return 0;
+}
+
 updateInfoHud()
 {
 	if(level.mapHasCheckPoints)
@@ -21,6 +37,7 @@ updateInfoHud()
 	self.assists = self.cj["jumps"];
 	self.deaths = self.cj["maxfps"];
 }
+
 hideInfoHud()
 {
 	info = self.cj["hud"]["info"];
@@ -28,6 +45,7 @@ hideInfoHud()
 	for(i = 0 ; i < hudarray.size; i++)
 		info[hudarray[i]].alpha = 0;
 }
+
 drawInfoHud()
 {	
 	self thread checkJump();
