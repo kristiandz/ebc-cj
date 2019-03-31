@@ -230,14 +230,20 @@ endGameWrapper()
 		level.endgamewrapper = true;
 		thread emz\_cj_voting::cjVoteCalled("vote_extend10", undefined, undefined, 30);
 		level waittill("vote_completed", passed);
-		if(!passed)
+		if(!passed )
 		{
 			wait 3;
 			endgame();
+			level.endgamewrapper = undefined;
+			level.firstpass = "undefined";
 		}
-		else thread updateGameTypeDvars();
-		level.endgamewrapper = false;
+		else 
+		{
+		level notify("ugtd_exit");
+		thread updateGameTypeDvars();
+		}
 	}
+	level.firstpass = "done";
 }
 
 endGame()
@@ -253,9 +259,12 @@ checkTimeLimit()
 		return;
 	timeLeft = getTimeRemaining();
 	setGameEndTime(getTime() + int(timeLeft));
-	if (timeLeft > 0)
-		return;
-	thread endGameWrapper();
+	if(timeLeft == 0 && level.firstpass == "done" )
+	{
+		thread endgame();
+	}
+	else if( timeLeft == 33800 && level.firstpass == "undefined" )
+		thread endGameWrapper();
 }
 
 getTimeRemaining()
@@ -325,6 +334,7 @@ timeLimitClock()
 updateGameTypeDvars()
 {
 	level endon ( "game_ended" );
+	level endon("ugtd_exit");
 	while (true)
 	{
 		timeLimit = getValueInRange( getDvarFloat( level.timeLimitDvar ), level.timeLimitMin, level.timeLimitMax );
@@ -345,10 +355,6 @@ updateGameTypeDvars()
 		}
 		wait 1;
 	}
-	/*
-	level notify("ugtd_exit");
-	level endon("ugtd_exit");
-	*/
 }
 
 slideshow()
