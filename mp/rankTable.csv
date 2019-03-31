@@ -5,4 +5,4 @@
 4,Admin,400,100,CJ_ADMIN,CJ_ADMIN,rank_admin,500,;,;,;,;,;,5,Admin,;,CJ_ADMIN
 5,Senior,500,100,CJ_SENIOR,CJ_SENIOR,rank_senior,600,;,;,;,;,;,6,Senior,;,CJ_SENIOR
 6,Master,600,100,CJ_MASTER,CJ_MASTER,rank_master,700,;,;,;,;,;,7,Master,;,CJ_MASTER
-7,Leader,700,100,CJ_LEADER,CJ_LEADER,rank_leader,800,;,;,;,;,;,8,Leader,;,CJ_LEADER
+7,Leader,700,100,CJ_LEADER,CJ_LEADER,rank_leader,800,;,;,;,;,;,8,Leader,;,CJ_MASTER
