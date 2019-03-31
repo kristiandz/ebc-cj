@@ -1,5 +1,6 @@
 #include codjumper\_cj_utility;
 #include common_scripts\utility;
+#include emz\_hud;
 
 waitHudRefresh()
 {
@@ -12,6 +13,8 @@ waitHudRefresh()
     self waittill("refresh_huds");
     if(self.pers["team"] != "spectator")
       self thread playerHUDLoop();
+    else if(self.pers["team"] == "spectator")
+        self thread spectatorHUDLoop();
   }
 }
 
@@ -54,10 +57,10 @@ updateHUDonChange(oldvalue, newvalue, hudElement)
 
 destroyPlayerHUDs()
 {
-  self endon( "disconnect" );
+    self endon( "disconnect" );
 
-  if (isDefined(self.cj["hud"]["fps"]))
-    self.cj["hud"]["fps"] thread FadeOut(0.2);
+    if (isDefined(self.cj["hud"]["fps"])) self.cj["hud"]["fps"] thread FadeOut(0.2);
+    else if(isDefined(self.cj["hud"]["specfps"])) self.cj["hud"]["specfps"] thread FadeOut(0.2);
 }
 
 playerHUDLoop()
@@ -81,6 +84,24 @@ playerHUDLoop()
     last_fps = self updateHUDonChange(last_fps , self.client_fps , self.cj["hud"]["fps"]);
     wait 0.05;
   }
+}
+
+updateSpecHud(newValue, hudElement)
+{
+    if(isDefined(hudElement)) hudElement setValue(newValue);
+    return newValue;
+}
+
+spectatorHUDLoop()
+{
+    self endon("disconnect");
+    self endon("joined_team");
+    self endon("refresh_huds");
+    self destroyPlayerHUDs();
+    
+    self.cj["hud"]["specfps"] = addTextHud(self, 0, -187, 1 , "center", "middle", "center", "middle", 2.5, 0);
+    self.cj["hud"]["specfps"].hidewheninmenu = 1;
+    for(;; wait 0.05) self.cj["hud"]["specfps"] setValue(getSpectatorFPS());
 }
 
 addTextHud( who, x, y, alpha, alignX, alignY, horiz, vert, fontScale, sort ) 

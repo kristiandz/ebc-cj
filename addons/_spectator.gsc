@@ -150,6 +150,7 @@ getSpectatedPlayerEnt()
 
     return -1;
 }
+
 getSpectatedPlayer()
 {
     if(isDefined(self.spectatedPlayers[self.spectatorClientNow]))

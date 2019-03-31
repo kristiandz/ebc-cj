@@ -938,16 +938,13 @@ setTimeScale(to,time)
    setDvar("timescale",to);
 }
 
-isAdmin()
+isMaster()
 {
 	if(!isDefined(self.cj["status"]))
 		return false;
 
 	switch(int(self.cj["status"]))
 	{
-		case 3:
-		case 4:
-		case 5:
 		case 6:
 		case 7:
 		return true;
@@ -968,12 +965,45 @@ isVip()
 	return false;
 }
 
-isMember()
+isFriend()
 {
 	if(!isDefined(self.cj["status"]))
 		return false;
 
 	if(int(self.cj["status"]) == 2)
+		return true;
+
+	return false;
+}
+
+isMember()
+{
+	if(!isDefined(self.cj["status"]))
+		return false;
+
+	if(int(self.cj["status"]) == 3)
+		return true;
+
+	return false;
+}
+
+isAdmin()
+{
+	if(!isDefined(self.cj["status"]))
+		return false;
+
+	if(int(self.cj["status"]) == 4)
+		return true;
+
+	return false;
+}
+
+isSenior()
+{
+	if(!isDefined(self.cj["status"]))
+		return false;
+
+	if(int(self.cj["status"]) == 5)
 		return true;
 
 	return false;
