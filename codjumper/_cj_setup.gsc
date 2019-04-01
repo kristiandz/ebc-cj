@@ -151,7 +151,7 @@ setupDvars()
 	setDvar( "g_teamIcon_Allies", "" );
 	setDvar( "g_teamIcon_Axis", "" );
 	setDvar( "g_teamName_Allies", "Jumpers" );
-	setDvar( "g_teamName_Axis", "" );
+	setDvar( "g_teamName_Axis", "Spectators" );
 	setDvar( "g_TeamColor_Allies", "1 1 1" );
 	setDvar( "g_ScoresColor_Allies", "0 0 0" );
 	setDvar( "g_TeamColor_Axis", "1 1 1" );
