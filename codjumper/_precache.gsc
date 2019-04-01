@@ -23,17 +23,15 @@ precache()
 
 	//PRECACHE WEAPONS
 	precacheItem("rpg_mp");
-	precacheItem("beretta_mp");
-	precacheItem("deserteagle_mp");
 	precacheItem("deserteaglegold_mp");
-	precacheItem("colt45_mp");
-	precacheItem("usp_mp");
-	precacheItem("brick_blaster_mp");
 	precacheItem("rpg_sustain_mp");
 	precacheItem("gravitygun_mp");
-	precacheItem("no_weapon_mp");
 	precacheItem("dog_mp");
-
+	
+	precacheItem( "colt45_mp" );
+	precacheItem( "usp_mp" );
+	precacheItem( "beretta_mp" );
+	precacheItem( "deserteagle_mp" );
     precacheItem( "usp_silencer_mp" );
     precacheItem( "mp5_reflex_mp" );
     precacheItem( "mp5_mp" );
@@ -153,7 +151,6 @@ precache()
 	precacheModel("playermodel_fifty_cent");
 	precacheModel("playermodel_css_badass_terrorist");
 	precacheModel("body_mp_usmc_rifleman");
-	precacheModel("body_complete_mp_velinda_desert");
 	precacheModel("body_complete_mp_zack_desert");
 
 	//PRECACHE STATUS ICONS / OTHER
@@ -161,9 +158,5 @@ precache()
 	precacheStatusIcon("hud_status_spectator" );
 	precacheHeadIcon( "talkingicon" );	
 	precacheLocationSelector("map_artillery_selector" );
-	
-	/*//WIP
-	precacheMenu("admin");
 	precacheShellShock("flashbang");
-	*/
 }
