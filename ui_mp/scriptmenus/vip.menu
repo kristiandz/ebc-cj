@@ -120,8 +120,7 @@
 		CJ_BUTTON2(15,"GTA IV Nico")
 		CJ_BUTTON2(16,"50 Cent")
 		CJ_BUTTON2(17,"Badass Terrorist")
-		CJ_BUTTON2(18,"Zack")
-		CJ_BUTTON2(19,"Velinda")
+		CJ_BUTTON2(18,"Velinda")
 		
 	}
 }
