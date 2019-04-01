@@ -19,7 +19,6 @@ xmodel,playermodel_terminator
 xmodel,playermodel_fifty_cent
 xmodel,playermodel_css_badass_terrorist
 xmodel,body_mp_usmc_rifleman
-xmodel,body_complete_mp_velinda_desert
 xmodel,body_complete_mp_zack_desert
 
 xanim,german_shepherd_attack_player
@@ -37,17 +36,17 @@ xanim,german_shepherd_wakeup_fast
 rawfile,animtrees/multiplayer.atr
 rawfile,mp/playeranimtypes.txt
 rawfile,mp/playeranim.script
+rawfile,mp/CoD2maps.arena
 
-weapon,mp/no_weapon_mp
 weapon,mp/gravitygun_mp
 weapon,mp/dog_mp
 weapon,mp/rpg_sustain_mp
-weapon,mp/brick_blaster_mp
 
 localize,CJ
 localize,CGAME
 
 fx,misc/emz_fx
+fx,fire/tire_fire_med
 
 stringtable,mp/rankIconTable.csv
 stringtable,mp/rankTable.csv
@@ -71,7 +70,6 @@ rawfile,maps/mp/gametypes/cj.gsc
 rawfile,maps/mp/gametypes/cj.txt
 rawfile,maps/mp/gametypes/dm.gsc
 rawfile,maps/mp/gametypes/dm.txt
-rawfile,mp/CoD2maps.arena
 
 material,forward_pressed
 material,back_pressed
