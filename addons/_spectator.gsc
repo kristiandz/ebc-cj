@@ -143,11 +143,12 @@ checkMelee()
         wait 0.05;
     }
 }
+
 getSpectatedPlayerEnt()
 {
-    if(isDefined(self.spectatedPlayers[self.spectatorClientNow]))
+	if(self.spectatorClientNow > -1 && isDefined(self.spectatedPlayers[self.spectatorClientNow]))
         return self.spectatedPlayers[self.spectatorClientNow] getEntityNumber();
-
+	else
     return -1;
 }
 

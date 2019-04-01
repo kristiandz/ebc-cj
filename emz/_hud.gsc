@@ -14,9 +14,12 @@ getSpectatorFPS()
     self endon("disconnect");
     self endon("joined_team");
     spectatedPlayer = undefined;
+    if(self getSpectatedPlayerEnt() > -1)
+    {
+        spectatedPlayer = getSpectatedPlayer();
+        if(self attackButtonPressed() || self adsButtonPressed()) spectatedPlayer = getSpectatedPlayer();
+    }
 
-    if(self getSpectatedPlayerEnt() > -1) spectatedPlayer = getSpectatedPlayer();
-    else if(self getSpectatedPlayerEnt() > -1 && (self attackButtonPressed() || self adsButtonPressed())) spectatedPlayer = getSpectatedPlayer();
     if(isDefined(spectatedPlayer)) return spectatedPlayer getMaxFPS();
     else return 0;
 }
