@@ -1,28 +1,5 @@
 #include maps\mp\gametypes\_hud_util;
 
-get_cjcfg(dataName)
-{
-  return int(self getStat(int(tableLookup("mp/CJStatsTable.csv", 1, dataName, 0))));
-}
-
-set_cjcfg(dataName, value)
-{
-  self setStat(int(tableLookup("mp/CJStatsTable.csv", 1, dataName, 0)), value);
-  return value;
-}
-
-toggle_cjcfg(name)
-{
-  return int(self set_cjcfg(name, int(!self get_cjcfg(name))));
-}
-
-loopthrough_cjcfg(name, limit)
-{
-  value = self get_cjcfg(name) + 1;
-  if (value > limit) value = 0;
-  return self set_cjcfg(name, value);
-}
-
 isEven(int)
 {
 	if(int % 2 == 0)

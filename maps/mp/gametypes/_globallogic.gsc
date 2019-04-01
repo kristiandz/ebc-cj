@@ -10,7 +10,7 @@ init()
 	level.gametype = toLower( getDvar( "g_gametype" ) );
 	level.teamSpawnPoints["allies"] = [];
 	level.fontHeight = 12;
-	level.teamBased = true;
+	level.teamBased = false;
 	thread maps\mp\gametypes\_hud_message::init();
 	thread maps\mp\gametypes\_quickmessages::init();
 	thread deleteUselessMapStuff();
@@ -61,9 +61,11 @@ Callback_PlayerConnect()
 {
 	if( isDefined( self ) )
 		level notify( "connecting", self );
+	self.statusicon = "hud_status_connecting";
 	self waittill( "begin" );
 	waittillframeend;
 	level notify( "connected", self );
+	self initHudStuff();
 	self setSpectatePermission();
 	self.spectatorClient = -1;
 	self.sessionteam = "allies";
@@ -99,10 +101,10 @@ spawnPlayer()
 	self endon( "disconnect" );
 	self endon( "joined_spectators" );
 	self notify( "spawned" );
-	self notify("refresh_huds"); //
+	self notify("refresh_huds");
 	self.sessionstate = "playing";
 	self.cj["team"] = "player";
-	self.pers["team"] = "player"; //
+	//self.pers["team"] = "player"; 
 	self.sessionteam = "allies";
 	self.maxhealth = 100;
 	self.health = 100;
@@ -134,17 +136,18 @@ menuSpectator()
 	self.sessionstate = "spectator";
 	self.cj["team"] = "spectator";
 	self.pers["team"] = "spectator";
-	self.sessionteam = "spectator";
+	self.sessionteam = "axis";
 	self spawn( position, angles );
 	waittillframeend;
 	self thread codjumper\_codjumper::onPlayerSpec();
 	self notify( "joined_spectators" );
-	waittillframeend;
 }
 
 Callback_StartGameType()
 {
 	game["gamestarted"] = true;
+	level.teamSpawnPoints["allies"] = [];
+	initLevelUiParent();
 	registerTimeLimitDvar("cj", 10, 1, 1440);
 	level.players = [];
 	[[level.onStartGameType]]();
@@ -152,7 +155,6 @@ Callback_StartGameType()
 	level thread updateGameTypeDvars();
 	level thread timeLimitClock();
 	thread maps\mp\gametypes\_rank::init();
-	thread createParentHUD();
 	thread codjumper\_voting_system::initVote();
 	thread emz\shop::main();
 	thread emz\_holographic::init();
@@ -395,7 +397,7 @@ slideshow()
 	}
 }
 
-createParentHUD()
+initLevelUiParent()
 {
 	level.uiParent = spawnstruct();
 	level.uiParent.horzAlign = "left";
@@ -406,5 +408,64 @@ createParentHUD()
 	level.uiParent.y = 0;
 	level.uiParent.width = 0;
 	level.uiParent.height = 0;
+	level.uiParent.children = [];	
+	level.fontHeight = 12;
+	level.lowerTextYAlign = "CENTER";
+	level.lowerTextY = 70;
+	level.lowerTextFontSize = 2;
+}
+
+initHudStuff()
+{
+	self.notifyTitle = createFontString( "objective", 2.5 );
+	self.notifyTitle setPoint( "TOP", undefined, 0, 30 );
+	self.notifyTitle.glowColor = (0.2, 0.3, 0.7);
+	self.notifyTitle.glowAlpha = 1;
+	self.notifyTitle.hideWhenInMenu = true;
+	self.notifyTitle.archived = false;
+	self.notifyTitle.alpha = 0;
+	self.notifyText = createFontString( "objective", 1.75 );
+	self.notifyText setParent( self.notifyTitle );
+	self.notifyText setPoint( "TOP", "BOTTOM", 0, 0 );
+	self.notifyText.glowColor = (0.2, 0.3, 0.7);
+	self.notifyText.glowAlpha = 1;
+	self.notifyText.hideWhenInMenu = true;
+	self.notifyText.archived = false;
+	self.notifyText.alpha = 0;
+	self.notifyText2 = createFontString( "objective", 1.75 );
+	self.notifyText2 setParent( self.notifyTitle );
+	self.notifyText2 setPoint( "TOP", "BOTTOM", 0, 0 );
+	self.notifyText2.glowColor = (0.2, 0.3, 0.7);
+	self.notifyText2.glowAlpha = 1;
+	self.notifyText2.hideWhenInMenu = true;
+	self.notifyText2.archived = false;
+	self.notifyText2.alpha = 0;
+	self.notifyIcon = createIcon( "white", 30, 30 );
+	self.notifyIcon setParent( self.notifyText2 );
+	self.notifyIcon setPoint( "TOP", "BOTTOM", 0, 0 );
+	self.notifyIcon.hideWhenInMenu = true;
+	self.notifyIcon.archived = false;
+	self.notifyIcon.alpha = 0;
+	self.doingNotify = false;
+	self.notifyQueue = [];
+	
+	level.uiParent = spawnstruct();
+	level.uiParent.horzAlign = "left";
+	level.uiParent.vertAlign = "top";
+	level.uiParent.alignX = "left";
+	level.uiParent.alignY = "top";
+	level.uiParent.x = 0;
+	level.uiParent.y = 0;
+	level.uiParent.width = 0;
+	level.uiParent.height = 0;
 	level.uiParent.children = [];
+		
+	self.hud_damagefeedback = newClientHudElem( self );
+	self.hud_damagefeedback.horzAlign = "center";
+	self.hud_damagefeedback.vertAlign = "middle";
+	self.hud_damagefeedback.x = -12;
+	self.hud_damagefeedback.y = -12;
+	self.hud_damagefeedback.alpha = 0;
+	self.hud_damagefeedback.archived = true;
+	self.hud_damagefeedback setShader("damage_feedback", 24, 48);
 }
