@@ -101,7 +101,16 @@ spectatorHUDLoop()
     
     self.cj["hud"]["specfps"] = addTextHud(self, 0, -187, 1 , "center", "middle", "center", "middle", 2.5, 0);
     self.cj["hud"]["specfps"].hidewheninmenu = 1;
-    for(;; wait 0.05) self.cj["hud"]["specfps"] setValue(getSpectatorFPS());
+    handleMeleeEvent();
+    playerHUDLoop();
+}
+
+handleMeleeEvent()
+{
+    self endon("disconnect");
+    self endon("joined_team");
+    self endon("melee_pressed");
+    for(;; wait 0.05) self.cj["hud"]["specfps"] setValue(self getSpectatorFPS());
 }
 
 addTextHud( who, x, y, alpha, alignX, alignY, horiz, vert, fontScale, sort ) 
