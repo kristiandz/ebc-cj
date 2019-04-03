@@ -46,7 +46,6 @@ localize,CJ
 localize,CGAME
 
 fx,misc/emz_fx
-fx,fire/tire_fire_med
 
 stringtable,mp/rankIconTable.csv
 stringtable,mp/rankTable.csv
@@ -64,7 +63,6 @@ menufile,ui_mp/scriptmenus/cj_graphic.menu
 menufile,ui_mp/scriptmenus/cj_vote.menu
 menufile,ui_mp/scriptmenus/cj_script.menu
 menufile,ui_mp/scriptmenus/cj.menu
-menufile,ui_mp/scriptmenus/class.menu
 
 rawfile,maps/mp/gametypes/_gametypes.txt
 rawfile,maps/mp/gametypes/cj.gsc
