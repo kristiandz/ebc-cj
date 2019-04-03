@@ -46,7 +46,6 @@ localize,CJ
 localize,CGAME
 
 fx,misc/emz_fx
-fx,fire/tire_fire_med
 
 stringtable,mp/rankIconTable.csv
 stringtable,mp/rankTable.csv

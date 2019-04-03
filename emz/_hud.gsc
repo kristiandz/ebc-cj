@@ -11,17 +11,20 @@ onJoinedSpectators()
 
 getSpectatorFPS()
 {
-    self endon("disconnect");
-    self endon("joined_team");
-    spectatedPlayer = undefined;
-    if(self getSpectatedPlayerEnt() > -1)
+    if(self.cj["team"] == "spectator") // Safety Check
     {
-        spectatedPlayer = getSpectatedPlayer();
-        if(self attackButtonPressed() || self adsButtonPressed()) spectatedPlayer = getSpectatedPlayer();
+        self endon("disconnect");
+        self endon("joined_team");
+        spectatedPlayer = undefined;
+
+        if(self getSpectatedPlayerEnt() > -1) spectatedPlayer = getSpectatedPlayer();
+        if(self meleeButtonPressed()) { spectatedPlayer = undefined; self notify("melee_pressed"); }
+
+        if(isDefined(spectatedPlayer)) return spectatedPlayer getMaxFPS();
+        return self getMaxFps();
     }
 
-    if(isDefined(spectatedPlayer)) return spectatedPlayer getMaxFPS();
-    else return 0;
+    else return self getMaxFps();
 }
 
 updateInfoHud()

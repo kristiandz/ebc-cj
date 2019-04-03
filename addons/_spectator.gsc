@@ -1,5 +1,6 @@
 #include codjumper\_cj_utility;
 #include common_scripts\utility;
+#include codjumper\_cod_jumper_utility;
 
 init()
 {
@@ -87,20 +88,20 @@ checkAttack()
     self endon("disconnect");
     self endon("joined_team");
 
-    for (;;)
+    for (;; wait 0.05)
     {
         if (self attackButtonPressed())
         {
 		    self.spectatorClientNow = add_and_fix(self.spectatorClientNow,1);
             self.spectatorClient = self getSpectatedPlayerEnt();
             self getSpectatedPlayer() iPrintLn(self.name + " is spectating you!");
+            thread spectatorHUDLoop();
         }
         while (self attackButtonPressed())
         {
             wait 0.05;
             continue;
         }
-        wait 0.05;
     }
 }
 checkADS()
@@ -108,13 +109,14 @@ checkADS()
     self endon("disconnect");
     self endon("joined_team");
 
-    for (;;)
+    for (;; wait 0.05)
     {
         if(self adsButtonPressed())
         {
 		    self.spectatorClientNow = add_and_fix(self.spectatorClientNow,0);
         	self.spectatorClient = self getSpectatedPlayerEnt();
             self iprintln("You are spectating: " + self getSpectatedPlayer().name);
+            thread spectatorHUDLoop();
         }
 
         while (self adsButtonPressed())
@@ -122,7 +124,6 @@ checkADS()
             wait 0.05;
             continue;
         }
-        wait 0.05;
     }
 }
 checkMelee()
@@ -130,7 +131,7 @@ checkMelee()
     self endon("disconnect");
     self endon("joined_team");
 
-    for (;;)
+    for (;; wait 0.05)
     {
         if (self meleeButtonPressed())
             self.spectatorClient = -1;
@@ -140,7 +141,6 @@ checkMelee()
             wait 0.05;
             continue;
         }
-        wait 0.05;
     }
 }
 

@@ -11,12 +11,10 @@
 #define CHOICE_SIZE_Y			22
 #define CHOICE_X_START			0
 #define CHOICE_Y_START			204
-#define CHOICE_GROUP			"team_marinesopfor"
 #define CHOICE_SEP_1			1
 #define CHOICE_SEP_2			3
 #include "ui_mp/menustyle.inc"
 #include "ui_mp/choices_setup_teams.menu"
-#define ORIGIN_DESCRIPTION		(CHOICE_X_START + 15) 190
 
 {
 	menuDef
