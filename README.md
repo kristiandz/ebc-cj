@@ -1,3 +1,4 @@
+![status: seeking maintainer](https://img.shields.io/badge/status-seeking%20maintainer-yellow.svg)
 # Explicit Bouncers CodJumper Modification
 
 Visit us at our:  [Website](http://explicitbouncers.com) or [Forum](http://www.explicitbouncers.com/forum/index.php)
