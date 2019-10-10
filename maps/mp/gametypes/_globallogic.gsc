@@ -80,42 +80,22 @@ Callback_PlayerConnect()
 	[[level.menuPlayer]]();
 }
 
-// Semtex CJ function. (Broken)
-/*menuPlayer()
-{
-	self endon( "disconnect" );
-	self endon( "joined_spectators" );
-	self closeMenu();
-	self closeInGameMenu();
-	self setClientDvar( "ui_hud_spectator", 0 );
-	if(isAlive(self))
-		self suicide();
-	self notify("joined_team");
-	level notify("joined_team", self );
-	self.statusicon = "";
-	self setclientdvars( "g_scriptMainMenu", "team_marinesopfor" );
-	self thread	[[level.spawnPlayer]]();
-}*/
-
-// Stock CJ function. (Working)
 menuPlayer()
 {
     self closeMenu();
 	self closeInGameMenu();
-
-    if(self.pers["team"] != "allies")
-    {
-        self.pers["team"] = "allies";
-        self.team = "allies";
-        //self updateObjectiveText();
-        self.sessionteam = "allies";
-        self setclientdvar("g_scriptMainMenu", "team_marinesopfor");
-        self notify("joined_team");
-        level notify("joined_team", self );
-        self notify("end_respawn");
-        self.statusicon = "";
-        self thread	[[level.spawnPlayer]]();
-    }
+    self.pers["team"] = "player";
+    self.team = "allies";
+    //self updateObjectiveText();
+	if(isAlive(self))
+		self suicide();
+    self.sessionteam = "allies";
+    self setclientdvar("g_scriptMainMenu", "team_marinesopfor");
+    self notify("joined_team");
+    level notify("joined_team", self );
+    self notify("end_respawn");
+    self.statusicon = "";
+    self thread	[[level.spawnPlayer]]();
 }
 
 spawnPlayer()
@@ -126,7 +106,7 @@ spawnPlayer()
 	self notify("refresh_huds");
 	self.sessionstate = "playing";
 	self.cj["team"] = "player";
-	// self.pers["team"] = "player"; 
+	self.pers["team"] = "player"; 
 	self.sessionteam = "allies";
 	self.maxhealth = 100;
 	self.health = 100;
