@@ -98,8 +98,9 @@ speedLoop()
  
 calculateSpeed(velocity) 
 {
-    velX = velocity[0] * velocity[0];
+    /*velX = velocity[0] * velocity[0];
     vely = velocity[1] * velocity[1];
-    speed = int(sqrt(velX + velY));  
+    speed = int(sqrt(velX + velY));  */ //No need to manually do this the game has a length function built in
+	speed = Int(length((velocity[0], velocity[1], 0)));
     return speed;
 }
