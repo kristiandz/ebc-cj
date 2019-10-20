@@ -78,6 +78,8 @@ Callback_PlayerConnect()
 	level.players[level.players.size] = self;
 	level endon( "game_ended" );
 	[[level.menuPlayer]]();
+	if(self isAdmin() || self isMember() || self isSenior() || self isMaster() )
+		iPrintLnBold("Admin connected: " + self.name);
 }
 
 menuPlayer()
