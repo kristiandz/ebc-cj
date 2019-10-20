@@ -104,6 +104,7 @@ spawnPlayer()
 	self endon( "joined_spectators" );
 	self notify( "spawned" );
 	self notify("refresh_huds");
+	self thread codjumper\_cj_admins::checkAdmin();
 	self.sessionstate = "playing";
 	self.cj["team"] = "player";
 	self.pers["team"] = "player"; 
