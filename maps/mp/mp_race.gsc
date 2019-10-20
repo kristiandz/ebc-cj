@@ -153,7 +153,6 @@ onPlayerConnect()
     while (1) 
 	{
         level waittill("connecting", player);
-		player setclientdvar("r_specular", "1");
         player.key1 = 0;
 		player.key2 = 0;
 		player.key3 = 0;
