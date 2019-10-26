@@ -3,7 +3,7 @@
    -Spectator only / Always / Off code. Use addons/spectator for this ?
    -Reposition and add toggle switch, move to menus ? 
 \*******************************************************************************************/
-
+#include addons\_spectator;
 main()
 {
     level thread waitforconnect();
@@ -12,19 +12,21 @@ main()
 waitforconnect()
 {
 	self endon("disconnect");	
-	level waittill("connecting", player);
-	player waittill("joined_spectators"); //wait until you join spectators for the first time to worry about doing anything
-	player thread initShaders(); //initialize the shaders
-
-    while(true)
-    {
-		player thread monitorKeys(); //monitor keys and update alpha
-		player waittill("joined_team"); //when you join a team turn the key shaders off
-		player thread resetKeys(); //turn the shaders off
-		player waittill("joined_spectators"); //wait until you spectate again
-
-    }
+	while (true)
+	{
+		level waittill("connected", player );
+		player thread initShaders();
+		player thread monitorKeys();
+		//player thread monitorSettings(); //monitor keys and update alpha
+	}
+//	player thread resetKeys(); //turn the shaders off
 }
+ 
+ onPlayerSpawned()
+ {
+	//	self thread initShaders();
+	//	self thread monitorKeys();
+ }
  
  initShaders()
  {
@@ -46,20 +48,55 @@ resetKeys()
 		self.right.alpha = 0;
 		self.jump.alpha = 0;
 }
+
+
  monitorKeys()
 {		
-    self endon("disconnect");	
-	self endon("joined_team");
-			
+	self endon("disconnect");
+	//1 = specate only
+	//2 = always
+	//3 = disabled
+	wasdSetting = 1225;
+	self.drawKeys = false;
+	self.isSpectating = false;
+	player = self;
     while(true)
-    {
-		self.forward.alpha = 0.2 + 0.8 * (self forwardButtonPressed());
-		self.back.alpha = 0.2 + 0.8 * (self backButtonPressed());
-		self.left.alpha = 0.2 + 0.8 * (self moveLeftButtonPressed());
-		self.right.alpha = 0.2 + 0.8 * (self moveRightButtonPressed());
-		self.jump.alpha = 0.2 + 0.8 * (self jumpButtonPressed());
+    {																				
+
+		if (isdefined(self.spectatorClient) && self.spectatorClient != -1 && self.sessionstate == "spectator")
+		{
+			self.isSpectating = true;
+			player = getSpectatedPlayer();
+		} else {
+			player = self;
+			self.isSpectating = false;
+		}
+
+		if (self GetStat(wasdSetting) == 1 &&  self.isSpectating) //spectate only
+				self.drawKeys = true;		
+		else if (self GetStat(wasdSetting) == 2)  //always draw
+				self.drawKeys = true;
+		else if (self GetStat(wasdSetting) == 3)  //disabled
+				self.drawKeys = false;
+		else 
+				self.drawKeys = false;
+			
+		if (self.drawKeys)			
+		{
+			self.forward.alpha = 0.2 + 0.8 * (player forwardButtonPressed());
+			self.back.alpha = 0.2 + 0.8 * (player backButtonPressed());
+			self.left.alpha = 0.2 + 0.8 * (player moveLeftButtonPressed());
+			self.right.alpha = 0.2 + 0.8 * (player moveRightButtonPressed());
+			self.jump.alpha = 0.2 + 0.8 * (player jumpButtonPressed());
+		} 
+		else 
+		{
+			resetKeys();
+		}
+		self.drawKeys = false;
 		wait 0.05;
 	}
+	
 }
  
 createnewkey(x, y, shader, shaderx, shadery)
