@@ -4,6 +4,7 @@
    -Reposition and add toggle switch, move to menus ? 
 \*******************************************************************************************/
 #include addons\_spectator;
+#include maps\mp\gametypes\_hud_util;
 main()
 {
     level thread waitforconnect();
@@ -15,22 +16,22 @@ waitforconnect()
 	while (true)
 	{
 		level waittill("connected", player );
-		player thread initShaders();
 		player thread monitorKeys();
-		//player thread monitorSettings(); //monitor keys and update alpha
 	}
-//	player thread resetKeys(); //turn the shaders off
 }
  
- onPlayerSpawned()
- {
-	//	self thread initShaders();
-	//	self thread monitorKeys();
- }
- 
- initShaders()
- {
-	 x = 200;
+ monitorKeys()
+{		
+	
+	self endon("disconnect");
+//	self endon("death");
+	//self endon("joined_spectators");
+	//self endon("joined_team");
+	
+	//1 = specate only
+	//2 = always
+	//3 = disabled
+	x = 200;
 	 y = 125;
 	 
 	self.forward = createnewkey(x, y, "forward_pressed", 20, 20);
@@ -38,45 +39,29 @@ waitforconnect()
 	self.left = createnewkey(x-22, y+22, "left_pressed", 20, 20);
 	self.right = createnewkey(x+22, y+22, "right_pressed", 20, 20);
 	self.jump = createnewkey(x, y+44, "jump_pressed", 80, 20);
- }
- 
-resetKeys()
-{
-		self.forward.alpha = 0;
-		self.back.alpha = 0;
-		self.left.alpha = 0;
-		self.right.alpha = 0;
-		self.jump.alpha = 0;
-}
-
-
- monitorKeys()
-{		
-	self endon("disconnect");
-	//1 = specate only
-	//2 = always
-	//3 = disabled
-	wasdSetting = 1225;
+	
+	self.wasdSetting = 1225;
 	self.drawKeys = false;
 	self.isSpectating = false;
 	player = self;
     while(true)
-    {																				
-
-		if (isdefined(self.spectatorClient) && self.spectatorClient != -1 && self.sessionstate == "spectator")
+    {					
+		self.stat = self GetStat(self.wasdSetting);
+		if (self.sessionstate == "spectator" && isDefined(self.spectatedPlayers))
 		{
 			self.isSpectating = true;
-			player = getSpectatedPlayer();
+			player = self getSpectatedPlayer();
 		} else {
 			player = self;
 			self.isSpectating = false;
 		}
+		
 
-		if (self GetStat(wasdSetting) == 1 &&  self.isSpectating) //spectate only
+		if (self.stat == 1 && self.isSpectating) //spectate only
 				self.drawKeys = true;		
-		else if (self GetStat(wasdSetting) == 2)  //always draw
+		else if (self.stat == 2)  //always draw
 				self.drawKeys = true;
-		else if (self GetStat(wasdSetting) == 3)  //disabled
+		else if (self.stat == 3)  //disabled
 				self.drawKeys = false;
 		else 
 				self.drawKeys = false;
@@ -91,7 +76,11 @@ resetKeys()
 		} 
 		else 
 		{
-			resetKeys();
+			self.forward.alpha = 0;
+			self.back.alpha = 0;
+			self.left.alpha = 0;
+			self.right.alpha = 0;
+			self.jump.alpha = 0;
 		}
 		self.drawKeys = false;
 		wait 0.05;
@@ -101,7 +90,9 @@ resetKeys()
  
 createnewkey(x, y, shader, shaderx, shadery)
 {
-    hud = newclienthudelem(self);
+    //hud = newclienthudelem(self);
+	//hud = newHudElem(); //createBar( (1,1,1) , shaderx ,  shadery); 
+	hud = createIcon(shader, shaderx, shadery);
     hud.horzalign = "left";
     hud.vertalign = "middle";
     hud.alignx = "center";
@@ -109,7 +100,7 @@ createnewkey(x, y, shader, shaderx, shadery)
     hud.alpha = 0;
 	hud.x = x;
 	hud.y = y;
-    hud.archived = true;
-    hud setshader(shader, shaderx, shadery);
+    hud.archived = false;
+   // hud setshader(shader, shaderx, shadery);
     return hud;
 }
