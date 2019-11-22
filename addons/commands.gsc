@@ -17,7 +17,7 @@ Callback_ScriptCommandPlayer(command, args)
 		{
 			args = strTok(args, " ");
 			for(i = 0; i < args.size; i++){args[i] = int(args[i]);}
-			if(!isInt(args[0]))
+			if(!isInt(args[0]) || args[0] < 0 || args[0] > 9999)
 			{
 				iprintLn("The position number is not valid");
 			}
@@ -35,7 +35,7 @@ Callback_ScriptCommandPlayer(command, args)
 		{
 			args = strTok(args, " ");
 			for(i = 0; i < args.size; i++){args[i] = int(args[i]);}
-			if(!isInt(args[0]))
+			if(!isInt(args[0]) || args[0] < 0 || args[0] > 9999)
 			{
 				iprintLn("The position number is not valid");
 			}
