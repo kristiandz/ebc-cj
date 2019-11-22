@@ -11,19 +11,45 @@ getPlayerFromClientNum(clientNum)
 
 Callback_ScriptCommandPlayer(command, args)
 {
-		switch(command)
+	switch(command)
+	{
+		case "load":
 		{
-			case "load":
+			args = strTok(args, " ");
+			for(i = 0; i < args.size; i++){args[i] = int(args[i]);}
+			if(!isInt(args[0]))
 			{
-				args = strTok(args, " ");
-				if (!isDefined(args[0]))
-				{
-					self iprintLn("Usage: $load <save number>");
-				} else {
-					load_position(self, int(args[0]));
-				}
+				iprintLn("The position number is not valid");
+			}
+			else if (!isDefined(args[0]))
+			{
+				self iprintLn("Usage: $load <save number>");
+			} 
+			else 
+			{
+				load_position(self, args[0]);
+			}			
+		}
+		break;
+		case "save":
+		{
+			args = strTok(args, " ");
+			for(i = 0; i < args.size; i++){args[i] = int(args[i]);}
+			if(!isInt(args[0]))
+			{
+				iprintLn("The position number is not valid");
+			}
+			else if (!isDefined(args[0]))
+			{
+				self iprintLn("Usage: $save <save number>");
+			} 
+			else 
+			{
+				save_position(self, args[0]);
 			}
 		}
+		break;
+	}
 }
 
 Callback_ScriptCommand(command, arguments)
@@ -35,7 +61,6 @@ Callback_ScriptCommand(command, arguments)
 		{
 			localcmd = strTok(arguments, ":")[0];
 			args = strTok(strTok(arguments, ":")[1], " ");
-
 			switch(localcmd)
 			{
 				case "load":
@@ -45,6 +70,13 @@ Callback_ScriptCommand(command, arguments)
 						break;
 					load_position(player, int(args[1]));
 				}
+				case "save":
+				{
+					player = getPlayerFromClientNum(int(args[0]));
+					if (!isDefined(player))
+						break;
+					save_position(player, int(args[1]));
+				}
 			}
 		}
 	}
@@ -53,4 +85,9 @@ Callback_ScriptCommand(command, arguments)
 load_position(entity, save_num)
 {
 	entity codjumper\_cj_functions::loadPos(save_num);
+}
+
+save_position(entity, save_num)
+{
+	entity codjumper\_cj_functions::savePos(save_num);
 }
