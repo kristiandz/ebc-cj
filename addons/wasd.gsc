@@ -6,6 +6,7 @@
 #include addons\_spectator;
 #include maps\mp\gametypes\_hud_util;
 main()
+
 {
     level thread waitforconnect();
 }
@@ -24,9 +25,6 @@ waitforconnect()
 {		
 	
 	self endon("disconnect");
-//	self endon("death");
-	//self endon("joined_spectators");
-	//self endon("joined_team");
 	
 	//1 = specate only
 	//2 = always
@@ -39,7 +37,6 @@ waitforconnect()
 	self.left = createnewkey(x-22, y+22, "left_pressed", 20, 20);
 	self.right = createnewkey(x+22, y+22, "right_pressed", 20, 20);
 	self.jump = createnewkey(x, y+44, "jump_pressed", 80, 20);
-	
 	self.wasdSetting = 1225;
 	self.drawKeys = false;
 	self.isSpectating = false;
@@ -90,8 +87,6 @@ waitforconnect()
  
 createnewkey(x, y, shader, shaderx, shadery)
 {
-    //hud = newclienthudelem(self);
-	//hud = newHudElem(); //createBar( (1,1,1) , shaderx ,  shadery); 
 	hud = createIcon(shader, shaderx, shadery);
     hud.horzalign = "left";
     hud.vertalign = "middle";
@@ -101,6 +96,5 @@ createnewkey(x, y, shader, shaderx, shadery)
 	hud.x = x;
 	hud.y = y;
     hud.archived = false;
-   // hud setshader(shader, shaderx, shadery);
     return hud;
 }
