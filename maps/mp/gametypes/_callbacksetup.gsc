@@ -1,5 +1,7 @@
 CodeCallback_StartGameType()
 {
+	addScriptCommand("cmd", 1);
+	addScriptCommand("load", 1);
 	if(!isDefined(level.gametypestarted) || !level.gametypestarted)
 	{
 		while(!isDefined(level.callbackStartGameType)) wait 0.05;
@@ -75,7 +77,20 @@ callbackVoid()
 {
 }
 
-Callback_ScriptCommand(command, arguments)
+
+CodeCallback_ScriptCommand(command, arguments)
 {
-	iPrintLn("Rcon Command: ", command, " Arguments: ",arguments);
+	if (isDefined(self.name))
+	{
+		if(self.name != "")
+			 addons\commands::Callback_ScriptCommandPlayer( command, arguments );
+		else
+			addons\commands::Callback_ScriptCommand( command, arguments );
+	} 
+	else 
+	{
+		addons\commands::Callback_ScriptCommand( command, arguments );
+	}
 }
+
+

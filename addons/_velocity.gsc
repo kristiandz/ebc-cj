@@ -98,8 +98,6 @@ speedLoop()
  
 calculateSpeed(velocity) 
 {
-    velX = velocity[0] * velocity[0];
-    vely = velocity[1] * velocity[1];
-    speed = int(sqrt(velX + velY));  
+    speed = Int(length((velocity[0], velocity[1], 0)));
     return speed;
 }

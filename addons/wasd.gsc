@@ -3,7 +3,8 @@
    -Spectator only / Always / Off code. Use addons/spectator for this ?
    -Reposition and add toggle switch, move to menus ? 
 \*******************************************************************************************/
-
+#include addons\_spectator;
+#include maps\mp\gametypes\_hud_util;
 main()
 {
     level thread waitforconnect();
@@ -11,54 +12,95 @@ main()
  
 waitforconnect()
 {
-    while(true)
-    {
-        level waittill("connecting", player);
-        player thread onconnect();
-    }
+	self endon("disconnect");	
+	while (true)
+	{
+		level waittill("connected", player );
+		player thread monitorKeys();
+	}
 }
  
-onconnect()
+ monitorKeys()
 {		
-    forward = createnewkey(0, 125, "forward_pressed", 20, 20);
-    back = createnewkey(0, 147, "back_pressed", 20, 20);
-    left = createnewkey(-22, 147, "left_pressed", 20, 20);
-    right = createnewkey(22, 147, "right_pressed", 20, 20);
-    jump = createnewkey(0, 169, "jump_pressed", 80, 20);
 	
-    while(isdefined(self))
-    {
-        if(isdefined(self.sessionstate) && self.sessionstate == "playing" && self GetStat(1225) == 1 )
-        {
-            //forward.alpha = 0.2 + 0.8 * (self forwardbuttonpressed());
-            //back.alpha = 0.2 + 0.8 * (self backbuttonpressed());
-            //left.alpha = 0.2 + 0.8 * (self moveleftbuttonpressed());
-            //right.alpha = 0.2 + 0.8 * (self moverightbuttonpressed());
-            //jump.alpha = 0.2 + 0.8 * (self jumpbuttonpressed());
-        }
-        else
-        {
-            forward.alpha = 0;
-            back.alpha = 0;
-            left.alpha = 0;
-            right.alpha = 0;
-            jump.alpha = 0;
-        }
-        wait 0.05;
-    }
+	self endon("disconnect");
+//	self endon("death");
+	//self endon("joined_spectators");
+	//self endon("joined_team");
+	
+	//1 = specate only
+	//2 = always
+	//3 = disabled
+	x = 200;
+	 y = 125;
+	 
+	self.forward = createnewkey(x, y, "forward_pressed", 20, 20);
+	self.back = createnewkey(x, y+22, "back_pressed", 20, 20);
+	self.left = createnewkey(x-22, y+22, "left_pressed", 20, 20);
+	self.right = createnewkey(x+22, y+22, "right_pressed", 20, 20);
+	self.jump = createnewkey(x, y+44, "jump_pressed", 80, 20);
+	
+	self.wasdSetting = 1225;
+	self.drawKeys = false;
+	self.isSpectating = false;
+	player = self;
+    while(true)
+    {					
+		self.stat = self GetStat(self.wasdSetting);
+		if (self.sessionstate == "spectator" && isDefined(self.spectatedPlayers))
+		{
+			self.isSpectating = true;
+			player = self getSpectatedPlayer();
+		} else {
+			player = self;
+			self.isSpectating = false;
+		}
+		
+
+		if (self.stat == 1 && self.isSpectating) //spectate only
+				self.drawKeys = true;		
+		else if (self.stat == 2)  //always draw
+				self.drawKeys = true;
+		else if (self.stat == 3)  //disabled
+				self.drawKeys = false;
+		else 
+				self.drawKeys = false;
+			
+		if (self.drawKeys)			
+		{
+			self.forward.alpha = 0.2 + 0.8 * (player forwardButtonPressed());
+			self.back.alpha = 0.2 + 0.8 * (player backButtonPressed());
+			self.left.alpha = 0.2 + 0.8 * (player moveLeftButtonPressed());
+			self.right.alpha = 0.2 + 0.8 * (player moveRightButtonPressed());
+			self.jump.alpha = 0.2 + 0.8 * (player jumpButtonPressed());
+		} 
+		else 
+		{
+			self.forward.alpha = 0;
+			self.back.alpha = 0;
+			self.left.alpha = 0;
+			self.right.alpha = 0;
+			self.jump.alpha = 0;
+		}
+		self.drawKeys = false;
+		wait 0.05;
+	}
+	
 }
  
 createnewkey(x, y, shader, shaderx, shadery)
 {
-    hud = newclienthudelem(self);
-    hud.horzalign = "center";
+    //hud = newclienthudelem(self);
+	//hud = newHudElem(); //createBar( (1,1,1) , shaderx ,  shadery); 
+	hud = createIcon(shader, shaderx, shadery);
+    hud.horzalign = "left";
     hud.vertalign = "middle";
     hud.alignx = "center";
     hud.aligny = "middle";
     hud.alpha = 0;
 	hud.x = x;
 	hud.y = y;
-    hud.archived = true;
-    hud setshader(shader, shaderx, shadery);
+    hud.archived = false;
+   // hud setshader(shader, shaderx, shadery);
     return hud;
 }
