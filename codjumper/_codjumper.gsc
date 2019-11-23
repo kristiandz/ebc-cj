@@ -12,7 +12,7 @@ init()
 	thread emz\_cj_voting::voteForced();
     thread codjumper\_cj_admins::adminInit();               	// Pro/Demote
     thread codjumper\_cj_mappers::init();                       // Mappers stuff
-	thread addons\wasd::main();									// WASD Visual
+	thread hud\main::InitializeHud();									// WASD Visual
 	
 	addons\addon::init();
     thread RemoveTurrets();     								// Remove Turrets
@@ -61,7 +61,6 @@ onPlayerSpawned()
 	waittillframeend;
 	if(!self.cj["spawned"])
 	{
-		self thread addons\_velocity::toggleSpeedHud();
 		//self thread [[level.onPlayerStartedMap]]();
 		self.cj["spawned"] = true;
 		self.cj["save"]["org0"] = self getOrigin();
