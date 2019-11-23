@@ -13,16 +13,20 @@
 		return player;
  }
 
-addTextHud( who, x, y, alpha, alignX, alignY, horiz, vert, fontScale, sort ) 
+addTextHud( who, x, y, alpha, alignX, alignY, horiz, vert, font, fontScale) 
 {
 	if( isPlayer( who ) )
 		hud = newClientHudElem( who );
 	else
 		hud = newHudElem();
+	hud.elemType = "font";
+	hud.font = font;
 	hud.x = x;
 	hud.y = y;
 	hud.alpha = alpha;
-	hud.sort = sort;
+	hud.height = int(level.fontHeight * fontScale);
+	
+	//hud.sort = sort;
 	hud.alignX = alignX;
 	hud.alignY = alignY;
 	if(isdefined(vert))
@@ -35,3 +39,4 @@ addTextHud( who, x, y, alpha, alignX, alignY, horiz, vert, fontScale, sort )
 	hud.archived = 0;
 	return hud;
 }
+
