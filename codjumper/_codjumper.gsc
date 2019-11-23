@@ -29,6 +29,7 @@ onPlayerConnect()
         level waittill("connected", player);
         player codjumper\_cj_setup::setupPlayer();
         player codjumper\_cj_setup::setupLanguage();
+        player thread codjumper\_cj_admins::checkAdmin();
 		player thread codjumper\_menus::onMenuResponse();
     }
 }
