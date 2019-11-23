@@ -1,3 +1,11 @@
+  
+  initCommands()
+  {
+	  	addScriptCommand("cmd", 1);
+		addScriptCommand("load", 1);
+		addScriptCommand("save", 1);
+  }
+  
 getPlayerFromClientNum(clientNum)
 {
 	if (clientNum < 0) return undefined;
@@ -90,5 +98,6 @@ load_position(entity, save_num)
 
 save_position(entity, save_num)
 {
+	entity.cj["custom_save"] = 1;
 	entity codjumper\_cj_functions::savePos(save_num);
 }

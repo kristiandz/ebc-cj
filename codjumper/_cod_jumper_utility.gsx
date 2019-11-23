@@ -1,4 +1,4 @@
-#include codjumper\_cj_utility;
+/*#include codjumper\_cj_utility;
 #include common_scripts\utility;
 #include emz\_hud;
 
@@ -144,4 +144,4 @@ fadeOut(time)
 	wait time;
 	if(!isDefined(self)) return;
 	self destroy();
-}
+}*/

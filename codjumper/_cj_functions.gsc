@@ -2,8 +2,15 @@
 
 savePos(i)
 {		
-	self.cj["saves"]++; //Ignore i so we don't need to modify too much and just use a local variable here.
-	i=self.cj["saves"];
+	if (isDefined(self.cj["custom_save"]) && self.cj["custom_save"]==0)
+	{
+		if (self.cj["saves"] == 0)
+			self.cj["saves"]  = 1;
+		self.cj["saves"]++; //Ignore i so we don't need to modify too much and just use a local variable here.
+		i=self.cj["saves"];
+	} else {
+		self.cj["custom_save"]=0;
+	}
 
 	if( !self isOnGround() || self isOnLadder() || self isMantling() || !isAlive( self ) )
 		return;

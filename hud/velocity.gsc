@@ -1,25 +1,10 @@
-toggleSpeedHud() 
+#include hud\common;
+
+mainLoop() 
 {
     self endon("disconnect");
-	
-    if(self.ebc["speed"]) 
-	{
-        self notify("stop_speed");
-        
-        if(isDefined(self.ebc["speedHUD"]))
-            self.ebc["speedHUD"] destroy();
-            
-        if(isDefined(self.ebc["speedMHUD"]))
-            self.ebc["speedMHUD"] destroy();
-            
-        self setClientDvar("vis_ebc_speed", 0);
-        self.ebc["current_speed"] = 0;
-        self.ebc["max_speed"] = 0;
-        self.ebc["speed"] = false;
-        return;
-    }
-    self setClientDvar("vis_ebc_speed", 1);
-    self.ebc["current_speed"] = 0;
+    
+	  self.ebc["current_speed"] = 0;
     self.ebc["max_speed"] = 0;
     self.ebc["speed"] = true;
     self.ebc["speedHUD"] = newClientHudElem(self);
@@ -36,6 +21,7 @@ toggleSpeedHud()
     self.ebc["speedHUD"].alpha = 1;
     self.ebc["speedHUD"].x = -43;
     self.ebc["speedHUD"].y = 220;
+	  self.ebc["speedHUD"].archived = false;
     
     self.ebc["speedMHUD"] = newClientHudElem(self);
     self.ebc["speedMHUD"].horzAlign = "center";
@@ -51,66 +37,53 @@ toggleSpeedHud()
     self.ebc["speedMHUD"].alpha = 1;
     self.ebc["speedMHUD"].x = 43;
     self.ebc["speedMHUD"].y = 220;
-    
-	self.cj["hud"]["info"]["line2"] = newClientHudElem( self );
-	self.cj["hud"]["info"]["line2"].x = -6;
-	self.cj["hud"]["info"]["line2"].y = 222;
-	self.cj["hud"]["info"]["line2"].horzAlign = "center";
-	self.cj["hud"]["info"]["line2"].vertAlign = "middle";
-	self.cj["hud"]["info"]["line2"].alignX = "center";
-	self.cj["hud"]["info"]["line2"].alignY = "middle";
-	self.cj["hud"]["info"]["line2"].color =  (1, 1, 1);
-	self.cj["hud"]["info"]["line2"].hidewheninmenu = 1;
-	self.cj["hud"]["info"]["line2"] setShader( "line_horizontal", 135, 2 );
-	self.cj["hud"]["info"]["line2"].alpha =1;
+	  self.ebc["speedMHUD"].archived = false;
 	
-    self thread speedLoop();
-}
-
-speedLoop() 
-{
-    self endon("disconnect");
-    self endon("stop_speed");
-    
-    for(;;) 
+	self.ebc["speedLine"] = newClientHudElem( self );
+	self.ebc["speedLine"].x = -6;
+	self.ebc["speedLine"].y = 222;
+	self.ebc["speedLine"].horzAlign = "center";
+	self.ebc["speedLine"].vertAlign = "middle";
+	self.ebc["speedLine"].alignX = "center";
+	self.ebc["speedLine"].alignY = "middle";
+	self.ebc["speedLine"].color =  (1, 1, 1);
+	self.ebc["speedLine"].hidewheninmenu = 1;
+	self.ebc["speedLine"] setShader( "line_horizontal", 135, 2 );
+	self.ebc["speedLine"].alpha =1;
+	self.ebc["speedLine"].archived = false;
+		
+	player = self;
+   while(1)
 	{
-        if(self.sessionstate != "playing" || !isAlive(self)) 
-		{
-            wait .05;
-            continue;
-        }
-        
-        speed = calculateSpeed(self getVelocity());
+		player = getActiveClient();
+
+        speed = calculateSpeed(player getVelocity());
         
         if(speed > 50000)
             speed = 50000;
         
         if(speed > self.ebc["max_speed"]) 
 		{
-            self.ebc["max_speed"] = speed;
-            self.ebc["speedMHUD"] setValue(self.ebc["max_speed"]);
+			self.ebc["max_speed"] = speed;
+            self.ebc["speedMHUD"] setValue(speed);
         }
+		
         self.ebc["current_speed"] = speed;
         self.ebc["speedHUD"] setValue(speed);
         if(speed > 350 && speed < 700) 
-		{
             self.ebc["speedHUD"].color = (0, 1, 0);
-        }
         else if(speed > 700 && speed < 1200) 
-		{
             self.ebc["speedHUD"].color = (1, 0.4, 0);
-        }
         else if(speed > 1200)
-		{
             self.ebc["speedHUD"].color = (1, 0, 0);
-        }
-		else self.ebc["speedHUD"].color = ( 1, 1, 1);
+		else 
+			self.ebc["speedHUD"].color = ( 1, 1, 1);
         wait .05;
     }
 }
  
 calculateSpeed(velocity) 
 {
-	speed = Int(length((velocity[0], velocity[1], 0)));
+    speed = Int(length((velocity[0], velocity[1], 0)));
     return speed;
 }

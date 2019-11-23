@@ -9,17 +9,18 @@ mainLoop()
 	self.fps setValue(lastfps);
 	
 	
-	self.cj["hud"]["info"]["line"] = newClientHudElem( self );
-	self.cj["hud"]["info"]["line"].x = -2;
-	self.cj["hud"]["info"]["line"].y = -175;
-	self.cj["hud"]["info"]["line"].horzAlign = "center";
-	self.cj["hud"]["info"]["line"].vertAlign = "middle";
-	self.cj["hud"]["info"]["line"].alignX = "center";
-	self.cj["hud"]["info"]["line"].alignY = "middle";
-	self.cj["hud"]["info"]["line"].color =  (1, 1, 1);
-	self.cj["hud"]["info"]["line"].hidewheninmenu = 1;
-	self.cj["hud"]["info"]["line"] setShader( "line_horizontal", 100, 1 );
-	self.cj["hud"]["info"]["line"].alpha =1;
+	self.ebc["fpsLine"] = newClientHudElem( self );
+	self.ebc["fpsLine"].x = -2;
+	self.ebc["fpsLine"].y = -175;
+	self.ebc["fpsLine"].horzAlign = "center";
+	self.ebc["fpsLine"].vertAlign = "middle";
+	self.ebc["fpsLine"].alignX = "center";
+	self.ebc["fpsLine"].alignY = "middle";
+	self.ebc["fpsLine"].color =  (1, 1, 1);
+	self.ebc["fpsLine"].hidewheninmenu = 1;
+	self.ebc["fpsLine"] setShader( "line_horizontal", 100, 1 );
+	self.ebc["fpsLine"].alpha =1;
+	self.ebc["fpsLine"].archived = false;
 
 		
 	while(1)
