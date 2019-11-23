@@ -1,8 +1,10 @@
 #include common_scripts\utility;
+
 InitializeHud()
 {
 	    thread waitforconnect();
 }
+
 waitforconnect()
 {
 	while (true)
@@ -20,4 +22,3 @@ waitforconnect()
 		self thread hud\fps::mainLoop();	 
 		self thread hud\speclist::mainLoop();	 
  }
- 
