@@ -61,7 +61,6 @@ onPlayerSpawned()
 	if(!self.cj["spawned"])
 	{
 		//self thread [[level.onPlayerStartedMap]]();
-		self thread hud\velocity::toggleSpeedHud(); // Moved back here before checking the commit changes
 		self.cj["spawned"] = true;
 		self.cj["save"]["org0"] = self getOrigin();
 		self.cj["save"]["ang0"] = self getPlayerAngles();
