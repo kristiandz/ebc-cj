@@ -20,6 +20,7 @@ mainLoop()
     self.ebc["speedHUD"].alpha = 1;
     self.ebc["speedHUD"].x = -43;
     self.ebc["speedHUD"].y = 220;
+	self.ebc["speedHUD"].archived = false;
     
     self.ebc["speedMHUD"] = newClientHudElem(self);
     self.ebc["speedMHUD"].horzAlign = "center";
@@ -35,24 +36,23 @@ mainLoop()
     self.ebc["speedMHUD"].alpha = 1;
     self.ebc["speedMHUD"].x = 43;
     self.ebc["speedMHUD"].y = 220;
+	self.ebc["speedMHUD"].archived = false;
 	
-	
-	
-	self.cj["hud"]["info"]["line2"] = newClientHudElem( self );
-	self.cj["hud"]["info"]["line2"].x = -6;
-	self.cj["hud"]["info"]["line2"].y = 222;
-	self.cj["hud"]["info"]["line2"].horzAlign = "center";
-	self.cj["hud"]["info"]["line2"].vertAlign = "middle";
-	self.cj["hud"]["info"]["line2"].alignX = "center";
-	self.cj["hud"]["info"]["line2"].alignY = "middle";
-	self.cj["hud"]["info"]["line2"].color =  (1, 1, 1);
-	self.cj["hud"]["info"]["line2"].hidewheninmenu = 1;
-	self.cj["hud"]["info"]["line2"] setShader( "line_horizontal", 135, 2 );
-	self.cj["hud"]["info"]["line2"].alpha =1;
-		
+	self.ebc["speedLine"] = newClientHudElem( self );
+	self.ebc["speedLine"].x = -6;
+	self.ebc["speedLine"].y = 222;
+	self.ebc["speedLine"].horzAlign = "center";
+	self.ebc["speedLine"].vertAlign = "middle";
+	self.ebc["speedLine"].alignX = "center";
+	self.ebc["speedLine"].alignY = "middle";
+	self.ebc["speedLine"].color =  (1, 1, 1);
+	self.ebc["speedLine"].hidewheninmenu = 1;
+	self.ebc["speedLine"] setShader( "line_horizontal", 135, 2 );
+	self.ebc["speedLine"].alpha =1;
+	self.ebc["speedLine"].archived = false;
 		
 	player = self;
-    for(;;) 
+   while(1)
 	{
 		player = getActiveClient();
 

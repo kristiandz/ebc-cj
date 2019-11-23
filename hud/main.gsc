@@ -1,20 +1,20 @@
+#include common_scripts\utility;
 InitializeHud()
 {
-	    level thread waitforconnect();
+	    thread waitforconnect();
 }
 waitforconnect()
 {
-	self endon("disconnect");	
 	while (true)
 	{
 		level waittill("connected", player );
-		player startThreads();
+		player thread startThreads();
 	}
 }
  
  startThreads()
  {
-		self waittill("spawned_player");
+		self waittill_any("joined_team", "joined_spectator");
 		self thread hud\wasd::mainLoop();
 		self thread hud\velocity::mainLoop();	 
 		self thread hud\fps::mainLoop();	 

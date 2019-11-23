@@ -95,7 +95,7 @@ checkAttack()
 		    self.spectatorClientNow = add_and_fix(self.spectatorClientNow,1);
             self.spectatorClient = self getSpectatedPlayerEnt();
             self getSpectatedPlayer() iPrintLn(self.name + " is spectating you!");
-            thread spectatorHUDLoop();
+        //    thread spectatorHUDLoop();
         }
         while (self attackButtonPressed())
         {
@@ -116,7 +116,7 @@ checkADS()
 		    self.spectatorClientNow = add_and_fix(self.spectatorClientNow,0);
         	self.spectatorClient = self getSpectatedPlayerEnt();
             self iprintln("You are spectating: " + self getSpectatedPlayer().name);
-            thread spectatorHUDLoop();
+        //    thread spectatorHUDLoop();
         }
 
         while (self adsButtonPressed())

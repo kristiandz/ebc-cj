@@ -1,7 +1,6 @@
 CodeCallback_StartGameType()
 {
-	addScriptCommand("cmd", 1);
-	addScriptCommand("load", 1);
+	addons\commands::initCommands();
 	if(!isDefined(level.gametypestarted) || !level.gametypestarted)
 	{
 		while(!isDefined(level.callbackStartGameType)) wait 0.05;

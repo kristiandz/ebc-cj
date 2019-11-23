@@ -155,8 +155,6 @@ fread(logfile)
 		if(isDefined(string))
 			return string;
 	}
-	else
-		FS_FClose(filehandle);
 	return "";
 }
 
