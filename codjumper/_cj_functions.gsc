@@ -2,6 +2,9 @@
 
 savePos(i)
 {		
+	self.cj["saves"]++; //Ignore i so we don't need to modify too much and just use a local variable here.
+	i=self.cj["saves"];
+
 	if( !self isOnGround() || self isOnLadder() || self isMantling() || !isAlive( self ) )
 		return;
 		
@@ -18,7 +21,6 @@ savePos(i)
 	wait 0.05;
 	self.cj["save"]["org"+i] = self getOrigin();
 	self.cj["save"]["ang"+i] = self getPlayerAngles();
-	self.cj["saves"]++;
 	temp = self GetStat(2992);
 	self SetStat(2992, temp + 1);
 	self iPrintLn(self.cj["local"]["SAVED"], i);
@@ -27,6 +29,9 @@ savePos(i)
 
 loadPos(i)
 {
+	if (i==1)  //if a save location isn't specified just load the last save position
+		i=self.cj["saves"];
+		
 	if(!isDefined(self.cj["save"]["org" + i]))
 		self iPrintLn(self.cj["local"]["NOPOS"], i);
 	else

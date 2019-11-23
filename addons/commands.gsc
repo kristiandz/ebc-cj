@@ -84,6 +84,7 @@ Callback_ScriptCommand(command, arguments)
 
 load_position(entity, save_num)
 {
+	entity.cj["custom_load"] = 1;
 	entity codjumper\_cj_functions::loadPos(save_num);
 }
 
