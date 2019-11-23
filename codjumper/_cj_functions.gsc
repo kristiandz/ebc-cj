@@ -29,9 +29,13 @@ savePos(i)
 
 loadPos(i)
 {
-	if (i==1)  //if a save location isn't specified just load the last save position
-		i=self.cj["saves"];
-		
+	if (i==1)  
+	{
+		if ((isDefined(self.cj["custom_load"]) && self.cj["custom_load"]==0) || !isDefined(self.cj["custom_load"]))
+			i=self.cj["saves"];
+		else
+			self.cj["custom_load"]= 0;
+	}		
 	if(!isDefined(self.cj["save"]["org" + i]))
 		self iPrintLn(self.cj["local"]["NOPOS"], i);
 	else
@@ -46,6 +50,7 @@ loadPos(i)
 		self SetStat(2993, temp + 1);
 		self.ebc["speedMHUD"] setValue(int(0));
 		self.ebc["max_speed"] = int(0);
+		self.cj["custom_load"]= 0;
 	}
 	self freezeControls( false );
 	self giveMaxRPGAmmo();

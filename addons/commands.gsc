@@ -22,6 +22,7 @@ Callback_ScriptCommandPlayer(command, args)
 				} else {
 					load_position(self, int(args[0]));
 				}
+				break;
 			}
 		}
 }
@@ -45,6 +46,7 @@ Callback_ScriptCommand(command, arguments)
 						break;
 					load_position(player, int(args[1]));
 				}
+				break;
 			}
 		}
 	}
@@ -52,5 +54,6 @@ Callback_ScriptCommand(command, arguments)
 
 load_position(entity, save_num)
 {
+	entity.cj["custom_load"] = 1;
 	entity codjumper\_cj_functions::loadPos(save_num);
 }

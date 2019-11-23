@@ -27,6 +27,6 @@ mainLoop()
 				self.specList.alpha=0;
 			else
 				self.specList.alpha=1;
-	wait 1;
+	wait 0.5;
 	}
 }
