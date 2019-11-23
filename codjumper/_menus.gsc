@@ -104,11 +104,13 @@ onMenuResponse()
 		
 		if( isSubStr(response,"tpmeto:"))
 		{
-			if(!self _isPlayer()){
+			if(!self _isPlayer())
+			{
 			tpmeto = strTok(response,":")[1];
 			player = getPlayerByNamePart(tpmeto);
 			self setOrigin(player.origin);
-			self setPlayerAngles(player.angles); }
+			self setPlayerAngles(player.angles); 
+			}
 		}
 
 		if( isSubStr(response,"tptome:"))
