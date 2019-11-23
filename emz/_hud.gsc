@@ -67,30 +67,6 @@ drawInfoHud()
 		self.cj["hud"]["info"]["time"].label = &"Time: ";
 		self.cj["hud"]["info"]["time"] setTimerUp(0);
 		
-		self.cj["hud"]["info"]["line"] = newClientHudElem( self );
-		self.cj["hud"]["info"]["line"].x = -2;
-		self.cj["hud"]["info"]["line"].y = -175;
-		self.cj["hud"]["info"]["line"].horzAlign = "center";
-		self.cj["hud"]["info"]["line"].vertAlign = "middle";
-		self.cj["hud"]["info"]["line"].alignX = "center";
-		self.cj["hud"]["info"]["line"].alignY = "middle";
-        self.cj["hud"]["info"]["line"].color =  (1, 1, 1);
-        self.cj["hud"]["info"]["line"].hidewheninmenu = 1;
-        self.cj["hud"]["info"]["line"] setShader( "line_horizontal", 100, 1 );
-        self.cj["hud"]["info"]["line"].alpha =1;
-
-		self.cj["hud"]["info"]["line2"] = newClientHudElem( self );
-		self.cj["hud"]["info"]["line2"].x = -6;
-		self.cj["hud"]["info"]["line2"].y = 222;
-		self.cj["hud"]["info"]["line2"].horzAlign = "center";
-		self.cj["hud"]["info"]["line2"].vertAlign = "middle";
-		self.cj["hud"]["info"]["line2"].alignX = "center";
-		self.cj["hud"]["info"]["line2"].alignY = "middle";
-        self.cj["hud"]["info"]["line2"].color =  (1, 1, 1);
-        self.cj["hud"]["info"]["line2"].hidewheninmenu = 1;
-        self.cj["hud"]["info"]["line2"] setShader( "line_horizontal", 135, 2 );
-        self.cj["hud"]["info"]["line2"].alpha =1;
-
 		if(level.mapHasCheckPoints)
 		{
 			self.cj["hud"]["info"]["progress"] = self createBar((0,0.54,1), 80, 8);

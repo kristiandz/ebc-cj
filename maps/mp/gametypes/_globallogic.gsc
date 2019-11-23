@@ -72,7 +72,7 @@ Callback_PlayerConnect()
 	iPrintLn(&"MP_CONNECTED",self.name);
 	waittillframeend;
 	self thread codjumper\_voting_system::initVoteClient();
-	self thread codjumper\_cod_jumper_utility::setupDefaults();
+	//self thread codjumper\_cod_jumper_utility::setupDefaults();
 	self thread emz\shop::connect();
 	logPrint("J;" + self getGuid() + ";" + self getEntityNumber() + ";" + self.name + "\n");
 	level.players[level.players.size] = self;

@@ -1,4 +1,4 @@
-#include codjumper\_cj_utility;
+/*#include codjumper\_cj_utility;
 #include common_scripts\utility;
 
 waitHudRefresh()
@@ -114,3 +114,4 @@ fadeOut(time)
 	if(!isDefined(self)) return;
 	self destroy();
 }
+*/
