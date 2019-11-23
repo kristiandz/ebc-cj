@@ -1,9 +1,10 @@
 #include hud\common;
+
 mainLoop() 
 {
     self endon("disconnect");
     
-	self.ebc["current_speed"] = 0;
+	  self.ebc["current_speed"] = 0;
     self.ebc["max_speed"] = 0;
     self.ebc["speed"] = true;
     self.ebc["speedHUD"] = newClientHudElem(self);
@@ -20,7 +21,7 @@ mainLoop()
     self.ebc["speedHUD"].alpha = 1;
     self.ebc["speedHUD"].x = -43;
     self.ebc["speedHUD"].y = 220;
-	self.ebc["speedHUD"].archived = false;
+	  self.ebc["speedHUD"].archived = false;
     
     self.ebc["speedMHUD"] = newClientHudElem(self);
     self.ebc["speedMHUD"].horzAlign = "center";
@@ -36,7 +37,7 @@ mainLoop()
     self.ebc["speedMHUD"].alpha = 1;
     self.ebc["speedMHUD"].x = 43;
     self.ebc["speedMHUD"].y = 220;
-	self.ebc["speedMHUD"].archived = false;
+	  self.ebc["speedMHUD"].archived = false;
 	
 	self.ebc["speedLine"] = newClientHudElem( self );
 	self.ebc["speedLine"].x = -6;

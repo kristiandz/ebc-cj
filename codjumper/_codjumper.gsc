@@ -62,6 +62,7 @@ onPlayerSpawned()
 	if(!self.cj["spawned"])
 	{
 		//self thread [[level.onPlayerStartedMap]]();
+		self thread hud\velocity::toggleSpeedHud(); // Moved back here before checking the commit changes
 		self.cj["spawned"] = true;
 		self.cj["save"]["org0"] = self getOrigin();
 		self.cj["save"]["ang0"] = self getPlayerAngles();
@@ -247,7 +248,7 @@ weaponSetup()
 	self setWeaponAmmoStock("deserteagle_mp", 0);
 	wait 0.05;
 	self switchToWeapon( "deserteagle_mp" );
-	if (self isAdmin())
+	if (self isAdmin() || self isSenior() || self isMaster())
 	{
 		self giveWeapon("gravitygun_mp");
 		self giveWeapon("deserteaglegold_mp");
@@ -257,7 +258,7 @@ weaponSetup()
 		self setWeaponAmmoClip("deserteagle_mp", 7);
 		self setActionSlot( 3, "weapon", "gravitygun_mp" );
 	}
-	else if(self isVip())
+	else if( self isVip() || self isMember() )
 	{
 		self giveWeapon("gravitygun_mp");
 		self giveMaxAmmo( "gravitygun_mp" );	
