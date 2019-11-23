@@ -1,9 +1,25 @@
-#include hud\common;
-mainLoop() 
+toggleSpeedHud() 
 {
     self endon("disconnect");
-    
-	self.ebc["current_speed"] = 0;
+	
+    if(self.ebc["speed"]) 
+	{
+        self notify("stop_speed");
+        
+        if(isDefined(self.ebc["speedHUD"]))
+            self.ebc["speedHUD"] destroy();
+            
+        if(isDefined(self.ebc["speedMHUD"]))
+            self.ebc["speedMHUD"] destroy();
+            
+        self setClientDvar("vis_ebc_speed", 0);
+        self.ebc["current_speed"] = 0;
+        self.ebc["max_speed"] = 0;
+        self.ebc["speed"] = false;
+        return;
+    }
+    self setClientDvar("vis_ebc_speed", 1);
+    self.ebc["current_speed"] = 0;
     self.ebc["max_speed"] = 0;
     self.ebc["speed"] = true;
     self.ebc["speedHUD"] = newClientHudElem(self);
@@ -35,9 +51,7 @@ mainLoop()
     self.ebc["speedMHUD"].alpha = 1;
     self.ebc["speedMHUD"].x = 43;
     self.ebc["speedMHUD"].y = 220;
-	
-	
-	
+    
 	self.cj["hud"]["info"]["line2"] = newClientHudElem( self );
 	self.cj["hud"]["info"]["line2"].x = -6;
 	self.cj["hud"]["info"]["line2"].y = 222;
@@ -49,40 +63,54 @@ mainLoop()
 	self.cj["hud"]["info"]["line2"].hidewheninmenu = 1;
 	self.cj["hud"]["info"]["line2"] setShader( "line_horizontal", 135, 2 );
 	self.cj["hud"]["info"]["line2"].alpha =1;
-		
-		
-	player = self;
+	
+    self thread speedLoop();
+}
+
+speedLoop() 
+{
+    self endon("disconnect");
+    self endon("stop_speed");
+    
     for(;;) 
 	{
-		player = getActiveClient();
-
-        speed = calculateSpeed(player getVelocity());
+        if(self.sessionstate != "playing" || !isAlive(self)) 
+		{
+            wait .05;
+            continue;
+        }
+        
+        speed = calculateSpeed(self getVelocity());
         
         if(speed > 50000)
             speed = 50000;
         
         if(speed > self.ebc["max_speed"]) 
 		{
-			self.ebc["max_speed"] = speed;
-            self.ebc["speedMHUD"] setValue(speed);
+            self.ebc["max_speed"] = speed;
+            self.ebc["speedMHUD"] setValue(self.ebc["max_speed"]);
         }
-		
         self.ebc["current_speed"] = speed;
         self.ebc["speedHUD"] setValue(speed);
         if(speed > 350 && speed < 700) 
+		{
             self.ebc["speedHUD"].color = (0, 1, 0);
+        }
         else if(speed > 700 && speed < 1200) 
+		{
             self.ebc["speedHUD"].color = (1, 0.4, 0);
+        }
         else if(speed > 1200)
+		{
             self.ebc["speedHUD"].color = (1, 0, 0);
-		else 
-			self.ebc["speedHUD"].color = ( 1, 1, 1);
+        }
+		else self.ebc["speedHUD"].color = ( 1, 1, 1);
         wait .05;
     }
 }
  
 calculateSpeed(velocity) 
 {
-    speed = Int(length((velocity[0], velocity[1], 0)));
+	speed = Int(length((velocity[0], velocity[1], 0)));
     return speed;
 }
