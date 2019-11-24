@@ -21,7 +21,7 @@ mainLoop()
     self.ebc["speedHUD"].alpha = 1;
     self.ebc["speedHUD"].x = -43;
     self.ebc["speedHUD"].y = 220;
-	  self.ebc["speedHUD"].archived = false;
+	self.ebc["speedHUD"].archived = false;
     
     self.ebc["speedMHUD"] = newClientHudElem(self);
     self.ebc["speedMHUD"].horzAlign = "center";

@@ -4,7 +4,7 @@ mainLoop()
 {
 	self endon( "disconnect" );
 	lastfps =  self getMaxFPS();
-	self.fps = addTextHud(self, 0, -187, 1 , "center", "middle", "center","middle",2.5,0);
+	self.fps = addTextHud(self, 0, -187, 1 , "center", "middle", "center","middle","default", 2.5);
 	self.fps.hidewheninmenu = 1;
 	self.fps setValue(lastfps);
 	
