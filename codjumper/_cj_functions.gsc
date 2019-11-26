@@ -2,10 +2,8 @@
 
 savePos(i)
 {		
-	if (isDefined(self.cj["custom_save"]) && self.cj["custom_save"]==0)
+	if ((isDefined(self.cj["custom_save"]) && self.cj["custom_save"]==0) ||  !isDefined(self.cj["custom_save"]))
 	{
-		if (self.cj["saves"] == 0)
-			self.cj["saves"]  = 1;
 		self.cj["saves"]++; //Ignore i so we don't need to modify too much and just use a local variable here.
 		i=self.cj["saves"];
 	} else {
