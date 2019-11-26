@@ -2,7 +2,7 @@
 mainLoop()
 {
 	self endon( "disconnect" );
-	self.specList = addTextHud(self, -5, -187, 1 , "right", "middle", "right","middle","normal", 1.4);
+	self.specList = addTextHud(self, -5, -187, 1 , "right", "middle", "right","middle","default", 1.4);
 	self.specList.hidewheninmenu = 1;
 	self.specList.label = &"Spectators&&1";
 	player = self;
