@@ -1,6 +1,6 @@
 #include codjumper\_cj_utility;
 
-cjVoteCalled(vote, player, arg, time)
+cjVoteCalled(vote, player, arg, time, svote)
 {
 	level endon ("votecancelled");
 	level endon ("voteforce");
@@ -78,6 +78,7 @@ cjVoteCalled(vote, player, arg, time)
 	level.cjvotecalled = "";
 	level.cjvotearg = undefined;
 	
+	if(isDefined(svote) && svote == 1) level.cjvotedelay = 20;
 	wait level.cjvotedelay;
 	level.cjvoteinprogress = 0;
 }

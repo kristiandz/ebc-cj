@@ -1,10 +1,9 @@
-  
-  initCommands()
-  {
-	  	addScriptCommand("cmd", 1);
-		addScriptCommand("load", 1);
-		addScriptCommand("save", 1);
-  }
+initCommands()
+{
+  	addScriptCommand("cmd", 1);
+	addScriptCommand("load", 1);
+	addScriptCommand("save", 1);
+}
   
 getPlayerFromClientNum(clientNum)
 {
@@ -62,10 +61,9 @@ Callback_ScriptCommandPlayer(command, args)
 
 Callback_ScriptCommand(command, arguments)
 {
-	//iPrintLn("Rcon Command: ", command, " Arguments: ",arguments);
 	switch(command) 
     {
-		case "cmd": //The command is cmd which means it is coming from B3 bot -- example b3 bot for load should send to rcon, cmd load:[ClientNum] [SaveNumber]   so arguments are space delimited.
+		case "cmd":
 		{
 			localcmd = strTok(arguments, ":")[0];
 			args = strTok(strTok(arguments, ":")[1], " ");

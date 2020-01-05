@@ -19,7 +19,6 @@ getMapList()
 		maplist[maplist.size] = "mp_bone";
 		maplist[maplist.size] = "mp_bouncer_training";
 		maplist[maplist.size] = "mp_boxes";
-		maplist[maplist.size] = "mp_bridge";
 		maplist[maplist.size] = "mp_broadcast";
 		maplist[maplist.size] = "mp_brony";
 		maplist[maplist.size] = "mp_carentan";
@@ -56,6 +55,7 @@ getMapList()
 		maplist[maplist.size] = "mp_farm";
 		maplist[maplist.size] = "mp_fly";
 		maplist[maplist.size] = "mp_futurama";
+		maplist[maplist.size] = "mp_forgotten";
 		maplist[maplist.size] = "mp_galaxy";
 		maplist[maplist.size] = "mp_galaxy_v2";
 		maplist[maplist.size] = "mp_genesis";

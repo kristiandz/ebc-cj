@@ -235,22 +235,33 @@ endGameWrapper()
 	if(!isDefined(level.endgamewrapper))
 	{
 		level.endgamewrapper = true;
-		thread emz\_cj_voting::cjVoteCalled("vote_extend10", undefined, undefined, 30);
+		thread emz\_cj_voting::cjVoteCalled("vote_extend10", undefined, undefined, 30 , 1 );
 		level waittill("vote_completed", passed);
 		if(!passed )
 		{
 			wait 3;
 			endgame();
 			level.endgamewrapper = undefined;
-			level.firstpass = "undefined";
 		}
 		else 
 		{
 		level notify("ugtd_exit");
 		thread updateGameTypeDvars();
 		}
+		level.endgamewrapper = undefined;
 	}
-	level.firstpass = "done";
+}
+
+onlineplayers()
+{
+	players = getAllPlayers();
+	amount = players.size;
+	return amount;
+}
+	
+getAllPlayers() 
+{
+	return getEntArray( "player", "classname" );
 }
 
 endGame()
@@ -262,16 +273,20 @@ endGame()
 
 checkTimeLimit()
 {
+	amount = onlineplayers();
 	if (!isDefined(level.startTime))
 		return;
 	timeLeft = getTimeRemaining();
 	setGameEndTime(getTime() + int(timeLeft));
-	if(timeLeft == 0 && level.firstpass == "done" )
+	if(timeLeft == 0 && amount == 0 )
 	{
+		iprintln("Endgame");
 		thread endgame();
 	}
-	else if( timeLeft == 33800 && level.firstpass == "undefined" )
+	else if( timeLeft == 33800 && amount != 0 )
+	{
 		thread endGameWrapper();
+	}
 }
 
 getTimeRemaining()
