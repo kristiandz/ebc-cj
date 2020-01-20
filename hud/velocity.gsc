@@ -37,7 +37,7 @@ mainLoop()
     self.ebc["speedMHUD"].alpha = 1;
     self.ebc["speedMHUD"].x = 43;
     self.ebc["speedMHUD"].y = 220;
-	  self.ebc["speedMHUD"].archived = false;
+	 self.ebc["speedMHUD"].archived = false;
 	
 	self.ebc["speedLine"] = newClientHudElem( self );
 	self.ebc["speedLine"].x = -6;

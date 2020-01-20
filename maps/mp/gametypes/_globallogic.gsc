@@ -242,12 +242,12 @@ endGameWrapper()
 			wait 3;
 			endgame();
 			level.endgamewrapper = undefined;
-			level.firstpass = "undefined";
+		//	level.firstpass = "undefined";
 		}
 		else 
 		{
-		level notify("ugtd_exit");
-		thread updateGameTypeDvars();
+			level notify("ugtd_exit");
+			thread updateGameTypeDvars();
 		}
 	}
 	level.firstpass = "done";
@@ -266,11 +266,11 @@ checkTimeLimit()
 		return;
 	timeLeft = getTimeRemaining();
 	setGameEndTime(getTime() + int(timeLeft));
-	if(timeLeft == 0 && level.firstpass == "done" )
+	if(timeLeft == 0)// && level.firstpass == "done" )
 	{
 		thread endgame();
 	}
-	else if( timeLeft == 33800 && level.firstpass == "undefined" )
+	else if( timeLeft == 33800)// && level.firstpass == "undefined" )
 		thread endGameWrapper();
 }
 

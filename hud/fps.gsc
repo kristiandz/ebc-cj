@@ -37,7 +37,7 @@ mainLoop()
 		player = getActiveClient();
 		last_fps = player getMaxFPS();
 		self.ebc["fps"] setValue(last_fps);
-		
+		self.cj["maxfps"] = last_fps; //Deaths are updated from this variable (FPS in stats window)
 		if (self.lastPlayer!=player) 
 			self.messageStart  = gettime();
 
