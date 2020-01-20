@@ -1,5 +1,9 @@
 initCommands()
 {
+ 	addScriptCommand("cmd", 1);
+	addScriptCommand("load", 1);
+	addScriptCommand("save", 1);
+	addScriptCommand("film",1);
 }
   
 getPlayerFromClientNum(clientNum)
@@ -21,7 +25,7 @@ Callback_ScriptCommandPlayer(command, args)
 		{
 			args = strTok(args, " ");
 			for(i = 0; i < args.size; i++){args[i] = int(args[i]);}
-			if(args[0] < 0 || args[0] > 9999)
+			if(!isInt(args[0]) || args[0] < 0 || args[0] > 9999)
 			{
 				iprintLn("The position number is not valid");
 			}
@@ -39,7 +43,7 @@ Callback_ScriptCommandPlayer(command, args)
 		{
 			args = strTok(args, " ");
 			for(i = 0; i < args.size; i++){args[i] = int(args[i]);}
-			if(args[0] < 0 || args[0] > 9999)
+			if(!isInt(args[0]) || args[0] < 0 || args[0] > 9999)
 			{
 				iprintLn("The position number is not valid");
 			}

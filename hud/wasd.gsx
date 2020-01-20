@@ -1,6 +1,6 @@
 #include maps\mp\gametypes\_hud_util;
 #include hud\common;
- mainLoop()
+mainLoop()
 {		
 	
 	self endon("disconnect");
@@ -36,11 +36,11 @@
 			
 		if (self.drawKeys)			
 		{
-			self.forward.alpha = 0.2 /*+ 0.8 * (player forwardButtonPressed())*/;
-			self.back.alpha = 0.2 /*+ 0.8 * (player backButtonPressed())*/;
-			self.left.alpha = 0.2 /*+ 0.8 * (player moveLeftButtonPressed())*/;
-			self.right.alpha = 0.2 /*+ 0.8 * (player moveRightButtonPressed())*/;
-			self.jump.alpha = 0.2 /*+ 0.8 * (player jumpButtonPressed())*/;
+			self.forward.alpha = 0.2 + 0.8 * (player forwardButtonPressed());
+			self.back.alpha = 0.2 + 0.8 * (player backButtonPressed());
+			self.left.alpha = 0.2 + 0.8 * (player moveLeftButtonPressed());
+			self.right.alpha = 0.2 + 0.8 * (player moveRightButtonPressed());
+			self.jump.alpha = 0.2 + 0.8 * (player jumpButtonPressed());
 		} 
 		else 
 		{
