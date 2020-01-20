@@ -121,18 +121,24 @@ updatePlayedTime()
 {
 	if ( self.timePlayed["allies"] )
 	{
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_allies", self.timePlayed["allies"] );
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_total", self.timePlayed["allies"] );
+		temp = self GetStat(2311);
+		self SetStat(2311, temp + self.timePlayed["allies"] );
+		tempt = self GetStat(2314);
+		self SetStat(2314, tempt + self.timePlayed["allies"] );
 	}
 	if ( self.timePlayed["axis"] )
 	{
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_opfor", self.timePlayed["axis"] );
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_total", self.timePlayed["axis"] );
+		temp = self GetStat(2311);
+		self SetStat(2312, temp + self.timePlayed["axis"] );
+		tempt = self GetStat(2314);
+		self SetStat(2314, tempt + self.timePlayed["axis"] );
 	}
 	if ( self.timePlayed["other"] )
 	{
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_other", self.timePlayed["other"] );			
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_total", self.timePlayed["other"] );
+		temp = self GetStat(2313);
+		self SetStat(2313, temp + self.timePlayed["other"] );
+		tempt = self GetStat(2314);
+		self SetStat(2314, tempt + self.timePlayed["other"] );
 	}
 	if ( game["state"] == "postgame" )
 		return;
@@ -222,20 +228,25 @@ updateFreePlayedTime()
 {
 	if ( self.timePlayed["allies"] )
 	{
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_allies", self.timePlayed["allies"] );
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_total", self.timePlayed["allies"] );
+		temp = self GetStat(2311);
+		self SetStat(2311, temp + self.timePlayed["allies"] );
+		tempt = self GetStat(2314);
+		self SetStat(2314, tempt + self.timePlayed["allies"] );
 	}
 	if ( self.timePlayed["axis"] )
 	{
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_opfor", self.timePlayed["axis"] );
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_total", self.timePlayed["axis"] );
+		temp = self GetStat(2311);
+		self SetStat(2312, temp + self.timePlayed["axis"] );
+		tempt = self GetStat(2314);
+		self SetStat(2314, tempt + self.timePlayed["axis"] );
 	}
 	if ( self.timePlayed["other"] )
 	{
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_other", self.timePlayed["other"] );			
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_total", self.timePlayed["other"] );
+		temp = self GetStat(2313);
+		self SetStat(2313, temp + self.timePlayed["other"] );
+		tempt = self GetStat(2314);
+		self SetStat(2314, tempt + self.timePlayed["other"] );
 	}
-	
 	if ( game["state"] == "postgame" )
 		return;
 
