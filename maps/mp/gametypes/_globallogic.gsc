@@ -151,6 +151,7 @@ menuSpectator()
 Callback_StartGameType()
 {
 	game["gamestarted"] = true;
+	game["state"]= "playing";
 	level.teamSpawnPoints["allies"] = [];
 	initLevelUiParent();
 	registerTimeLimitDvar("cj", 10, 1, 1440);
@@ -159,6 +160,8 @@ Callback_StartGameType()
 	level.startTime = getTime();
 	level thread updateGameTypeDvars();
 	level thread timeLimitClock();
+	
+	thread maps\mp\gametypes\_teams::init();
 	thread maps\mp\gametypes\_rank::init();
 	thread codjumper\_voting_system::initVote();
 	thread emz\shop::main();
