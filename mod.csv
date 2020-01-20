@@ -50,7 +50,6 @@ fx,misc/emz_fx
 stringtable,mp/rankIconTable.csv
 stringtable,mp/rankTable.csv
 stringtable,mp/modelTable.csv
-stringtable,mp/playerStatsTable.csv
 
 menufile,ui_mp/cj.txt
 menufile,ui_mp/scriptmenus/poslog.menu
