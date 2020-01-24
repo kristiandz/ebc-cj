@@ -67,64 +67,20 @@ _UFOMode()
 {
 	self endon("disconnect");
 	self endon("endadminplugins");
-	self.isUFO = false;
-	self.nocliplinker = "";
-	self.endUFO = false;
+	
 	while(1)
 	{
-		if (self FragButtonPressed() && self useButtonPressed()  && self.cj["team"] != "spectator" && !self.isUFO)
-		{
-			while (self FragButtonPressed() || self useButtonPressed())
-				wait 0.05;
-			self.isUFO = true;
-			self.UFOlinker = spawn( "script_model", self.origin );
-			self linkto( self.UFOlinker );			
-			self IPrintLn("UFO mode enabled!");
-			self IPrintLn("Sprint to move faster, ADS for slower, ADS and Press grenade to teleport to crosshairs!");
-			self IPrintLn("Frag + Use again to disable, or fire weapon to disable!");
-		}
-
-		while(self.isUFO)
-		{
-			self.speed = 100;
-			
-			if (self sprintbuttonpressed())
-				self.speed = 200;
-			else if (self isinads())
-				self.speed = 50;
-			else 
-				self.speed = 100;
-			
-			if (self forwardbuttonpressed())
-				self.UFOlinker moveto(self.origin +  maps\mp\_utility::vector_scale(anglestoforward(self getPlayerAngles()), self.speed), 0.05);
-			if ( self backbuttonpressed() )
-				self.UFOlinker moveto(self.origin -  maps\mp\_utility::vector_scale(anglestoforward(self getPlayerAngles()), self.speed), 0.05);
-			
-			if (self isinads() && self FragButtonPressed())
-			{
-					start = self getEye();
-					end = start + maps\mp\_utility::vector_scale(anglestoforward(self getPlayerAngles()), 999999);
-					trace = bulletTrace(start, end, true, self);
-					dist = distance(start, trace["position"]);
-					end_pos = trace["position"];
-					self.UFOlinker moveto((end_pos[0], end_pos[1], end_pos[2]+30), 0.05);	
-			}
-			
-			if (self attackbuttonpressed())
-				self.endUFO = true;
-			
-			if ((self FragButtonPressed() && self useButtonPressed()) || self.endUFO)
-			{
-				while (self FragButtonPressed() || self useButtonPressed())
-					wait 0.05;			
-				if(isdefined(self.UFOlinker)) self.UFOlinker delete();
-					self unlink();
-					self.isUFO = false;
-					self IPrintLn("UFO mode disabled!");
-					self.endUFO = false;
-			}
+		while(!self FragButtonPressed() || !self useButtonPressed() || self.cj["team"] == "spectator")
 			wait 0.05;
-		}
-		wait 0.03;
+			
+		if( self.sessionState == "spectator" )
+			self.sessionState = "playing";
+		else
+			self.sessionState = "spectator";
+
+		self.spectatorClient = -1;
+			
+		while(self FragButtonPressed() && self useButtonPressed())
+			wait 0.05;
 	}
 }
