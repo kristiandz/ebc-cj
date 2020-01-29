@@ -281,7 +281,7 @@ checkTimeLimit()
 		return;
 	timeLeft = getTimeRemaining();
 	setGameEndTime(getTime() + int(timeLeft));
-	if(timeLeft == 0 && amount == 0 )
+	if(timeLeft == 0)
 	{
 		iprintln("Endgame");
 		thread endgame();
