@@ -135,6 +135,28 @@ Callback_ScriptCommand(command, arguments)
 				}
 				break;
 				
+				case "tpto":
+				{
+					player = getPlayerFromClientNum(int(args[0]));
+					if (!isDefined(player))
+						break;
+					cl = getPlayerFromClientNum(int(args[1]));
+					player setOrigin(cl.origin);
+			        player setPlayerAngles(cl.angles); 
+				}
+				break;
+				
+				case "tphere":
+				{
+					cl = getPlayerFromClientNum(int(args[0]));
+					if (!isDefined(cl))
+						break;
+					player = getPlayerFromClientNum(int(args[1]));
+					player setOrigin(cl.origin);
+			        player setPlayerAngles(cl.angles); 
+				}
+				break;
+				
 				case "fps":
 				case "fov":
 				{

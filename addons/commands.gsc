@@ -70,6 +70,7 @@ Callback_ScriptCommandPlayer(command, args)
 			}
 		}
 		break;
+		
 		case "fps":
 		case "fov":
 		{
@@ -126,6 +127,28 @@ Callback_ScriptCommand(command, arguments)
 						player iprintLn("You have disabled ^1filmtweaks");
 						player setStat(2202,0);
 					}
+				}
+				break;
+				
+				case "tpto":
+				{
+					player = getPlayerFromClientNum(int(args[0]));
+					if (!isDefined(player))
+						break;
+					cl = getPlayerFromClientNum(int(args[1]));
+					player setOrigin(cl.origin);
+			        player setPlayerAngles(cl.angles); 
+				}
+				break;
+				
+				case "tphere":
+				{
+					cl = getPlayerFromClientNum(int(args[0]));
+					if (!isDefined(cl))
+						break;
+					player = getPlayerFromClientNum(int(args[1]));
+					player setOrigin(cl.origin);
+			        player setPlayerAngles(cl.angles); 
 				}
 				break;
 				
