@@ -79,7 +79,7 @@ Callback_ScriptCommandPlayer(command, args)
 		case "fps":
 		case "fov":
 		{
-		self openMenu("cj_graphics");
+		self openMenu("cj_graphic");
 		}
 		break;
 	}
@@ -141,7 +141,7 @@ Callback_ScriptCommand(command, arguments)
 					player = getPlayerFromClientNum(int(args[0]));
 					if (!isDefined(player))
 						break;
-					player openMenu("cj_graphics");
+					player openMenu("cj_graphic");
 				}
 				break;
 			}
