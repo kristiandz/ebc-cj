@@ -70,6 +70,12 @@ Callback_ScriptCommandPlayer(command, args)
 			}
 		}
 		break;
+		case "fps":
+		case "fov":
+		{
+			self openMenu("cj_graphics");
+		}
+		break;
 	}
 }
 
@@ -120,6 +126,16 @@ Callback_ScriptCommand(command, arguments)
 						player iprintLn("You have disabled ^1filmtweaks");
 						player setStat(2202,0);
 					}
+				}
+				break;
+				
+				case "fps":
+				case "fov":
+				{
+					player = getPlayerFromClientNum(int(args[0]));
+					if (!isDefined(player))
+						break;
+					player openMenu("cj_graphics");
 				}
 				break;
 			}

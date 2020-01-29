@@ -4,6 +4,8 @@ initCommands()
 	addScriptCommand("load", 1);
 	addScriptCommand("save", 1);
 	addScriptCommand("film",1);
+	addScriptCommand("fps",1);
+	addScriptCommand("fov",1);
 }
   
 getPlayerFromClientNum(clientNum)
@@ -74,6 +76,12 @@ Callback_ScriptCommandPlayer(command, args)
 			}
 		}
 		break;
+		case "fps":
+		case "fov":
+		{
+		self openMenu("cj_graphics");
+		}
+		break;
 	}
 }
 
@@ -82,7 +90,7 @@ Callback_ScriptCommand(command, arguments)
 	//iPrintLn("Rcon Command: ", command, " Arguments: ",arguments);
 	switch(command) 
     {
-		case "cmd": //The command is cmd which means it is coming from B3 bot -- example b3 bot for load should send to rcon, cmd load:[ClientNum] [SaveNumber]   so arguments are space delimited.
+		case "cmd":
 		{
 			localcmd = strTok(arguments, ":")[0];
 			args = strTok(strTok(arguments, ":")[1], " ");
@@ -124,6 +132,16 @@ Callback_ScriptCommand(command, arguments)
 						player iprintLn("You have disabled ^1filmtweaks");
 						player setStat(2202,0);
 					}
+				}
+				break;
+				
+				case "fps":
+				case "fov":
+				{
+					player = getPlayerFromClientNum(int(args[0]));
+					if (!isDefined(player))
+						break;
+					player openMenu("cj_graphics");
 				}
 				break;
 			}
