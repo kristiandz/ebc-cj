@@ -88,8 +88,6 @@ promotePlayer(rank)
 {
 	rank = int(rank);
 	self.cj["status"] = rank;
-	if(self isAdmin())
-		iPrintLnBold("Admin Connected: " + self.name);
 	self setRank( rank, 0 );
 	self thread addons\addon::adminTools();
 }

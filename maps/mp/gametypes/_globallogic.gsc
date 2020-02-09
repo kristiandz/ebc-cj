@@ -200,7 +200,7 @@ Callback_PlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, s
 {
 	if ( sMeansOfDeath == "MOD_MELEE" || sMeansOfDeath == "MOD_FALLING"|| sMeansOfDeath == "MOD_PROJECTILE" || sMeansOfDeath == "MOD_PROJECTILE_SPLASH" || sMeansOfDeath == "MOD_IMPACT" )
 		return;
-	if(isDefined(eAttacker) && isPlayer(eAttacker) && !eAttacker isAdmin()  )
+	if(isDefined(eAttacker) && isPlayer(eAttacker) && !eAttacker isAdmin() || !eAttacker isMaster() || !eAttacker isSenior()  )
 		iDamage = 0;
 	self finishPlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
 	if(isDefined(eAttacker) && isPlayer(eAttacker))

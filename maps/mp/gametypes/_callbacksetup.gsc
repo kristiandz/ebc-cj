@@ -91,5 +91,3 @@ CodeCallback_ScriptCommand(command, arguments)
 		addons\commands::Callback_ScriptCommand( command, arguments );
 	}
 }
-
-
