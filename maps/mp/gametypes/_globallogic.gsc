@@ -145,6 +145,7 @@ menuSpectator()
 	self spawn( position, angles );
 	waittillframeend;
 	self thread codjumper\_codjumper::onPlayerSpec();
+	logPrint("JT;"+self getGuid()+";"+self getEntityNumber()+";spectator;"+self.name+";\n");
 	self notify( "joined_spectators" );
 }
 
