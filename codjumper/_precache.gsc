@@ -155,7 +155,6 @@ precache()
 
 	//PRECACHE STATUS ICONS / OTHER
 	precacheStatusIcon("hud_status_connecting" );
-	precacheStatusIcon("hud_status_spectator" );
 	precacheHeadIcon( "talkingicon" );	
 	precacheLocationSelector("map_artillery_selector" );
 	precacheShellShock("flashbang");
