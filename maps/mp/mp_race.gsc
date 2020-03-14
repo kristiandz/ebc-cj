@@ -32,7 +32,7 @@ main()
 	
 	thread onPlayerConnect();
 	
-	//Removing the guids because we are hosing a 1.8 server, and these are not viable anymore
+	//Removing the guids because we are hosting a 1.8 server, and these are not viable anymore
 	//and all these member/vip/creator checks are wasting preformance.
 	
 	thread door_slider();
