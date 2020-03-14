@@ -88,7 +88,7 @@ _UFOMode()
 		{
 			self.speed = 100;
 			
-			/*if (self sprintbuttonpressed())
+			if (self sprintbuttonpressed())
 				self.speed = 200;
 			else if (self isinads())
 				self.speed = 50;
@@ -108,7 +108,7 @@ _UFOMode()
 					dist = distance(start, trace["position"]);
 					end_pos = trace["position"];
 					self.UFOlinker moveto((end_pos[0], end_pos[1], end_pos[2]+30), 0.05);	
-			}*/
+			}
 			
 			if (self attackbuttonpressed())
 				self.endUFO = true;
