@@ -41,17 +41,25 @@ rawfile,mp/CoD2maps.arena
 weapon,mp/gravitygun_mp
 weapon,mp/dog_mp
 weapon,mp/rpg_sustain_mp
+weapon,mp/brick_blaster_mp
+weapon,mp/c4_mp
 
 localize,CJ
 localize,CGAME
-
-fx,misc/emz_fx
 
 stringtable,mp/rankIconTable.csv
 stringtable,mp/rankTable.csv
 stringtable,mp/modelTable.csv
 
-menufile,ui_mp/cj.txt
+menufile,ui/error.menu
+	
+menufile,ui_mp/connect.menu
+menufile,ui_mp/auto_update.menu
+menufile,ui_mp/controls_multi.menu
+menufile,ui_mp/main.menu
+menufile,ui_mp/quickmessage.menu
+menufile,ui_mp/hud.menu
+
 menufile,ui_mp/scriptmenus/poslog.menu
 menufile,ui_mp/scriptmenus/shop.menu
 menufile,ui_mp/scriptmenus/vip.menu
@@ -75,14 +83,18 @@ material,back_pressed
 material,left_pressed
 material,right_pressed
 material,jump_pressed
+
 material,button_off
 material,button_on
+
 material,slideshow1
 material,slideshow2
 material,slideshow3
+
 material,stats_frame
 material,cj_frame
 material,modlogo
+
 material,rank_player
 material,rank_vip
 material,rank_friend
@@ -91,7 +103,9 @@ material,rank_master
 material,rank_leader
 material,rank_admin
 material,rank_member
-material,semtex_loadbar
-material,semtex_background
-material,semtex_logo
+
+#material,semtex_loadbar
+#material,semtex_background
+#material,semtex_logo
 material,bg_front_thunder
+
