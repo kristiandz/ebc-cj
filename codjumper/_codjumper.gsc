@@ -260,6 +260,7 @@ weaponSetup()
 	else if( self isVip() || self isMember() )
 	{
 		self giveWeapon("gravitygun_mp");
+		self giveWeapon("deserteaglegold_mp");
 		self giveMaxAmmo( "gravitygun_mp" );	
 		self giveMaxAmmo( "deserteagle_mp" );
 		self setActionSlot( 3, "weapon", "gravitygun_mp" );
