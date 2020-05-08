@@ -27,6 +27,7 @@ precache()
 	precacheItem("deserteaglegold_mp");
 	precacheItem("rpg_sustain_mp");
 	precacheItem("gravitygun_mp");
+	precacheItem("dog_mp");
 	
 	precacheItem( "colt45_mp" );
 	precacheItem( "usp_mp" );
