@@ -10,7 +10,7 @@
     {
         name                      "cj_vote"
         rect                      0 0 640 480 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
-		focusColor                1 0 0 1
+		focusColor                0.7 0.7 0.7 1
         onOpen                    { }
         onClose                   { }
         onESC                     { close self ; }
@@ -59,52 +59,52 @@
         itemDef
         {
             name                      "bg"
-            rect                      35 60 590 340 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      40 90 585 313 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
-            foreColor                 1 1 1 0.75
+            foreColor                 0 0 0 0.7
             textScale                 0.55
-            exp                       material ( ( "semtex_background" ) );
+            exp                       material ( ( "white" ) );
             visible 				  1                            
         }
-		// Frame 
+		// Top BG Bar
         itemDef
         {
-            name                      "frame"
-            rect                      35 60 590 340 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            name                      "bgtop"
+            rect                      40 90 585 30 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
-            foreColor                 1 1 1 1
+            foreColor                 0 0 0 0.4
             textScale                 0.55
-            exp                       material ( ( "cj_frame" ) );
-            visible 				  1                 
+            exp                       material ( ( "white" ) );
+            visible 				  1                            
         }
 		// Long line separator
 		itemDef 
 		{
 			style					  WINDOW_STYLE_FILLED
-			rect					  65 140 525 1 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
-			backcolor				  1 0 0 0.8
+			rect					  65 150 525 1 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+			backcolor				  1 1 1 0.7
 			visible					  1	
 		}
 		// Small separator middle top
 		itemDef 
 		{
 			style					  WINDOW_STYLE_FILLED
-			rect					  330 120 1 15 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
-			backcolor				  1 0 0 0.9
+			rect					  330 130 1 15 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+			backcolor				  1 1 1 0.1
 			visible					  1	
 		}
 		// Long separator middle bottom
 		itemDef 
 		{
 			style					  WINDOW_STYLE_FILLED
-			rect					  330 146 1 225 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
-			backcolor				  1 0 0 0.2
+			rect					  330 156 1 225 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+			backcolor				  1 1 1 0.1
 			visible					  1	
 		}
 		// Selected map text
 		itemDef
         {
-            rect                      410 135 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      410 145 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
             textFont                  UI_FONT_NORMAL
@@ -117,7 +117,7 @@
         itemDef
         {
             name                      "text_objective_titlevotes"
-            rect                      335 97 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      335 117 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
             textFont                  UI_FONT_OBJECTIVE
@@ -130,18 +130,18 @@
 		// Slideshow frame
 		itemDef
         {
-            rect                      365 156 210 119 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      369 169 201 114 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
-            foreColor                 1 1 1 1
+            foreColor                 0 0 0 1
             textScale                 0.55
-            exp                       material ("cj_frame");
+            exp                       material ("white");
             visible 				  1
         }
 		// Slideshow image 1
         itemDef
         {
-            rect                      370 160 199 112 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      370 170 199 112 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 0.2
@@ -152,7 +152,7 @@
 		// Slideshow image 2
 		itemDef
         {
-            rect                      370 160 199 112 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      370 170 199 112 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 0.2
@@ -163,7 +163,7 @@
 		// Slideshow image 3
 		itemDef
         {
-            rect                      370 160 199 112 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      370 170 199 112 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 0.2
@@ -174,7 +174,7 @@
 		// Page Count
         itemDef
         {
-            rect                      178 378 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      178 388 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
             textFont                  UI_FONT_NORMAL
@@ -186,7 +186,7 @@
 		// Selected map text 
         itemDef
         {
-            rect                      520 135 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      520 145 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
             textFont                  UI_FONT_NORMAL
@@ -199,7 +199,7 @@
 		// Text input section 
         itemDef
         {
-            rect                      78 136 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      78 146 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
             textFont                  UI_FONT_NORMAL
@@ -212,7 +212,7 @@
         itemDef
         {
             name                      "BounceOn10min"
-            rect                      367 328 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      367 338 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 1
@@ -223,7 +223,7 @@
         itemDef
         {
             name                      "BounceOff10min"
-            rect                      367 328 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      367 338 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 1
@@ -234,7 +234,7 @@
         itemDef
         {
             name                      "buttontext10min"
-            rect                      367 346 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      367 356 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
             textFont                  UI_FONT_OBJECTIVE
@@ -246,7 +246,7 @@
         }
         itemDef
         {
-            rect                      367 328 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      367 338 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -263,7 +263,7 @@
         }
         itemDef
         {
-            rect                      376 345 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      376 355 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
             textFont                  UI_FONT_OBJECTIVE
@@ -276,7 +276,7 @@
         itemDef
         {
             name                      "BounceOn20min"
-            rect                      367 355 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      367 365 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 1
@@ -287,7 +287,7 @@
         itemDef
         {
             name                      "BounceOff20min"
-            rect                      367 355 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      367 365 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 1
@@ -298,7 +298,7 @@
         itemDef
         {
             name                      "buttontext20min"
-            rect                      367 373 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      367 383 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
             textFont                  UI_FONT_OBJECTIVE
@@ -310,7 +310,7 @@
         }
         itemDef
         {
-            rect                      367 355 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      367 365 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -327,7 +327,7 @@
         }
         itemDef
         {
-            rect                      376 373 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      376 383 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
             textFont                  UI_FONT_OBJECTIVE
@@ -340,7 +340,7 @@
         itemDef
         {
             name                      "BounceOnrotatemap"
-            rect                      475 355 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      475 365 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 1
@@ -351,7 +351,7 @@
         itemDef
         {
             name                      "BounceOffrotatemap"
-            rect                      475 355 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      475 365 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 1
@@ -362,7 +362,7 @@
         itemDef
         {
             name                      "buttontextrotatemap"
-            rect                      475 373 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      475 383 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
             textFont                  UI_FONT_OBJECTIVE
@@ -374,7 +374,7 @@
         }
         itemDef
         {
-            rect                      475 355 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      475 365 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -393,7 +393,7 @@
         itemDef
         {
             name                      "BounceOnrandommap"
-            rect                      475 328 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      475 338 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 1
@@ -404,7 +404,7 @@
         itemDef
         {
             name                      "BounceOffrandommap"
-            rect                      475 328 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      475 338 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 1
@@ -415,7 +415,7 @@
         itemDef
         {
             name                      "buttontextrandommap"
-            rect                      475 346 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      475 356 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
             textFont                  UI_FONT_OBJECTIVE
@@ -427,7 +427,7 @@
         }
         itemDef
         {
-            rect                      475 328 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      475 338 105 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -446,7 +446,7 @@
         itemDef
         {
             name                      "BounceOnnext"
-            rect                      225 364 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      225 374 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 1
@@ -457,7 +457,7 @@
         itemDef
         {
             name                      "BounceOffnext"
-            rect                      225 364 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      225 374 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 1
@@ -468,7 +468,7 @@
         itemDef
         {
             name                      "buttontextnext"
-            rect                      225 377 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      225 387 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
             textFont                  UI_FONT_OBJECTIVE
@@ -480,7 +480,7 @@
         }
         itemDef
         {
-            rect                      225 364 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      225 374 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -499,7 +499,7 @@
         itemDef
         {
             name                      "BounceOnprev"
-            rect                      85 364 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      85 374 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 1
@@ -510,7 +510,7 @@
         itemDef
         {
             name                      "BounceOffprev"
-            rect                      85 364 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      85 374 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 1
@@ -521,7 +521,7 @@
         itemDef
         {
             name                      "buttontextprev"
-            rect                      85 377 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      85 387 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
             textFont                  UI_FONT_OBJECTIVE
@@ -533,7 +533,7 @@
         }
         itemDef
         {
-            rect                      85 364 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      85 374 47 14 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -552,7 +552,7 @@
         itemDef
         {
             name                      "BounceOncallvote"
-            rect                      367 290 213 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      367 300 213 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 1
@@ -563,7 +563,7 @@
         itemDef
         {
             name                      "BounceOffcallvote"
-            rect                      367 290 213 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      367 300 213 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_SHADER
             borderSize                1
             foreColor                 1 1 1 1
@@ -574,7 +574,7 @@
         itemDef
         {
             name                      "buttontextcallvote"
-            rect                      367 309 213 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      367 319 213 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
             textFont                  UI_FONT_OBJECTIVE
@@ -586,7 +586,7 @@
         }
         itemDef
         {
-            rect                      367 295 213 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      367 305 213 22 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -604,7 +604,7 @@
 		// Maplist items
         itemDef
         {
-            rect                      90 162 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      90 172 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -619,7 +619,7 @@
         }
         itemDef
         {
-            rect                      90 174 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      90 184 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -634,7 +634,7 @@
         }
         itemDef
         {
-            rect                      90 186 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      90 196 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -649,7 +649,7 @@
         }
         itemDef
         {
-            rect                      90 198 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      90 208 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -664,7 +664,7 @@
         }
         itemDef
         {
-            rect                      90 210 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      90 220 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -679,7 +679,7 @@
         }
         itemDef
         {
-            rect                      90 222 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      90 232 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -694,7 +694,7 @@
         }
         itemDef
         {
-            rect                      90 234 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      90 244 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -709,7 +709,7 @@
         }
         itemDef
         {
-            rect                      90 246 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      90 256 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -724,7 +724,7 @@
         }
         itemDef
         {
-            rect                      90 258 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      90 268 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -739,7 +739,7 @@
         }
         itemDef
         {
-            rect                      90 270 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      90 280 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -754,7 +754,7 @@
         }
         itemDef
         {
-            rect                      90 282 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      90 292 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -769,7 +769,7 @@
         }
         itemDef
         {
-            rect                      90 294 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      90 304 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -784,7 +784,7 @@
         }
         itemDef
         {
-            rect                      90 306 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      90 316 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -799,7 +799,7 @@
         }
         itemDef
         {
-            rect                      90 318 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      90 328 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -814,7 +814,7 @@
         }
         itemDef
         {
-            rect                      90 330 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      90 340 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -829,7 +829,7 @@
         }
         itemDef
         {
-            rect                      220 162 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      220 172 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -844,7 +844,7 @@
         }
         itemDef
         {
-            rect                      220 174 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      220 184 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -859,7 +859,7 @@
         }
         itemDef
         {
-            rect                      220 186 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      220 196 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -874,7 +874,7 @@
         }
         itemDef
         {
-            rect                      220 198 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      220 208 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -889,7 +889,7 @@
         }
         itemDef
         {
-            rect                      220 210 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      220 220 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -904,7 +904,7 @@
         }
         itemDef
         {
-            rect                      220 222 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      220 232 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -919,7 +919,7 @@
         }
         itemDef
         {
-            rect                      220 234 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      220 244 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -934,7 +934,7 @@
         }
         itemDef
         {
-            rect                      220 246 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      220 256 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -949,7 +949,7 @@
         }
         itemDef
         {
-            rect                      220 258 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      220 268 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -964,7 +964,7 @@
         }
         itemDef
         {
-            rect                      220 270 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      220 280 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -979,7 +979,7 @@
         }
         itemDef
         {
-            rect                      220 282 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      220 292 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -994,7 +994,7 @@
         }
         itemDef
         {
-            rect                      220 294 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      220 304 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -1009,7 +1009,7 @@
         }
         itemDef
         {
-            rect                      220 306 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      220 316 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -1024,7 +1024,7 @@
         }
         itemDef
         {
-            rect                      220 318 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      220 328 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1
@@ -1039,7 +1039,7 @@
         }
         itemDef
         {
-            rect                      220 330 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      220 340 100 10 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             style                     WINDOW_STYLE_FILLED
             borderSize                1
             foreColor                 1 1 1 1

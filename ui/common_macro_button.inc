@@ -8,7 +8,7 @@ itemDef { \
 	exp				rect Y( py ) \
 	exp				rect W( pw ) \
 	exp				rect H( ph ) \
-	forecolor		1 0 0 1 \
+	forecolor		1 1 0 0 \
 	exp				material( pshader ); \
 	border			pborder \
 	bordersize		pbordersize \
@@ -25,7 +25,7 @@ itemDef { \
 	textstyle		ITEM_TEXTSTYLE_SHADOWED \
 	textalign		palign \
 	textscale		psize \
-	forecolor		1 0 0 1 \
+	forecolor		1 1 0 0 \
 	exp				text(ptext); \
 	visible			1 decoration }
 	
@@ -58,11 +58,11 @@ itemDef { \
 #endif
 
 #ifndef BUTTON_TEXTCOLOR
-#define BUTTON_TEXTCOLOR 	1 0 0 1
+#define BUTTON_TEXTCOLOR 	0.1 0.2 1 1
 #endif
 
 #ifndef BUTTON_LOCKEDCOLOR
-#define BUTTON_LOCKEDCOLOR 	1 0 0 1
+#define BUTTON_LOCKEDCOLOR 	0.1 0.2 1 1
 #endif
 
 #ifndef BUTTON_TEXTSIZE
@@ -74,7 +74,7 @@ itemDef { \
 #endif
 
 #ifndef BUTTON_SHADERCOLOR
-#define BUTTON_SHADERCOLOR 1 0 0 1
+#define BUTTON_SHADERCOLOR 0.1 0.2 1 1
 #endif
 
 #ifndef BUTTON_SHADER_OFFSET
@@ -86,7 +86,7 @@ itemDef { \
 #endif
 
 #ifndef BUTTON_DESCCOLOR
-#define BUTTON_DESCCOLOR	1 0.5 0.5 1
+#define BUTTON_DESCCOLOR	0.3 0.5 1 1
 #endif
 
 #define BUTTON_DESC_RAW( pnum, plock, porigin, psize, ptext ) \
@@ -181,7 +181,7 @@ itemDef{											\
 	textstyle 		ITEM_TEXTSTYLE_SHADOWED			\
 	exp				text( ptext );					\
 	textscale		BUTTON_TEXTSIZE					\
-	forecolor		1 0.25 0.25 1 				\
+	forecolor		0.2 0.25 1 1 				\
 	visible			when( !( pvis ) );				\
 	decoration }									\
 itemDef{											\

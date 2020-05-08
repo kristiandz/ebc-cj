@@ -2,7 +2,6 @@
    TODO:
    -Update HUD visually
    -Custom shaders, backgrounds, frames etc.
-   -Current FPS for when spectating players over menus instead scripts
 \*******************************************************************************************/
 
 #include "ui/menudef.h"
@@ -40,18 +39,7 @@
 		
 		INFO_ITEM(5,"[GRAVITY GUN: ^1" +secondsAsCountdown( dvarInt("gravitygun_timeleft" ) )+ "^7]",when( dvarint("gravitygun_timeleft") ))
 		INFO_ITEM(5,"[GRAVITY GUN: ^1" +KeyBinding("+actionslot 3")+ "^7]",when( !dvarint("gravitygun_timeleft") ))
-		INFO_ITEM(6,"[POINTS: ^1"+dvarInt("points")+"^7]", 1)
-		
-		//FPS Counter ( Player only atm )
-		/*itemDef
-		{
-            rect                      -20 -155 0 0 HORIZONTAL_ALIGN_CENTER_SAFEAREA VERTICAL_ALIGN_CENTER_SAFEAREA
-			foreColor				  1 1 1 1
-			exp 				      text(dvarString(com_maxfps))
-            textScale                 0.6
-			textfont				  UI_FONT_NORMAL
-            visible					  1
-		}*/			
+		INFO_ITEM(6,"[POINTS: ^1"+dvarInt("points")+"^7]", 1)	
 	}
 	
     menuDef
@@ -257,18 +245,18 @@ menuDef
 		
 			itemDef
 			{
-            borderSize                1
-            foreColor                 1 1 1 1
-            backColor                 0 0 0 0
-            borderColor               0 0 0 0
-            outlineColor              0 0 0 0
-            type                      ITEM_TYPE_GAME_MESSAGE_WINDOW
-            textAlign                 ITEM_ALIGN_LEGACY_CENTER
-            textScale                 0.33
-            textStyle                 ITEM_TEXTSTYLE_SHADOWED
-            gameMsgWindowIndex        1
-            gameMsgWindowMode         MODE_BOTTOMUP_ALIGN_BOTTOM
-            visible                   when ( ( dvarint( "ui_hud_obituaries" ) == 1 && ! ui_active( ) && dvarint( "cg_drawIprintlnbold" ) != 0 ) )
+				borderSize                1
+				foreColor                 1 1 1 1
+				backColor                 0 0 0 0
+				borderColor               0 0 0 0
+				outlineColor              0 0 0 0
+				type                      ITEM_TYPE_GAME_MESSAGE_WINDOW
+				textAlign                 ITEM_ALIGN_LEGACY_CENTER
+				textScale                 0.33
+				textStyle                 ITEM_TEXTSTYLE_SHADOWED
+				gameMsgWindowIndex        1
+				gameMsgWindowMode         MODE_BOTTOMUP_ALIGN_BOTTOM
+				visible                   when ( ( dvarint( "ui_hud_obituaries" ) == 1 && ! ui_active( ) && dvarint( "cg_drawIprintlnbold" ) != 0 ) )
 			}
 }
 	

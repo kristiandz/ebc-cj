@@ -27,10 +27,10 @@
 		// Quickmsg background
         itemDef
         {
-            rect                      0 0 90 100 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+            rect                      0 0 90 115 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
             style                     WINDOW_STYLE_SHADER
-            foreColor                 1 1 1 0.7
-			background                "semtex_background"
+            foreColor                 0 0 0 0.5
+			background                "white"
             textScale                 0.55
             visible 1                 
             decoration                
@@ -38,19 +38,31 @@
 		// Frame
         itemDef
         {
-            rect                      0 0 90 100 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+            rect                      0 0 90 20 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
             style                     WINDOW_STYLE_SHADER
-            foreColor                 1 1 1 1
-			background                "cj_frame"
+            foreColor                 0 0 0 0.4
+			background                "white"
             textScale                 0.55
             visible 1                 
             decoration                
+        }
+		itemDef
+        {
+            name                      "window"
+            rect                      10 8 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            foreColor                 1 1 1 1
+            textFont                  UI_FONT_NORMAL
+            textAlignY                8
+            textScale                 0.28
+            textStyle                 ITEM_TEXTSTYLE_SHADOWED
+            text                      "CJ Stuff"
+            visible 				  1                
         }
 		// Button settings
         itemDef
         {
             name                      "window"
-            rect                      10 15 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      10 30 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             foreColor                 1 1 1 1
             textFont                  UI_FONT_NORMAL
             textAlignY                8
@@ -62,7 +74,7 @@
         itemDef
         {
             name                      "window"
-            rect                      10 30 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      10 45 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             foreColor                 1 1 1 1
             textFont                  UI_FONT_NORMAL
             textAlignY                8
@@ -75,7 +87,7 @@
 		{
 			name					  "window"
 			visible					  1
-            rect                      10 45 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      10 60 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
 			forecolor				  1 1 1 1
 			textfont				  UI_FONT_NORMAL
 			textstyle				  ITEM_TEXTSTYLE_SHADOWED
@@ -88,7 +100,7 @@
 		{
 			name					  "window"
 			visible					  1
-            rect                      10 60 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      10 75 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
 			forecolor				  1 1 1 1
 			textfont				  UI_FONT_NORMAL
 			textstyle				  ITEM_TEXTSTYLE_SHADOWED
@@ -101,7 +113,7 @@
         itemDef
         {
             name                      "window"
-            rect                      10 85 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      10 100 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
             textFont                  UI_FONT_NORMAL

@@ -1,12 +1,3 @@
-/*******************************************************************************************\
-   TODO:
-   - Add finer control for image transitions / slideshows
-   - Check for different aspect ratio issues
-   NOTICE:
-   - Image transitions are controled with a cos function which change the transparency
-   which is set at ui/bg.inc, and is shared across few menus.
-\*******************************************************************************************/
-
 #include "ui/menudef.h"
 #include "ui_mp/common_macro.inc"
 {
@@ -19,13 +10,11 @@
 		visible			1		
 		backcolor		1 1 1 1
 		rect			FULLSCREEN
-		// Background 
-		#include "ui/bg.inc"
 		
-		// Loaded map shader
+		#include "ui/bg.inc"
 		itemDef
 		{
-			rect			-100 50 200 100 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			-110 60 232 115 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER // 128 x 
 			forecolor		1 1 1 1
 			style			WINDOW_STYLE_SHADER
 			background		"$levelBriefing"
@@ -34,8 +23,8 @@
 			borderColor		0 0 0 1
 			decoration
 		}
-		// Loadbar frame shader
-		itemDef 
+
+		/*itemDef 
 		{
 			style			WINDOW_STYLE_SHADER
 			rect			-237 -81 260 34 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
@@ -46,48 +35,34 @@
 			borderColor		0 0 0 1
 			visible			1	
 			decoration	
-		}
-		// Loadbar fill shader
+		}*/
+
 		itemDef 
 		{
 			name			"loadbar"
 			style			WINDOW_STYLE_LOADBAR
-			rect			-235 -79 256 32 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			//origin		WIDESCREEN_OFFSET
+			rect			-550 -36 880 2 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
 			origin 			107 0
-			background		"loadtext"
+			background		"gradient_fadein"
+			forecolor		0 0 0 1
 			visible			1	
 		}
-		// Bottom and Top Fill 
 		itemDef 
 		{
 			style			WINDOW_STYLE_FILLED
 			rect			0 0 1000 25 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-			backcolor		0 0 0 0.6
+			backcolor		0 0 0 0.3
 			visible			1	
 		}
 		itemDef 
 		{
 			style			WINDOW_STYLE_FILLED
 			rect			0 -35 1000 37 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
-			backcolor		0 0 0 0.6
+			backcolor		0 0 0 0.3
 			visible			1	
 		}
-		// Thin red bars top/bottom
-		itemDef 
-		{
-			style			WINDOW_STYLE_FILLED
-			rect			0 25 1000 1 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-			backcolor		0.8 0 0 1
-			visible			1	
-		}
-		itemDef 
-		{
-			style			WINDOW_STYLE_FILLED
-			rect			0 -35 1000 1 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
-			backcolor		0.8 0 0 1
-			visible			1	
-		}
-		// Thin black bars top/bottom
+		////////////////
 		itemDef 
 		{
 			style			WINDOW_STYLE_FILLED
@@ -95,6 +70,7 @@
 			backcolor		0 0 0 1
 			visible			1	
 		}
+		//
 		itemDef 
 		{
 			style			WINDOW_STYLE_FILLED
@@ -109,16 +85,15 @@
 			backcolor		0 0 0 1
 			visible			1	
 		}
-		// Fadein shader for the info section topright
+		///////////////
 		itemDef 
 		{
 			style			WINDOW_STYLE_SHADER
 			rect			-170 26 200 62 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
 			background		"gradient_fadein"
-			forecolor		0.8 0 0 0.8
+			forecolor		0 0 0 0.8
 			visible			1	
 		}
-		// Fadein black bar
 		itemDef 
 		{
 			style			WINDOW_STYLE_FILLED
@@ -126,11 +101,11 @@
 			backcolor		0 0 0 1
 			visible			1	
 		}
-		// Text info topright 
+
 		itemDef
 		{
 			rect			-10 42 0 0 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
-			text			"Explicit Bouncers CodJumper"
+			text			"Explicit Bouncers CoD Jumper"
 			textfont		UI_FONT_DEFAULT
 			textscale		0.3
 			textalign		ITEM_ALIGN_RIGHT
@@ -139,6 +114,7 @@
 			visible 		1
 			decoration 
 		}
+
 		itemDef
 		{
 			rect			-10 57 0 0 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
@@ -151,10 +127,11 @@
 			visible 		1
 			decoration 
 		}
+
 		itemDef
 		{
 			rect			-10 72 0 0 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
-			text			"Discord.gg/cMXNWcT"
+			text			"discord.me/ebc"
 			textfont		UI_FONT_DEFAULT
 			textscale		0.3
 			textalign		ITEM_ALIGN_RIGHT

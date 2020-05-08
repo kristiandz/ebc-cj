@@ -34,11 +34,11 @@
 #define TEXTSIZE_BOLD		TEXTSIZE_DEFAULT
 #define TEXTSIZE_BIG		TEXTSIZE_TITLE
 
-#define COLOR_TITLE			1 0 0 0.8//1 0.8 0.4 1
-#define COLOR_FOCUSED		1 0 0 0.9 //1 1 1 1
-#define COLOR_UNFOCUSED		1 0 0 1 //0.4823 0.4823 0.4823 1
+#define COLOR_TITLE			1 1 1 0.8//1 0.8 0.4 1
+#define COLOR_FOCUSED		0.6 0.6 0.6 1 //1 1 1 1
+#define COLOR_UNFOCUSED		0.8 0.6 0.6 1 //0.4823 0.4823 0.4823 1
 #define COLOR_DISABLED		0.35 0.35 0.35 1
-#define COLOR_SAFEAREA		1 0.5 0.5 1 //0 0 1 1
+#define COLOR_SAFEAREA		0.5 0.5 0.5 1 //0 0 1 1
 
 #define	BUTTON_A			1
 #define	BUTTON_B			2
@@ -62,13 +62,14 @@
 #define APAD_RIGHT			31
 
 #define COLOR_ORANGE	1 0 0 1
-#define COLOR_BLUE		0.4 0.5 1 1
+#define COLOR_BLUE		0.4 0.4 1 1
+#define COLOR_BLACK		0.6 0.6 0.6 1
 #define	COLOR_USMC		COLOR_BLUE
 #define COLOR_ARAB		COLOR_BLUE
 #define COLOR_USSR		COLOR_BLUE
 #define COLOR_SAS		COLOR_BLUE
 
-#define	COLOR_DEV		1 0 0 1
+#define	COLOR_DEV		0.3 0.3 0.3 1
 
 #define DEFAULT_MP_CFG			"default_mp.cfg"
 #define SPLITSCREEN_MP_CFG		"default_splitscreen.cfg"

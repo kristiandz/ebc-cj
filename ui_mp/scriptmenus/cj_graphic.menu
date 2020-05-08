@@ -21,7 +21,7 @@
 		{ \
 			type 				ITEM_TYPE_BUTTON \
 			style				WINDOW_STYLE_FILLED \
-			rect				(-65 + CJ_COL( itemNum ) * 95) (65 + CJ_ROW( itemNum )*26) 90 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER \
+			rect				(-65 + CJ_COL( itemNum ) * 95) (54 + CJ_ROW( itemNum )*26) 90 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER \
 			forecolor			1 1 1 1 \
 			backcolor           1 1 1 1 \
 			background			"button_off"\
@@ -32,9 +32,9 @@
 			textalign			ITEM_ALIGN_CENTER \
 			textaligny			15 \
 			mouseEnter 			{ play "mouse_over"; \
-			setLocalVarString ui_cj_hintstring "^1  >>   ^7"onFocusArg \
+			setLocalVarString ui_cj_hintstring "  >>   "onFocusArg \
 			} \
-			mouseExit 			{ setLocalVarString ui_cj_hintstring "^1  >>   ^7" } \
+			mouseExit 			{ setLocalVarString ui_cj_hintstring "  >>   " } \
 			action 				{ play "mouse_click"; \
 			scriptMenuResponse  responseArg;  \
 			}  \
@@ -44,7 +44,7 @@
 		{ \
 			type 				ITEM_TYPE_BUTTON \
 			style				WINDOW_STYLE_FILLED \
-			rect				(-65 + CJ_COL2( itemNum ) * 95) (180 + CJ_ROW2( itemNum )*26) 90 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER \
+			rect				(-65 + CJ_COL2( itemNum ) * 95) (184 + CJ_ROW2( itemNum )*26) 90 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER \
 			forecolor			1 1 1 1 \
 			background			"button_off"\
 			backcolor           1 1 1 1 \
@@ -55,9 +55,9 @@
 			textalign			ITEM_ALIGN_CENTER \
 			textaligny			15 \
 			mouseEnter 			{ play "mouse_over"; \
-			setLocalVarString ui_cj_hintstring "^1  >>   ^7"onFocusArg \
+			setLocalVarString ui_cj_hintstring "  >>   "onFocusArg \
 			} \
-			mouseExit 			{ setLocalVarString ui_cj_hintstring "^1  >>   ^7" } \
+			mouseExit 			{ setLocalVarString ui_cj_hintstring "  >>   " } \
 			action 				{ play "mouse_click"; \
 			scriptMenuResponse responseArg;  \
 			}  \
@@ -67,7 +67,7 @@
 		{ \
 			type 				ITEM_TYPE_BUTTON \
 			style				WINDOW_STYLE_FILLED \
-			rect				(-65 + CJ_COL3( itemNum ) * 95) (240 + CJ_ROW3( itemNum )*26) 90 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER \
+			rect				(-65 + CJ_COL3( itemNum ) * 95) (257 + CJ_ROW3( itemNum )*26) 90 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER \
 			forecolor			1 1 1 1 \
 			background			"button_off"\
 			backcolor           1 1 1 1 \
@@ -78,9 +78,9 @@
 			textalign			ITEM_ALIGN_CENTER \
 			textaligny			15 \
 			mouseEnter 			{ play "mouse_over"; \
-			setLocalVarString ui_cj_hintstring "^1  >>   ^7"onFocusArg \
+			setLocalVarString ui_cj_hintstring "  >>   "onFocusArg \
 			} \
-			mouseExit 			{ setLocalVarString ui_cj_hintstring "^1  >>   ^7" } \
+			mouseExit 			{ setLocalVarString ui_cj_hintstring "  >>   " } \
 			action 				{ play "mouse_click"; \
 			scriptMenuResponse responseArg;  \
 			}  \
@@ -96,31 +96,31 @@
 		visible			1		
 		onOpen
 		{
-			setLocalVarString ui_cj_hintstring "^1  >>   ^7";
+			setLocalVarString ui_cj_hintstring "^7  >>   ^7";
 		}
 		// Background
 		itemDef
 		{
 			style			WINDOW_STYLE_SHADER
-			rect			-100 0 360 400 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
-			background		"semtex_background"
-			forecolor		1 1 1 0.75
+			rect			-90 0 330 400 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			background		"white"
+			forecolor		0 0 0 0.7
 			visible		    1
 		}
-		// Frame
+		// BG Bar
 		itemDef
 		{
 			style			WINDOW_STYLE_SHADER
-			rect			-100 0 360 400 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
-			forecolor		1 1 1 1
-			background		"cj_frame"
+			rect			-90 0 330 40 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			forecolor		0 0 0 0.5
+			background		"white"
 			visible			1
 		}
 
 		// Top info text
 		itemDef
 		{
-			rect			-65 27 300 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			-65 6 300 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Press the button to toggle the settings\n you want to tweak.")
 			textfont		UI_FONT_NORMAL
@@ -133,14 +133,14 @@
 		itemDef 
 		{
 			style			WINDOW_STYLE_FILLED
-			rect			-65 148 295 2 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
-			backcolor		1 0 0 0.6
+			rect			-90 144 330 30 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			backcolor		0 0 0 0.5
  			visible			1	
 		}
 		// Mid info text
 		itemDef
 		{
-			rect			-65 160 300 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			-65 150 300 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Press the button to change the fullbright.")
 			textfont		UI_FONT_NORMAL
@@ -153,14 +153,14 @@
 		itemDef 
 		{
 			style			WINDOW_STYLE_FILLED
-			rect			-65 210 295 2 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
-			backcolor		1 0 0 0.6
- 			visible			1	
+			rect			-90 216 330 30 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			backcolor		0 0 0 0.5
+ 			visible			1
 		}
 		// Bottom info text
 		itemDef
 		{
-			rect			-65 220 300 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			-65 223 300 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Press the button to change the FoV.")
 			textfont		UI_FONT_NORMAL
@@ -173,7 +173,7 @@
 		itemDef 
 		{ 
 			type 			ITEM_TYPE_BUTTON 
-			rect		    -65 360 50 10 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER 
+			rect		    -65 377 50 10 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER 
 			forecolor		1 1 1 1 
 			text			"Close" 
 			textfont		UI_FONT_NORMAL 
@@ -213,10 +213,10 @@
 		{
 			type 			ITEM_TYPE_BUTTON
 			style			WINDOW_STYLE_FILLED
-			rect			-65 330 280 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			-65 347 280 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			background		"gradient_fadein"
 			border			1
-			bordercolor		0.5 0 0 1
+			bordercolor		0.5 0.5 0.5 1
 			exp				text(localVarString("ui_cj_hintstring"))
 			textfont		UI_FONT_NORMAL
 			textscale		0.19
@@ -228,24 +228,37 @@
 		itemDef
 		{
 			style			WINDOW_STYLE_SHADER
-			rect			275 0 120 400 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
-			forecolor		1 1 1 0.7
-			background		"semtex_background"
+			rect			260 0 110 400 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			forecolor		0 0 0 0.7
+			background		"white"
 			visible			1
 		}
-		// Side stats frame
+		// Side stats top
 		itemDef
 		{
 			style			WINDOW_STYLE_SHADER
-			rect			275 0 120 400 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
-			forecolor		1 1 1 1
-			background		"stats_frame"
+			rect			260 0 110 30 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			forecolor		0 0 0 0.5
+			background		"white"
 			visible			1
+		}
+		// Stats Title
+		itemDef
+		{
+			rect			285 7 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			forecolor		1 1 1 1
+			exp text		("Active Stats" )
+			textfont		UI_FONT_NORMAL
+			textscale		0.33
+			textalign		ITEM_ALIGN_LEFT
+			textaligny		15
+			visible			1
+			decoration
 		}
 		// Stat items /////////////////////////////////////////////////////////////////////
 		itemDef
 		{
-			rect			288 30 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 40 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Third Person: \n^2Enabled" )
 			textfont		UI_FONT_NORMAL
@@ -257,7 +270,7 @@
 		}		
 		itemDef
 		{
-			rect			288 30 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 40 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Third Person: \n^1Disabled" )
 			textfont		UI_FONT_NORMAL
@@ -270,7 +283,7 @@
 		/////////////////////////////////////////////////////////////////////////////////
 		itemDef
 		{
-			rect			288 60 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 70 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Third Person Range:^1 \n" + dvarString("cg_thirdpersonrange" ) )
 			textfont		UI_FONT_NORMAL
@@ -283,7 +296,7 @@
 		/////////////////////////////////////////////////////////////////////////////////
 		itemDef
 		{
-			rect			288 90 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 100 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Third Person Angle:^1 \n" + dvarString("cg_thirdpersonangle" ) + "`" )
 			textfont		UI_FONT_NORMAL
@@ -296,7 +309,7 @@
 		/////////////////////////////////////////////////////////////////////////////////
 		itemDef
 		{
-			rect			288 120 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 130 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Draw WASD Keys: \n^1Spec Only" )
 			textfont		UI_FONT_NORMAL
@@ -308,7 +321,7 @@
 		}
 		itemDef
 		{
-			rect			288 120 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 130 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Draw WASD Keys: \n^2Always" )
 			textfont		UI_FONT_NORMAL
@@ -320,7 +333,7 @@
 		}
 		itemDef
 		{
-			rect			288 120 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 130 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Draw WASD Keys: \n^1Disabled" )
 			textfont		UI_FONT_NORMAL
@@ -333,7 +346,7 @@
 		/////////////////////////////////////////////////////////////////////////////////
 		itemDef
 		{
-			rect			288 150 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 160 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Draw Fog: \n^2Enabled")
 			textfont		UI_FONT_NORMAL
@@ -345,7 +358,7 @@
 		}
 		itemDef
 		{
-			rect			288 150 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 160 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Draw Fog: \n^1Disabled")
 			textfont		UI_FONT_NORMAL
@@ -358,7 +371,7 @@
 		/////////////////////////////////////////////////////////////////////////////////
 		itemDef
 		{
-			rect			288 180 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 190 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Draw distance: \n^2Max")
 			textfont		UI_FONT_NORMAL
@@ -370,7 +383,7 @@
 		}
 		itemDef
 		{
-			rect			288 180 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 190 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Draw distance: \n^1"+dvarString(r_zfar))
 			textfont		UI_FONT_NORMAL
@@ -383,7 +396,7 @@
 		/////////////////////////////////////////////////////////////////////////////////
 		itemDef
 		{
-			rect			288 210 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 220 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Effects: \n^2Enabled")
 			textfont		UI_FONT_NORMAL
@@ -395,7 +408,7 @@
 		}
 		itemDef
 		{
-			rect			288 210 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 220 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Effects: \n^1Disabled")
 			textfont		UI_FONT_NORMAL
@@ -408,7 +421,7 @@
 		/////////////////////////////////////////////////////////////////////////////////
 		itemDef
 		{
-			rect			288 240 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 250 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Decals : \n^2Enabled" )
 			textfont		UI_FONT_NORMAL
@@ -420,7 +433,7 @@
 		}
 		itemDef
 		{
-			rect			288 240 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 250 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Decals : \n^1Disabled" )
 			textfont		UI_FONT_NORMAL
@@ -433,7 +446,7 @@
 		/////////////////////////////////////////////////////////////////////////////////
 		itemDef
 		{
-			rect			288 274 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 284 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Sounds: \n^2Enabled" )
 			textfont		UI_FONT_NORMAL
@@ -445,7 +458,7 @@
 		}
 		itemDef
 		{
-			rect			288 274 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 284 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Sounds: \n^1Disabled" )
 			textfont		UI_FONT_NORMAL
@@ -458,7 +471,7 @@
 		/////////////////////////////////////////////////////////////////////////////////		
 		itemDef
 		{
-			rect			288 310 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 320 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Current FOV: \n^1" + dvarString("cg_fovscale") )
 			textfont		UI_FONT_NORMAL
@@ -471,7 +484,7 @@
 		/////////////////////////////////////////////////////////////////////////////////
 	    itemDef
 		{
-			rect			288 340 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 355 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Fullbright: \n^2Enabled" )
 			textfont		UI_FONT_NORMAL
@@ -483,7 +496,7 @@
 		}
 	    itemDef
 		{
-			rect			288 340 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			rect			270 355 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			exp text		("Fullbright: \n^1Disabled" )
 			textfont		UI_FONT_NORMAL

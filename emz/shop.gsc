@@ -57,12 +57,12 @@ check()
 	for(i=0;i<5;i++)
 	{
 		if(self getStat(110+i)==1 && self getStat(1169)==(i+1)) 
-			self setClientDvar("shop"+i+"action","^3Activated");
+			self setClientDvar("shop"+i+"action","^1Activated");
 		else if(self getStat(110+i)==1 && self getStat(1169)!=(i+1)) 
 			self setClientDvar("shop"+i+"action","^2Activate");
 		else if(self.pers["points"]>=level.modelcost[i]) 
-			self setClientDvar("shop"+i+"action","^2Buy");
+			self setClientDvar("shop"+i+"action","Buy");
 		else 
-			self setClientDvar("shop"+i+"action","^1Buy");
+			self setClientDvar("shop"+i+"action","Buy");
 	} 
 }

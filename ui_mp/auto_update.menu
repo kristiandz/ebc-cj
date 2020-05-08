@@ -1,76 +1,53 @@
-/**************************************************************************************\
-   TODO:   
-   -Make a shader/frame/background for this menu
-   -Size up the frame and add existing buttons from the mod for each server button
-   -Update server list when opening new servers
-   NOTICE:
-   -Dont use DNS names here incase domain goes out.
-\**************************************************************************************/
-
-#include "ui/menudef.h" 
+#include "ui/menudef.h"
+ 
 {
         menuDef
         {
-            name    	"auconfirm"
-            rect 		170 155 250 165
-			fullscreen 	0
-            focusColor  COLOR_FOCUSED
-            popup
-            onESC
-            {
-            close auconfirm
-            }
-				
-				// Connect Menu Main Frame
+                name    	"auconfirm"
+                fullscreen 	0
+                rect 		170 155 250 165
+                focusColor COLOR_FOCUSED
+                style 		1
+                border 		1
+                popup
+                onESC
+                {
+                close auconfirm
+                }
                 itemDef
                 {
-                        rect 			15 2 300 197
+                        rect 			12 5 285 170
                         style 			WINDOW_STYLE_FILLED
                         border 			1
-                        bordercolor 	1 0 0 .7
-                        backcolor 		0 0 0 .8
+                        backcolor 		0 0 0 .6
 						visible 		1
+                        decoration
                 }
-				// Upper Fill with bar
+				itemDef
+                {
+                        rect 			12 5 285 37
+                        style 			WINDOW_STYLE_FILLED
+                        border 			1
+                        backcolor 		0 0 0 .6
+						visible 		1
+                        decoration
+                }
                 itemDef
                 {
-                        rect 			17 4 299 32
+                        rect 			2 4 231 20
                         style 			WINDOW_STYLE_FILLED
-                        backcolor 		1 0 0 0.03
-						visible 		1	
+                        backcolor 		0 0 0 0
+						visible 		1
                 }
-				itemDef
-                {
-                        rect 			17 36 299 1
-                        style 			WINDOW_STYLE_FILLED
-                        backcolor 		1 0 0 0.1
-						visible 		1	
-                }
-				// Lower Fill with bar
-				itemDef
-                {
-                        rect 			17 157 299 41
-                        style 			WINDOW_STYLE_FILLED
-                        backcolor 		1 0 0 0.03
-						visible 		1	
-                }
-				itemDef
-                {
-                        rect 			105 178 125 0.6
-                        style 			WINDOW_STYLE_FILLED
-                        backcolor 		1 0 0 0.07
-						visible 		1	
-                }
-				// Title & Website
                 itemDef
                 {
                         text 			"Explicit Bouncers Server List"
                         textscale 		.36
                         textstyle 		ITEM_TEXTSTYLE_SHADOWED
-                        rect 			0 25 340 0
+                        rect 			-13 28 340 0
                         textalign 		ITEM_ALIGN_CENTER
                         textfont 		UI_FONT_NORMAL
-                        forecolor 		1 0.1 0.1 1
+                        forecolor 		1 1 1 1
                         visible 		1
 						decoration
                 }
@@ -79,22 +56,21 @@
                         text 			"www.explicitbouncers.com"
                         textscale 		.28
                         textstyle 		ITEM_TEXTSTYLE_SHADOWED
-                        rect 			3 35 335 0
+                        rect 			-13 41 335 0
                         textalign 		ITEM_ALIGN_CENTER
                         textfont 		UI_FONT_NORMAL
-                        forecolor 		1 1 1 1
+                        forecolor 		0.7 0.7 0.7 1
                         visible 		1
 						decoration
                 }
-				// Server List left side with connects
                 itemDef
                 {
-                        text 			"Join eBc Promod S&D"
+                        text 			"Join eBc Promod S&D server"
                         style 			WINDOW_STYLE_EMPTY
 						type 			ITEM_TYPE_BUTTON
                         textscale 		.25
                         textstyle		ITEM_TEXTSTYLE_SHADOWED
-                        rect 			10 50 150 15
+                        rect 			80 50 150 15
                         textalign 		ITEM_ALIGN_CENTER
                         textaligny 		15
                         textfont 		UI_FONT_NORMAL
@@ -102,19 +78,19 @@
                         visible 		1
 						mouseEnter
                         {
-                                 play "mouse_over";
+                                play "mouse_over";
                         }
-                        action { play "mouse_click"; close auconfirm; execNow "connect 145.239.150.240:28950" }  
+                        action { play "mouse_click"; close auconfirm; execNow "connect explicitbouncers.com:28950" }  
                 }
                
                 itemDef
                 {
-                        text 			"Join eBc Deathrun"
+                        text 			"Join eBc Promod Mixmod server"
                         style 			WINDOW_STYLE_EMPTY
 						type 			ITEM_TYPE_BUTTON
                         textscale 		.25
                         textstyle 		ITEM_TEXTSTYLE_SHADOWED
-                        rect 			10 65 150 15
+                        rect 			80 65 150 15
                         textalign 		ITEM_ALIGN_CENTER
                         textaligny 		15
                         textfont 		UI_FONT_NORMAL
@@ -122,18 +98,18 @@
                         visible 		1
 						mouseEnter
                         {
-                                 play "mouse_over";
+                                play "mouse_over";
                         }
-                        action { play "mouse_click"; close auconfirm; execNow "connect 145.239.150.240:28951"  }    
+                        action { play "mouse_click"; close auconfirm; execNow "connect explicitbouncers.com:28951"  }    
                 }
                 itemDef
                 {
-                        text 			"Join eBc CodJumper"
+                        text 			"Join eBc CodJumper server"
                         style 			WINDOW_STYLE_EMPTY
 						type 			ITEM_TYPE_BUTTON
                         textscale 		.25
                         textstyle 		ITEM_TEXTSTYLE_SHADOWED
-                        rect 			10 80 150 15
+                        rect 			80 80 150 15
                         textalign 		ITEM_ALIGN_CENTER
                         textaligny 		15
                         textfont 		UI_FONT_NORMAL
@@ -141,18 +117,18 @@
                         visible 		1
 						mouseEnter
                         {
-                                 play "mouse_over";
+                                play "mouse_over";
                         }
-                        action { play "mouse_click"; close auconfirm; execNow "connect 145.239.150.240:28952"  }   
+                        action { play "mouse_click"; close auconfirm; execNow "connect explicitbouncers.com:28952"  }   
                 }
                 itemDef
                 {
-                        text 			"Join eBc Hardcore SD"
+                        text 			"Join eBc War / Strat server"
                         style  			WINDOW_STYLE_EMPTY
 						type 			ITEM_TYPE_BUTTON
                         textscale 		.25
                         textstyle 		ITEM_TEXTSTYLE_SHADOWED
-						rect 			10 95 150 15
+						rect 			80 95 150 15
                         textalign 		ITEM_ALIGN_CENTER
                         textaligny 		15
                         textfont 		UI_FONT_NORMAL
@@ -160,18 +136,18 @@
                         visible 		1
 						mouseEnter
                         {
-                                 play "mouse_over";
+                                play "mouse_over";
                         }
-                        action { play "mouse_click"; close auconfirm; execNow "connect 145.239.150.240:28957" }   
+                        action { play "mouse_click"; close auconfirm; execNow "connect explicitbouncers.com:28953" }   
                 }
                 itemDef
                 {
-                        text 			"Join eBc Hardcore Sab"
+                        text 			"Join eBc Hardcore Mixmod"
                         style  			WINDOW_STYLE_EMPTY
 						type 			ITEM_TYPE_BUTTON
                         textscale 		.25
                         textstyle 		ITEM_TEXTSTYLE_SHADOWED
-						rect 			10 110 150 15
+						rect 			80 110 150 15
                         textalign 		ITEM_ALIGN_CENTER
                         textaligny 		15
                         textfont 		UI_FONT_NORMAL
@@ -179,162 +155,27 @@
                         visible 		1
 						mouseEnter
                         {
-                                 play "mouse_over";
+                           play "mouse_over";
                         }
-                        action { play "mouse_click"; close auconfirm; execNow "connect 145.239.150.240:28958" }   
+                       action { play "mouse_click"; close auconfirm; execNow "connect explicitbouncers.com:28954" }   
                 }
-                itemDef
-                {
-                        text 			"Join eBc Hardcore TDM"
-                        style  			WINDOW_STYLE_EMPTY
-						type 			ITEM_TYPE_BUTTON
-                        textscale 		.25
-                        textstyle 		ITEM_TEXTSTYLE_SHADOWED
-						rect 			10 125 150 15
-                        textalign 		ITEM_ALIGN_CENTER
-                        textaligny 		15
-                        textfont 		UI_FONT_NORMAL
-                        forecolor 		1 1 1 1
-                        visible 		1
-						mouseEnter
-                        {
-                                 play "mouse_over";
-                        }
-                        action { play "mouse_click"; close auconfirm; execNow "connect 145.239.150.240:28959" }   
-                }
-				// Server list right side with connect
-				itemDef
-                {
-                        text 			"Join eBc Promod MIX"
-                        style 			WINDOW_STYLE_EMPTY
-						type 			ITEM_TYPE_BUTTON
-                        textscale 		.25
-                        textstyle		ITEM_TEXTSTYLE_SHADOWED
-                        rect 			170 50 150 15
-                        textalign 		ITEM_ALIGN_CENTER
-                        textaligny 		15
-                        textfont 		UI_FONT_NORMAL
-                        forecolor 		1 1 1 1
-                        visible 		1
-						mouseEnter
-                        {
-                                 play "mouse_over";
-                        }
-                        action { play "mouse_click"; close auconfirm; execNow "connect 145.239.150.240:28955" }  
-                }
-               
-                itemDef
-                {
-                        text 			"Join eBc Nadetraining"
-                        style 			WINDOW_STYLE_EMPTY
-						type 			ITEM_TYPE_BUTTON
-                        textscale 		.25
-                        textstyle 		ITEM_TEXTSTYLE_SHADOWED
-                        rect 			170 65 150 15
-                        textalign 		ITEM_ALIGN_CENTER
-                        textaligny 		15
-                        textfont 		UI_FONT_NORMAL
-                        forecolor 		1 1 1 1
-                        visible 		1
-						mouseEnter
-                        {
-                                 play "mouse_over";
-                        }
-                        action { play "mouse_click"; close auconfirm; execNow "145.239.150.240:28956"  }    
-                }
-                itemDef
-                {
-                        text 			"Join eBc ^1Soon"
-                        style 			WINDOW_STYLE_EMPTY
-						type 			ITEM_TYPE_BUTTON
-                        textscale 		.25
-                        textstyle 		ITEM_TEXTSTYLE_SHADOWED
-                        rect 			170 80 150 15
-                        textalign 		ITEM_ALIGN_CENTER
-                        textaligny 		15
-                        textfont 		UI_FONT_NORMAL
-                        forecolor 		1 1 1 1
-                        visible 		1
-						mouseEnter
-                        {
-                                 play "mouse_over";
-                        }
-                        //action { play "mouse_click"; close auconfirm; execNow "connect 145.239.150.240:28952"  }   
-                }
-                itemDef
-                {
-                        text 			"Join eBc ^1Soon"
-                        style  			WINDOW_STYLE_EMPTY
-						type 			ITEM_TYPE_BUTTON
-                        textscale 		.25
-                        textstyle 		ITEM_TEXTSTYLE_SHADOWED
-						rect 			170 95 150 15
-                        textalign 		ITEM_ALIGN_CENTER
-                        textaligny 		15
-                        textfont 		UI_FONT_NORMAL
-                        forecolor 		1 1 1 1
-                        visible 		1
-						mouseEnter
-                        {
-                                 play "mouse_over";
-                        }
-                        //action { play "mouse_click"; close auconfirm; execNow "connect 145.239.150.240:28957" }   
-                }
-                itemDef
-                {
-                        text 			"Join eBc ^1Soon"
-                        style  			WINDOW_STYLE_EMPTY
-						type 			ITEM_TYPE_BUTTON
-                        textscale 		.25
-                        textstyle 		ITEM_TEXTSTYLE_SHADOWED
-						rect 			170 110 150 15
-                        textalign 		ITEM_ALIGN_CENTER
-                        textaligny 		15
-                        textfont 		UI_FONT_NORMAL
-                        forecolor 		1 1 1 1
-                        visible 		1
-						mouseEnter
-                        {
-                                 play "mouse_over";
-                        }
-                       // action { play "mouse_click"; close auconfirm; execNow "connect 145.239.150.240:28958" }   
-                }
-                itemDef
-                {
-                        text 			"Join eBc ^1Soon"
-                        style  			WINDOW_STYLE_EMPTY
-						type 			ITEM_TYPE_BUTTON
-                        textscale 		.25
-                        textstyle 		ITEM_TEXTSTYLE_SHADOWED
-						rect 			170 125 150 15
-                        textalign 		ITEM_ALIGN_CENTER
-                        textaligny 		15
-                        textfont 		UI_FONT_NORMAL
-                        forecolor 		1 1 1 1
-                        visible 		1
-						mouseEnter
-                        {
-                                 play "mouse_over";
-                        }
-                        //action { play "mouse_click"; close auconfirm; execNow "connect 145.239.150.240:28956" }   
-                }
-				// Bottom Connect & Close
+				
                 itemDef
                 {
                         text 			"Open Dedicated server Browser"
                         style  			WINDOW_STYLE_EMPTY
 						type 			ITEM_TYPE_BUTTON
-                        textscale 		.36
+                        textscale 		.37
                         textstyle 		ITEM_TEXTSTYLE_SHADOWED
-						rect 			3 162 335 20
+						rect 			-10 140 335 20
                         textalign 		ITEM_ALIGN_CENTER
                         textaligny 		15
                         textfont 		UI_FONT_NORMAL
-                        forecolor 		1 0.1 0.1 1
+                        forecolor 		0.8 0.8 0.8 1
                         visible 		1
 						mouseEnter
                         {
-                                 play "mouse_over";
+                                play "mouse_over";
                         }
                         action { play "mouse_click"; close auconfirm; open pc_join_unranked }   
                 }
@@ -345,15 +186,15 @@
                         textscale 		.3
                         style           WINDOW_STYLE_FILLED
                         textstyle       ITEM_TEXTSTYLE_SHADOWED
-                        rect 			0 180 335 20
+                        rect 			-10 155 335 20
                         textalign 		ITEM_ALIGN_CENTER
                         textaligny 		15
                         textfont 		UI_FONT_NORMAL
-                        forecolor 		1 1 1 1
+                        forecolor 		0.8 0.8 0.8 1
                         visible 		1
                         mouseEnter
                         {
-                                 play "mouse_over";
+                                play "mouse_over";
                         }
                         action { play "mouse_click"; close auconfirm }         
                 }

@@ -94,7 +94,7 @@
 #endif
 
 #ifndef CHOICE_HEADERCOLOR
-#define CHOICE_HEADERCOLOR		0.9 0 0 1
+#define CHOICE_HEADERCOLOR		1 0 0 1
 #endif
 
 #ifndef CHOICE_TEXTCOLOR
@@ -162,14 +162,14 @@
 #endif
 
 #ifndef ALTERNATE_HINT_COLOR
-#define ALTERNATE_HINT_COLOR	1 .8 .8 1
+#define ALTERNATE_HINT_COLOR	0.8 .8 1 1
 #endif
 
 #ifndef HIGHLIGHT_COLOR
-#define HIGHLIGHT_COLOR			1 0.2 0.2 0.25
+#define HIGHLIGHT_COLOR			1 0 0 0.25
 #endif
 #ifndef HIGHLIGHT_BORDER_COLOR
-#define HIGHLIGHT_BORDER_COLOR	1 0 0 1//0.8 0.95 1 0.4
+#define HIGHLIGHT_BORDER_COLOR	1 0 0 1
 #endif
 
 #ifndef CHOICE_HORIZONTAL_ALIGN
@@ -209,19 +209,19 @@
 
 /////////////////////////////////////////////////////////// BACKGROUND COLOR NOT FOCUES
 #ifdef PS3
-	#define A_BUTTON_BG_COLOR 	0.15 0 0 0.15
+	#define A_BUTTON_BG_COLOR 	0 0 0 0.15
 #else
-	#define A_BUTTON_BG_COLOR 	0.15 0 0 0.15
+	#define A_BUTTON_BG_COLOR 	0 0 0 0.15
 #endif
 
 #define A_BUTTON_TEXTSTYLE	ITEM_TEXTSTYLE_NORMAL
 
 #ifndef A_BUTTON_COLOR
-#define A_BUTTON_COLOR			0.2 0 0 0.15
+#define A_BUTTON_COLOR			0 0 0 0.15
 #endif
 
 #ifndef BUTTON_BG_COLOR
-#define BUTTON_BG_COLOR		0.2 0 0 0.25  // Main Menu Button Color // Multiplyer Buttons
+#define BUTTON_BG_COLOR		0 0 0 0.25  // Main Menu Button Color // Multiplyer Buttons
 #endif
 
 // ------------ splitscreen ----------------
@@ -312,7 +312,7 @@
 			style			WINDOW_STYLE_SHADER \
 			rect			(CHOICE_X( itemIndex )+(CHOICE_SIZE_X-(CHOICE_SIZE_Y/4))) CHOICE_Y( itemIndex ) (CHOICE_SIZE_Y/4) CHOICE_SIZE_Y CHOICE_HORIZONTAL_ALIGN CHOICE_VERTICAL_ALIGN \
 			background		HIGHLIGHT_SHADER_ART \
-			forecolor		0.9 0 0 0.035 \
+			forecolor		1 0 0 0.035 \
 			visible			when( localVarInt( ui_highlight ) == itemIndex && localVarString( ui_choicegroup ) == CHOICE_GROUP ); \
 			decoration \
 		} \
@@ -373,7 +373,7 @@
 			textAlign		CHOICE_TEXTALIGN \
 			textAlignX		0 \
 			textAlignY		-1\
-			forecolor		 1 0 0 1 \
+			forecolor		1 0 0 1 \
 			visible			when( localVarInt( ui_highlight ) == itemIndex && localVarString( ui_choicegroup ) == CHOICE_GROUP && vis ); \
 			decoration \
 		} 
@@ -386,7 +386,7 @@
 		{ \
 			type			ITEM_TYPE_TEXT \
 			origin			ORIGIN_TITLE \
-			forecolor		1 0 1 1 \                       //// naslovi ///
+			forecolor		1 0 0 1 \                       //// naslovi ///
 			exp				text( titleArg ) \
 			textalignx		-34 \
 			textfont		UI_FONT_NORMAL \
@@ -491,7 +491,7 @@
 			rect			(CHOICE_SEP_OFFSET_X) (CHOICE_Y_SPACING + CHOICE_SEP_SPACING / 2 + CHOICE_SEP_OFFSET_Y - 3 ) CHOICE_SEP_WIDTH 8 CHOICE_HORIZONTAL_ALIGN CHOICE_VERTICAL_ALIGN \
 			origin			CHOICE_ORIGIN( afterItemIndex ) \
 			background		CHOICE_SEP_BACKGROUND \
-			forecolor		0.05 0 0 0.2 \
+			forecolor		0 0 0 0.2 \
 			visible			visArg \
 			decoration \
 		}

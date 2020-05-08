@@ -27,10 +27,10 @@
 		// Background fill
 		itemDef
         {
-            rect                      0 -5 90 103 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+            rect                      0 -5 90 116 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
             style                     WINDOW_STYLE_SHADER
-            foreColor                 1 1 1 0.7
-			background                "semtex_background"
+            foreColor                 0 0 0 0.5
+			background                "white"
             textScale                 0.55
             visible 1                 
             decoration                
@@ -38,24 +38,34 @@
 		// Frame 
         itemDef
         {
-            rect                      0 -5 90 103 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+            rect                      0 -5 90 20 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
             style                     WINDOW_STYLE_SHADER
-            foreColor                 1 1 1 1
-			background                "cj_frame"
+            foreColor                 0 0 0 0.43
+			background                "white"
             textScale                 0.55
             visible 1                 
             decoration                
+        }
+		itemDef
+        {
+            name                      "title"
+            rect                      10 5 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            borderSize                1
+            foreColor                 1 1 1 1
+            textFont                  UI_FONT_NORMAL
+            textAlignY                8
+            textScale                 0.29
+            textStyle                 ITEM_TEXTSTYLE_SHADOWED
+            text                      "Quick menu"
+            visible 1                             
         }
 		// Each button
         itemDef
         {
             name                      "window"
-            rect                      10 10 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      10 25 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
-            backColor                 0 0 0 0
-            borderColor               0 0 0 0
-            outlineColor              0 0 0 0
             textFont                  UI_FONT_NORMAL
             textAlignY                8
             textScale                 0.29
@@ -67,12 +77,9 @@
         itemDef
         {
             name                      "window"
-            rect                      10 25 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      10 40 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
-            backColor                 0 0 0 0
-            borderColor               0 0 0 0
-            outlineColor              0 0 0 0
             textFont                  UI_FONT_NORMAL
             textAlignY                8
             textScale                 0.29
@@ -84,12 +91,9 @@
         itemDef
         {
             name                      "window"
-            rect                      10 40 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      10 55 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
-            backColor                 0 0 0 0
-            borderColor               0 0 0 0
-            outlineColor              0 0 0 0
             textFont                  UI_FONT_NORMAL
             textAlignY                8
             textScale                 0.29
@@ -101,12 +105,9 @@
         itemDef
         {
             name                      "window"
-            rect                      10 55 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      10 70 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
-            backColor                 0 0 0 0
-            borderColor               0 0 0 0
-            outlineColor              0 0 0 0
             textFont                  UI_FONT_NORMAL
             textAlignY                8
             textScale                 0.29
@@ -119,12 +120,9 @@
         itemDef
         {
             name                      "window"
-            rect                      10 80 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
+            rect                      10 95 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
             borderSize                1
             foreColor                 1 1 1 1
-            backColor                 0 0 0 0
-            borderColor               0 0 0 0
-            outlineColor              0 0 0 0
             textFont                  UI_FONT_NORMAL
             textAlignY                8
             textScale                 0.29

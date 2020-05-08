@@ -22,11 +22,11 @@ precache()
 	precacheShader("ObjPoint_default");
 
 	//PRECACHE WEAPONS
+	precacheItem("brick_blaster_mp");
 	precacheItem("rpg_mp");
 	precacheItem("deserteaglegold_mp");
 	precacheItem("rpg_sustain_mp");
 	precacheItem("gravitygun_mp");
-	precacheItem("dog_mp");
 	
 	precacheItem( "colt45_mp" );
 	precacheItem( "usp_mp" );
@@ -152,6 +152,7 @@ precache()
 	precacheModel("playermodel_css_badass_terrorist");
 	precacheModel("body_mp_usmc_rifleman");
 	precacheModel("body_complete_mp_zack_desert");
+	precacheModel("plr_hitman");
 
 	//PRECACHE STATUS ICONS / OTHER
 	precacheStatusIcon("hud_status_connecting" );

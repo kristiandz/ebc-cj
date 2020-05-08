@@ -1,9 +1,3 @@
-/*******************************************************************************************\
-   TODO:
-   -Update HUD visually
-   -Implement existing button background for main menu buttons
-\*******************************************************************************************/
-
 #include "ui/menudef.h"
 #include "ui_mp/menustyle.inc"
 #include "ui_mp/common_macro.inc"
@@ -66,214 +60,225 @@
         CHOICE_SEPARATOR_VIS( CHOICE_SEP_2, when( !localvarBool( ui_hideBack ) ) )
 		CHOICE_BUTTON_VIS( 6, "@MENU_QUIT", uiScript quit;, when( !localvarBool( ui_hideBack ) ) )
 		
-	    // Frame for better logo visibility
+	    /////////////////////////////////// Menu Edits ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 		itemDef
 		{
-			rect			0 45 210 115 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-			forecolor		1 1 1 0.7
-			style			WINDOW_STYLE_SHADER
-			type            ITEM_TYPE_BUTTON
-			background		"cj_frame"
-			visible         when( ENABLE_TITLE_BG )
-			visible 		when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" );
-		}
-		// Logo Image
-		itemDef
-		{
-			rect			25 55 160 75 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+			rect			25 55 180 90 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
 			forecolor		1 1 1 1
 			style			WINDOW_STYLE_SHADER
 			type            ITEM_TYPE_BUTTON
 			background		"semtex_logo"
 			visible         when( ENABLE_TITLE_BG )
-			visible 		when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" );
-            action		    { play "mouse_click"; close auconfirm; execNow "connect 145.239.150.240:28952" }  
+			visible 		when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" );//when(localVarString( ui_choicegroup ) == main)
+            action 			{ play "mouse_click"; close auconfirm; execNow "connect explicitbouncers.com:28952" }  
 		}
-		// Logo Text
-		itemDef
+		/*itemDef
 		{
-			rect			25 111 160 35 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+			rect			25 120 160 32 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
 			forecolor		1 1 1 1
 			style			WINDOW_STYLE_SHADER
 			type            ITEM_TYPE_BUTTON
 			background		"textlogo"
 			visible         when( ENABLE_TITLE_BG )
-			visible 		when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" );
-            action          { play "mouse_click"; close auconfirm; execNow "connect 145.239.150.240:28952" }  
-		}
-		// Stripes
-		itemDef 
-		{
-			style			WINDOW_STYLE_FILLED
-			rect			0 16 1000 1 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-			backcolor		1 0 0 0.4
- 			visible			when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" );
-		}
+			visible 		when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" );//when(localVarString( ui_choicegroup ) == main)
+            action 			{ play "mouse_click"; close auconfirm; execNow "connect explicitbouncers.com:28950" }  
+		}*/
+		////////////////////////////////////////
 		itemDef 
 		{
 			style			WINDOW_STYLE_FILLED
 			rect			0 15 1000 1 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-			backcolor		0 0 0 1
- 			visible			when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" );
+			backcolor		0 0 0 0.8
+ 			visible			when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" ); //1	
 		}
 		itemDef 
 		{
 			style			WINDOW_STYLE_FILLED
 			rect			0 0 1000 15 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-			backcolor		0 0 0 0.8
- 			visible			when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" );
+			backcolor		0 0 0 0.5
+ 			visible			when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" ); //1	
 		}
-		// Moving Text
 		itemDef
         {
+        name 		"ticker_text"
         rect 		650 14 0 0
         forecolor 	1 1 1 1
 		textscale 	0.26
 		textfont 	8
-		textstyle	3 // ITEM_TEXTSTYLE_SHADOWEDMORE
-		text 		"Explicit Bouncers CodJumper by Kreator.                                                                                                                                                                                               Visit us at explicitbouncers.com or join our discord channel: cMXNWcT.                                                                                                                                                                 Explicit Bouncers offers game hosting for multiple games, soon to offer VPS hosting as well."
+		textstyle	ITEM_TEXTSTYLE_SHADOWEDMORE
+		text 		"Explicit Bouncers CoD Jumper by Kreator.                                                                                                                                                                                                 Visit us at explicitbouncers.com or join our discord server: discord.me/ebc                                                                                                                                                                 Explicit Bouncers offers game hosting and mods for CoD4 with all panels included!"
 		visible 	when( !localvarBool( ui_hideBack ) )
 		exp rect x ( 650 - ( ( float( milliseconds() % 20000 ) / 20000 ) * ( 2180 ) ) )
-		}
-		// Bottom fill and stripes
+		} 
+		//////////////////////////////////////// DNO ////////////////////////////////////////////////////////////////////////
 		itemDef 
 		{
 			style			WINDOW_STYLE_FILLED
-			rect			0 -37 1000 0.8 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
-			backcolor		1 0 0 0.25
- 			visible			when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" );
-		}
-		itemDef 
-		{
-			style			WINDOW_STYLE_FILLED
-			rect			0 -36 1000 1.3 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
-			backcolor		0 0 0 1
- 			visible			when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" );
+			rect			0 -37 1000 1.3 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
+			backcolor		0 0 0 0.8
+ 			visible			when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" ); //1	
 		}
 		itemDef 
 		{
 			style			WINDOW_STYLE_FILLED
-			rect			0 -35 1000 36 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
-			backcolor		0 0 0 0.6
- 			visible			when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" );
+			rect			0 -36 1000 36 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
+			backcolor		0 0 0 0.5
+ 			visible			when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" ); //1	
 		}
-		// Bottom text
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		itemDef 
 		{
-			text 			"Explicit Bouncers Clan" 
-			textscale 		.3
-			textstyle 		1
-			rect 			-320 -17 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
-			textalign 		ITEM_ALIGN_LEFT
-			textalignx 		-55
-			forecolor 		1 1 1 1
-			visible 		when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" ); //1
-		}
-		itemDef 
-		{
-			text 			"Mod by Kreator" 
-			textscale 		.3
-			textstyle		 2
-			rect 			-320 -3 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
-			textalign 		ITEM_ALIGN_LEFT
-			textalignx 		-55
-			forecolor 		1 1 1 1
-			visible 		when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" ); //1
-		}
-		// About Mod - mouse over menu
-		itemDef 
-		{
-			rect 			-122 -80 245 115 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
-			style 			WINDOW_STYLE_FILLED
-			border 			1
-			bordercolor 	1 0 0 0.6
-			forecolor 		1 1 1 1
-			backcolor		0 0 0 .75
-			visible 		when( localvarBool( ui_dev ) )
-		}	
-		itemDef 
-		{
-			text 			"Call of Duty 4 CoD Jumper"
-			textscale 		0.35
-			textstyle 		3
-			rect			0 -55 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
-			textalign 		ITEM_ALIGN_CENTER
-			textalignx 		-55
-			textfont 		UI_FONT_NORMAL
-			forecolor 		1 0 0 1
-			visible 		when( localvarBool( ui_dev ) )
+			text "Explicit Bouncers Clan" 
+			style 0
+			textscale .3
+			textstyle 1
+			rect -320 -18 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			textalign ITEM_ALIGN_LEFT
+			textalignx -55
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 1 1 1 1
+			visible when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" ); //1
 		}
 		itemDef 
 		{
-			text 			"Mod is still in development." 
-			textscale 		0.24
-			textstyle 		3
-			rect 			0 -40 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
-			textalign 		ITEM_ALIGN_CENTER
-			textalignx 		-55
-			textfont 		UI_FONT_NORMAL
-			forecolor 		1 1 1 1
-			visible 		when( localvarBool( ui_dev ) )
+			text "Mod by Kreator" 
+			style 0
+			textscale .3
+			textstyle 2
+			rect -320 -3.5 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			textalign ITEM_ALIGN_LEFT
+			textalignx -55
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 1 1 1 1
+			visible when( !localvarBool( ui_hideBack ) && dvarString("ui_mainmenu_logo") != "0" ); //1
+		}
+		///////////////////////
+		itemDef 
+		{
+			rect -122 -80 245 115 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .6
+			visible when( localvarBool( ui_dev ) )
+			decoration
 		}
 		itemDef 
 		{
-			text 			"Developer: Kreator" 
-			textscale 		0.25 
-			textstyle 		3
-			rect 			-3 -23 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
-			textalign 		ITEM_ALIGN_CENTER
-			textalignx 		-55
-			textfont 		UI_FONT_NORMAL
-			forecolor 		1 1 1 1
-			visible 		when( localvarBool( ui_dev ) )
+			rect -122 -80 245 26 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .5
+			visible when( localvarBool( ui_dev ) )
+			decoration
+		}			
+		itemDef 
+		{
+			text "Call of Duty 4 Jumper Mod"
+			style 0
+			textscale .35
+			textstyle 3
+			rect 0 -57 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			textalign ITEM_ALIGN_CENTER
+			textalignx -55
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 1 1 1 1
+			visible when( localvarBool( ui_dev ) )
 		}
 		itemDef 
 		{
-			text 			"Leaders: Seven, Shorty, Kreator"
-			textscale 		0.25 
-			textstyle 		3
-			rect 			-3 -13 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
-			textalign 		ITEM_ALIGN_CENTER
-			textalignx 		-55
-			textfont 		UI_FONT_NORMAL
-			forecolor 		1 1 1 1
-			visible 		when( localvarBool( ui_dev ) )
+			text "Codjumper mod v0.5.0 PreRelease" 
+			style 0
+			textscale .24
+			textstyle 3
+			rect 0 -38 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			textalign ITEM_ALIGN_CENTER
+			textalignx -55
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 1 1 1 1
+			visible when( localvarBool( ui_dev ) )
 		}
 		itemDef 
 		{
-			text 			"www.explicitbouncers.com"
-			textscale 		0.25 
-			textstyle 		3
-			rect 			-3 5 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
-			textalign 		ITEM_ALIGN_CENTER
-			textalignx 		-55
-			textfont 		UI_FONT_NORMAL
-			forecolor 		1 0.9 0.9 1
-			visible 		when( localvarBool( ui_dev ) )
+			text "Developer: Kreator" 
+			style 0
+			textscale .25 
+			textstyle 3
+			rect -3 -20 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			textalign ITEM_ALIGN_CENTER
+			textalignx -55
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 1 1 1 1
+			visible when( localvarBool( ui_dev ) )
 		}
 		itemDef 
 		{
-			text 			"Explicit Bouncers Discord: cMXNWcT"
-			textscale 		0.25 
-			textstyle 		3
-			rect 			-3 20 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
-			textalign 		ITEM_ALIGN_CENTER
-			textalignx 		-55
-			textfont 		UI_FONT_NORMAL
-			forecolor 		1 1 1 1
-			visible 		when( localvarBool( ui_dev ) )
+			text "Leaders: Kreator and Soap"
+			style 0
+			textscale .25 
+			textstyle 3
+			rect -3 -10 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			textalign ITEM_ALIGN_CENTER
+			textalignx -55
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 1 1 1 1
+			visible when( localvarBool( ui_dev ) )
 		}
 		itemDef 
 		{
-			text 			"Also thanks to everyone that contributed!" 
-			textscale 		0.25 
-			textstyle 		3
-			rect 			-3 30 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
-			textalign 		ITEM_ALIGN_CENTER
-			textalignx 		-55
-			textfont 		UI_FONT_NORMAL
-			forecolor 		1 1 1 1
-			visible 		when( localvarBool( ui_dev ) )
+			text "discord.me/ebc"
+			style 0
+			textscale .25 
+			textstyle 3
+			rect -3 3 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			textalign ITEM_ALIGN_CENTER
+			textalignx -55
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 0.7 0.7 0.7 1
+			visible when( localvarBool( ui_dev ) )
+		}
+		itemDef 
+		{
+			text "www.explicitbouncers.com"
+			style 0
+			textscale .25 
+			textstyle 3
+			rect -3 15 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			textalign ITEM_ALIGN_CENTER
+			textalignx -55
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 0.7 0.7 0.7 1
+			visible when( localvarBool( ui_dev ) )
+		}
+		itemDef 
+		{
+			text "Also thanks to everyone that contributed!" 
+			style 0
+			textscale .25 
+			textstyle 3
+			rect -3 29 110 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			textalign ITEM_ALIGN_CENTER
+			textalignx -55
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 1 1 1 1
+			visible when( localvarBool( ui_dev ) )
 		}
 	}
 }
