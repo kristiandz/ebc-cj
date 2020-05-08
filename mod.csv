@@ -9,7 +9,7 @@ weapon,mp/brick_blaster_mp
 weapon,mp/c4_mp
 weapon,mp/dog_mp
 
-sound,cj,,menu
+sound,cj,,all_mp
 
 localize,CJ
 localize,CGAME
