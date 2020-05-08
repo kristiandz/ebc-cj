@@ -1,10 +1,15 @@
 rawfile,mp/playeranimtypes.txt
+rawfile,mp/playeranim.script
 rawfile,mp/CoD2maps.arena
+rawfile,animtrees/multiplayer.atr
 
 weapon,mp/gravitygun_mp
 weapon,mp/rpg_sustain_mp
 weapon,mp/brick_blaster_mp
 weapon,mp/c4_mp
+weapon,mp/dog_mp
+
+sound,cj,,menu
 
 localize,CJ
 localize,CGAME
@@ -74,6 +79,18 @@ xmodel,plr_hitman
 material,mtl_plr_hitman_base
 material,mtl_plr_hitman_face
 material,mtl_plr_hitman_eyes
+
+xanim,german_shepherd_attack_player
+xanim,german_shepherd_run_attack
+xanim,german_shepherd_idle
+xanim,german_shepherd_sitting_looking_idle
+xanim,german_shepherd_sleeping
+xanim,german_shepherd_walk
+xanim,german_shepherd_run
+xanim,german_shepherd_run_jump_40
+xanim,german_shepherd_death_front
+xanim,german_shepherd_run_pain
+xanim,german_shepherd_wakeup_fast
 
 xmodel,body_makarov
 xmodel,body_zoey

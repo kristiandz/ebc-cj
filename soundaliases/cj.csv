@@ -1,0 +1,4 @@
+name,sequence,file,vol_min,vol_max,vol_mod,pitch_min,pitch_max,dist_min,dist_max,channel,type,probability,loop,masterslave,loadspec,subtitle,compression,secondaryaliasname,volumefalloffcurve,startdelay,speakermap,reverb,lfe percentage,center percentage,platform,envelop_min,envelop_max,envelop percentage
+
+ui_pulse_text_type,,user_interface/ui_computer_text_blip1x.wav,0.27,0.36,interface,0.93,0.96,500000,,menu,,,,,!coup,,,,,,,nowetlevel fulldrylevel,,,
+ui_pulse_text_type,,user_interface/ui_computer_text_blip1x.wav,0.17,0.26,interface,0.93,0.96,500000,,menu,,,,,coup,,,,,,,nowetlevel fulldrylevel,,,
