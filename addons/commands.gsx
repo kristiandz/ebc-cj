@@ -3,6 +3,8 @@ initCommands()
  	addScriptCommand("cmd", 1);
 	addScriptCommand("load", 1);
 	addScriptCommand("save", 1);
+	addScriptCommand("savepos", 1);
+	addScriptCommand("loadpos", 1);
 	addScriptCommand("film",1);
 	addScriptCommand("fps",1);
 	addScriptCommand("fov",1);
@@ -23,6 +25,14 @@ Callback_ScriptCommandPlayer(command, args)
 {
 	switch(command)
 	{
+		case "savepos":
+			self thread addons\poslog::logPos();
+		break;
+		
+		case "loadpos":
+			self thread addons\poslog::restorePos();
+		break;
+		
 		case "load":
 		{
 			args = strTok(args, " ");
@@ -114,6 +124,26 @@ Callback_ScriptCommand(command, arguments)
 				}
 				break;
 				
+				case "savepos":
+				{
+					player = getPlayerFromClientNum(int(args[0]));
+					if (!isDefined(player))
+						break;
+					player thread addons\poslog::logPos();
+					player iprintLn("Your position on this map has been saved!");
+				}
+				break;
+		
+				case "loadpos":
+				{
+					player = getPlayerFromClientNum(int(args[0]));
+					if (!isDefined(player))
+						break;
+					player thread addons\poslog::restorePos();
+					player iprintLn("Your position on this map has been restored!");
+				}
+				break;
+		
 				case "film":
 				{
 					player = getPlayerFromClientNum(int(args[0]));
