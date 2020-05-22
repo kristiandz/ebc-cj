@@ -19,8 +19,8 @@ initNewSpectator()
     self.spectatedPlayers = [];
     self.spectatorClientNow = 0;
 
-    self makeArray();
-    self thread updateArray();
+   // self makeArray();
+    //self thread updateArray();
     self thread updateArrayOnDisconnect();
     self updateList();
 
@@ -29,23 +29,20 @@ initNewSpectator()
     self thread checkMelee();
     self.spectatorClient = self getSpectatedPlayerEnt();
 }
-makeArray()
+/*makeArray()
 {
     self endon("disconnect");
     self endon("joined_team");
-
-    self.spectatedPlayers = remove_spec_from_array(level.players);
+    remove_spec_from_array(self.spectatedPlayers, level.players);
 }
-remove_spec_from_array( array )
+remove_spec_from_array( aliveArray, playerArray )
 {
-    newArray = [];
-    for( i = 0; i < array.size; i ++ )
+    for( i = 0; i < playerArray.size; i ++ )
     {
-        if ( !isAlive(array[i]) )
-            continue;
-        newArray[ newArray.size ] = array[i];
+        if ( !isAlive(playerArray[i]) )
+            aliveArray[i] = undefined;
+        aliveArray[i] = playerArray[i];
     }
-    return newArray;
 }
 updateArray()
 {
@@ -58,7 +55,7 @@ updateArray()
         self makeArray();
         self thread updateList();
     }
-}
+}*/
 updateArrayOnDisconnect()
 {
     self endon("disconnect");
@@ -66,22 +63,22 @@ updateArrayOnDisconnect()
     for(;;)
     {
         level waittill("disconnect", player);
-        for( i = 0; i < self.spectatedPlayers.size; i ++ )
+/*        for( i = 0; i < self.spectatedPlayers.size; i ++ )
         {
             if(player == self.spectatedPlayers[i])
             {
-            if(i < self.spectatorClientNow)
-                self.spectatorClientNow = add_and_fix(self.spectatorClientNow-1);
-            break;
-            }
-        }
+            if(i < self.spectatorClientNow)*/
+                self.spectatorClientNow = add_and_fix(self.spectatorClientNow, 0);
+            //break;
+            //}
+        //}
 
-        self makeArray();
+        //self makeArray();
     }
 }
 updateList()
 {
-    self.spectatorClientNow = add_and_fix(self.spectatorClientNow);
+    self.spectatorClientNow = add_and_fix(self.spectatorClientNow, 1);
 }
 
 checkAttack()
@@ -95,7 +92,6 @@ checkAttack()
         {
 		    self.spectatorClientNow = add_and_fix(self.spectatorClientNow,1);
             self.spectatorClient = self getSpectatedPlayerEnt();
-			//thread spectatorHUDLoop();
         }
         while (self attackButtonPressed())
         {
@@ -104,6 +100,7 @@ checkAttack()
         }
     }
 }
+
 checkADS()
 {
     self endon("disconnect");
@@ -115,7 +112,6 @@ checkADS()
         {
 		    self.spectatorClientNow = add_and_fix(self.spectatorClientNow,0);
         	self.spectatorClient = self getSpectatedPlayerEnt();
-			//thread spectatorHUDLoop();
         }
 
         while (self adsButtonPressed())
@@ -125,6 +121,7 @@ checkADS()
         }
     }
 }
+
 checkMelee()
 {
     self endon("disconnect");
@@ -145,33 +142,46 @@ checkMelee()
 
 getSpectatedPlayerEnt()
 {
-	if(self.spectatorClientNow > -1 && isDefined(self.spectatedPlayers[self.spectatorClientNow]))
-        return self.spectatedPlayers[self.spectatorClientNow] getEntityNumber();
+	if(self.spectatorClientNow > -1 && isDefined(level.Players[self.spectatorClientNow]))
+        return level.Players[self.spectatorClientNow] getEntityNumber();
 	else
-    return -1;
+		return -1;
 }
 
 getSpectatedPlayer()
 {
-    if(isDefined(self.spectatedPlayers[self.spectatorClientNow]))
-        return self.spectatedPlayers[self.spectatorClientNow];
-
-    return self;
+	if (self.spectatorClientNow>-1 && isDefined(level.Players[self.spectatorClientNow]))
+		return level.Players[self.spectatorClientNow];
+	else
+		return self;
 }
+
 add_and_fix(num,add)
 {
-   	num = int(num);
-
-	if(isDefined(add) && add)
-		num++;
-
-	if(isDefined(add) && !add)
-		num--;
-
-    num = checkList(num);
-
-    return num;
-}
+	if (add)
+	{
+		num = num + 1;
+		if (num>=level.players.size)
+			num = 0;
+		for (i=num; i<=level.players.size; i++)
+		{
+			if (isAlive(level.players[i]))
+				return i;
+		}
+		return -1;
+	} else {
+		num = num - 1;
+		if (num<=-1)
+			num = level.players.size;
+		for (i=num; i>-1; i--)
+		{
+			if (isAlive(level.players[i]))
+				return i;
+		}
+		return -1;
+	}
+ }
+  /*
 checkList(x)
 {
     list = self.spectatedPlayers;
@@ -183,4 +193,4 @@ checkList(x)
         x = 0;
 
     return x;
-}
+}*/
