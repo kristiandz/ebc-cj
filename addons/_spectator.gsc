@@ -110,7 +110,7 @@ checkADS()
     {
         if(self adsButtonPressed())
         {
-		    self.spectatorClientNow = add_and_fix(self.spectatorClientNow,0);
+		    self.spectatorClientNow = add_and_fix(self.spectatorClientNow, 0);
         	self.spectatorClient = self getSpectatedPlayerEnt();
         }
 
@@ -158,28 +158,36 @@ getSpectatedPlayer()
 
 add_and_fix(num,add)
 {
-	if (add)
-	{
-		num = num + 1;
-		if (num>=level.players.size)
-			num = 0;
-		for (i=num; i<=level.players.size; i++)
+	//if (add) //find next player
+	//{
+				
+		for (i=1; i<=level.players.size+2; i++) //start with 1 because you dont count yourself
 		{
-			if (isAlive(level.players[i]))
-				return i;
+			if (add)
+			{
+				if (num+i>level.players.size)
+					num = -1; //reset to base of the array
+				if (isAlive(level.players[num+i]))
+					return num+i;
+			} else {
+				if (num-i<0)
+					num = level.players.size+1; //reset to top of the array
+				if (isAlive(level.players[num-i]))
+					return num-i;
+			}
 		}
-		return -1;
-	} else {
+		return self.spectatorClientNow;
+	/*} else { //find previous player
 		num = num - 1;
 		if (num<=-1)
 			num = level.players.size;
-		for (i=num; i>-1; i--)
+		for (i=1; i<=level.players.size; i++)
 		{
 			if (isAlive(level.players[i]))
 				return i;
 		}
 		return -1;
-	}
+	}*/
  }
   /*
 checkList(x)
