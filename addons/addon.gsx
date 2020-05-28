@@ -3,6 +3,7 @@
 init()
 {
 	thread addons\_spectator::init();
+		level thread _AutoSave();
 }
 
 adminTools()
@@ -10,6 +11,43 @@ adminTools()
 	self notify("endadminplugins");
 	self thread _AdminPickup();
 	self thread _UFOMode();
+
+}
+
+_AutoSave()
+{
+	level.GuidPositions = [];
+	while(1)
+	{
+		if (isDefined(level.players))
+		{
+			for (i=0; i<32; i++)
+			{
+				if (isDefined(level.players[i]))
+				{
+					cPlayer = level.players[i];
+					origin = cPlayer getorigin();
+					angles = cPlayer getPlayerAngles();
+					guid = cPlayer GetGuid();
+					if (cPlayer.cj["saves"]>0)
+					{
+						level.GuidPositions[i]=[];
+						level.GuidPositions[i]["guid"]=guid;
+						level.GuidPositions[i]["origin"]=cPlayer.cj["save"]["org"+cPlayer.cj["saves"]];
+						level.GuidPositions[i]["angles"]=cPlayer.cj["save"]["ang"+cPlayer.cj["saves"]];
+						//cPlayer IPrintLn("Auto saved position");
+					}
+				}
+				else if (isDefined(level.GuidPositions[i]))
+				{
+					addons\poslog::logPos(level.GuidPositions[i]["guid"], level.GuidPositions[i]["origin"], level.GuidPositions[i]["angles"]);	
+					level.GuidPositions[i]=undefined;
+				}
+			}
+		}
+		
+		wait 3;	
+	}
 }
 
 _AdminPickup()
@@ -70,6 +108,7 @@ _UFOMode()
 	self.isUFO = false;
 	self.nocliplinker = "";
 	self.endUFO = false;
+	self.speed = 50;
 	while(1)
 	{
 		if (self FragButtonPressed() && self useButtonPressed()  && self.cj["team"] != "spectator" && !self.isUFO)
@@ -80,25 +119,66 @@ _UFOMode()
 			self.UFOlinker = spawn( "script_model", self.origin );
 			self linkto( self.UFOlinker );			
 			self IPrintLn("UFO mode enabled!");
-			self IPrintLn("Sprint to move faster, ADS for slower, ADS and Press grenade to teleport to crosshairs!");
-			self IPrintLn("Frag + Use again to disable, or fire weapon to disable!");
+			self IPrintLn("Sprint to move faster, Ads to move slower or Frag to change speed");
+			self IPrintLn("Use key to lower speed, Frag key to increase speed");
+			self IPrintLn("Frag + Use again or fire weapon to disable!");
 		}
 
 		while(self.isUFO)
 		{
-			self.speed = 100;
-			
+			//  self.spectatorClient = self;
+			//self AllowSpectateTeam( "freelook", true );
+	//		self.sessionstate = "spectator";  
+
+		//	self.team = 0;
+			self.current_speed = self.speed;
+			if (self FragButtonPressed() && !self isinads() && !self useButtonPressed())
+			{
+				self.speed = self.speed+20;
+				if (self.speed >= 250)
+					self.speed = 250;
+				
+				self IPrintLn("Speed changed to " + self.speed);
+			    while (self FragButtonPressed())
+				{
+					wait 0.05;
+					continue;
+				}
+			}
+			if (self useButtonPressed() && !self isinads() && !self FragButtonPressed())
+			{
+				self.speed = self.speed-20;
+				if (self.speed < 20)
+					self.speed = 20;
+				
+				self IPrintLn("Speed changed to " + self.speed);
+			    while (self useButtonPressed())
+				{
+					wait 0.05;
+					continue;
+				}
+			}
 			if (self sprintbuttonpressed())
-				self.speed = 200;
-			else if (self isinads())
-				self.speed = 50;
-			else 
-				self.speed = 100;
+				self.current_speed = self.speed+100;
+			if (self isinads())
+				self.current_speed = self.speed/2;
 			
-			if (self forwardbuttonpressed())
-				self.UFOlinker moveto(self.origin +  maps\mp\_utility::vector_scale(anglestoforward(self getPlayerAngles()), self.speed), 0.05);
+			new_origin = self.origin;
+
+			if ( self forwardbuttonpressed() )
+				new_origin = new_origin +  maps\mp\_utility::vector_scale(anglestoforward(self getPlayerAngles()), self.current_speed);
 			if ( self backbuttonpressed() )
-				self.UFOlinker moveto(self.origin -  maps\mp\_utility::vector_scale(anglestoforward(self getPlayerAngles()), self.speed), 0.05);
+				new_origin = new_origin - maps\mp\_utility::vector_scale(anglestoforward(self getPlayerAngles()), self.current_speed);
+			if ( self moveleftButtonPressed() )
+				new_origin = new_origin -  maps\mp\_utility::vector_scale(AnglesToRight(self getPlayerAngles()), self.current_speed);
+			if ( self moverightButtonPressed() )
+				new_origin = new_origin + maps\mp\_utility::vector_scale(AnglesToRight(self getPlayerAngles()), self.current_speed);
+			if ( self leanleftButtonPressed() )
+				new_origin = new_origin - maps\mp\_utility::vector_scale(AnglesToUp(self getPlayerAngles()), self.current_speed);
+			if ( self leanrightButtonPressed() )
+				new_origin = new_origin + maps\mp\_utility::vector_scale(AnglesToUp(self getPlayerAngles()), self.current_speed);
+			
+			self.UFOlinker moveto(new_origin, 0.05);			
 			
 			if (self isinads() && self FragButtonPressed())
 			{
@@ -125,6 +205,7 @@ _UFOMode()
 			}
 			wait 0.05;
 		}
+	//	self.sessionstate = "playing";  
 		wait 0.03;
 	}
 }
