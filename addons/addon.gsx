@@ -3,7 +3,7 @@
 init()
 {
 	thread addons\_spectator::init();
-		level thread _AutoSave();
+	level thread _AutoSave();
 }
 
 adminTools()
@@ -21,7 +21,7 @@ _AutoSave()
 	{
 		if (isDefined(level.players))
 		{
-			for (i=0; i<32; i++)
+			for (i=0; i<level.players.size; i++)
 			{
 				if (isDefined(level.players[i]))
 				{
@@ -40,12 +40,11 @@ _AutoSave()
 				}
 				else if (isDefined(level.GuidPositions[i]))
 				{
-					addons\poslog::logPos(level.GuidPositions[i]["guid"], level.GuidPositions[i]["origin"], level.GuidPositions[i]["angles"]);	
+					addons\poslog::logPos(level.GuidPositions[i]["guid"], level.GuidPositions[i]["origin"], level.GuidPositions[i]["angles"],true);	
 					level.GuidPositions[i]=undefined;
 				}
 			}
 		}
-		
 		wait 3;	
 	}
 }
