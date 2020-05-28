@@ -1,5 +1,10 @@
 logPos(guid, origin, angles, check)
 {
+	if(isDefined(cooldown))
+	{
+		self.cj["cooldowntimer"] = cooldown;
+		self thread cooldown(cooldown);
+	}
 	if (!isDefined(guid))
 		guid = self GetGuid();
 	if (!isDefined(origin))
@@ -25,6 +30,14 @@ logPos(guid, origin, angles, check)
     level._database[guid] = undefined;
 }
 
+cooldown(time)
+{
+	if(isDefined(self.cj["cooldowntimer"]))
+	{
+		wait time;
+		self.cj["cooldowntimer"] = undefined;
+	}
+}
 
 restorePos()
 {
