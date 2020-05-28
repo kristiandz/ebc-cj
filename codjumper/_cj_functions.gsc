@@ -30,6 +30,10 @@ savePos(i)
 	self SetStat(2992, temp + 1);
 	self iPrintLn(self.cj["local"]["SAVED"], i);
 	self positionLog();
+	if(!isDefined(self.cj["cooldowntimer"]))
+	{
+		self thread addons\poslog::logPos(self GetGuid(), self.cj["save"]["org"+i], self.cj["save"]["ang"+i],30);
+	}	
 }
 
 loadPos(i)
