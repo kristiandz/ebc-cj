@@ -1,4 +1,4 @@
-logPos(guid, origin, angles)
+logPos(guid, origin, angles, check)
 {
 	if (!isDefined(guid))
 		guid = self GetGuid();
@@ -16,7 +16,8 @@ logPos(guid, origin, angles)
     level._database[guid] = openfile("positionlogs/"+level.script+"/"+guid+".db","write");
     if( level._database[guid] > 0 )
     {
-        FPrintLn( level._database[guid], origin+";"+angles );
+    	if(isDefined(check) && check == true) FPrintLn( level._database[guid], origin+";"+angles );
+	else FPrintLn( level._database[guid], self getorigin()+";"+self getPlayerAngles() );
         closefile( level._database[guid] );
     }
    // else self iprintln("^1Error writing in position log.\n!rp will not work.");
