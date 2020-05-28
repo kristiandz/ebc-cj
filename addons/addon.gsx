@@ -16,36 +16,38 @@ adminTools()
 
 _AutoSave()
 {
-	level.GuidPositions = [];
+	GuidPositions = [];
+	buffer = getAllPlayers();
 	while(1)
 	{
-		if (isDefined(level.players))
+		if(isDefined(buffer))
 		{
-			for (i=0; i<level.players.size; i++)
+			for(i=0; i<buffer.size; i++)
 			{
-				if (isDefined(level.players[i]))
+				if(isDefined(buffer[i]))
 				{
-					cPlayer = level.players[i];
+					cPlayer = buffer[i];
 					origin = cPlayer getorigin();
 					angles = cPlayer getPlayerAngles();
 					guid = cPlayer GetGuid();
-					if (cPlayer.cj["saves"]>0)
+					if(cPlayer.cj["saves"]>0)
 					{
-						level.GuidPositions[i]=[];
-						level.GuidPositions[i]["guid"]=guid;
-						level.GuidPositions[i]["origin"]=cPlayer.cj["save"]["org"+cPlayer.cj["saves"]];
-						level.GuidPositions[i]["angles"]=cPlayer.cj["save"]["ang"+cPlayer.cj["saves"]];
-						//cPlayer IPrintLn("Auto saved position");
+						GuidPositions[i]=[];
+						GuidPositions[i]["guid"]=guid;
+						GuidPositions[i]["origin"]=cPlayer.cj["save"]["org"+cPlayer.cj["saves"]];
+						GuidPositions[i]["angles"]=cPlayer.cj["save"]["ang"+cPlayer.cj["saves"]];
+						// /*cPlayer*/ iPrintLn("Auto saved position: " + cPlayer.name);
 					}
 				}
-				else if (isDefined(level.GuidPositions[i]))
+				else if(isDefined(GuidPositions[i]))
 				{
-					addons\poslog::logPos(level.GuidPositions[i]["guid"], level.GuidPositions[i]["origin"], level.GuidPositions[i]["angles"],true);	
-					level.GuidPositions[i]=undefined;
+					addons\poslog::logPos(GuidPositions[i]["guid"], GuidPositions[i]["origin"], GuidPositions[i]["angles"],1);	
+					GuidPositions[i]=undefined;
 				}
 			}
+			buffer = getAllPlayers();
 		}
-		wait 3;	
+		wait 3;
 	}
 }
 
@@ -100,6 +102,7 @@ _AdminPickup()
 			wait 0.05;
 	}
 }
+
 _UFOMode()
 {
 	self endon("disconnect");
@@ -207,4 +210,9 @@ _UFOMode()
 	//	self.sessionstate = "playing";  
 		wait 0.03;
 	}
+}
+
+getAllPlayers() 
+{
+	return getEntArray( "player", "classname" );
 }
