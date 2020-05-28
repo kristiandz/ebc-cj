@@ -3,7 +3,7 @@
 init()
 {
 	thread addons\_spectator::init();
-	level thread _AutoSave();
+	//level thread _AutoSave();
 }
 
 adminTools()
