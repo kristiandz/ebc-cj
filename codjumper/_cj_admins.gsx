@@ -20,7 +20,6 @@ checkAdmin()
 	self.cj["status"] = 0;
 	self setRank( 0, 0 );
 	tempGuid = self getShortGuid();
-	self thread promotePlayer(2);		
 	admins = "";
 	for(i = 0;i < level.admins.size;i++) 
 		admins += level.admins[i] + ",";

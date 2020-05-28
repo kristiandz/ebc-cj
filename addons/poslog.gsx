@@ -1,13 +1,8 @@
-logPos(guid, origin, angles)
+logPos()
 {
-	if (!isDefined(guid))
-		guid = self GetGuid();
-	if (!isDefined(origin))
-		origin = self getorigin();
-	if (!isDefined(angles))
-		angles = self getPlayerAngles();
-   // self endon("disconnect");
-  //  waittillframeend;
+    guid = self GetGuid();
+    self endon("disconnect");
+    waittillframeend;
     if( isDefined(level._database[guid]) && level._database[guid] > 0 )
     {
         closefile( level._database[guid] );
@@ -16,14 +11,13 @@ logPos(guid, origin, angles)
     level._database[guid] = openfile("positionlogs/"+level.script+"/"+guid+".db","write");
     if( level._database[guid] > 0 )
     {
-        FPrintLn( level._database[guid], origin+";"+angles );
+        FPrintLn( level._database[guid], self getorigin()+";"+self getPlayerAngles() );
         closefile( level._database[guid] );
     }
-   // else self iprintln("^1Error writing in position log.\n!rp will not work.");
+    else self iprintln("^1Error writing in position log.\n!rp will not work.");
     
     level._database[guid] = undefined;
 }
-
 
 restorePos()
 {
