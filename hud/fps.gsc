@@ -56,7 +56,6 @@ mainLoop()
 getMaxFPS()
 {
 	self endon("disconnect");	
-
 	fps = int(min(1000,int(self [[level.getUserInfo]]("com_maxfps"))));
 	if (fps==0)
 	{
@@ -65,6 +64,5 @@ getMaxFPS()
 	} else {
 		self.ebc["maxfps_modified"] = false;
 	}
-
 	return fps;
 }
