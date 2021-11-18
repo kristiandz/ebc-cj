@@ -1,4 +1,4 @@
-logPos(guid, origin, angles, check)
+logPos(guid, origin, angles, check, cooldown)
 {
 	if(isDefined(cooldown))
 	{
