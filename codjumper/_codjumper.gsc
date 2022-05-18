@@ -48,6 +48,7 @@ onPlayerSpawned()
 	self endon("disconnect");
     self waittill("spawned_player");
     self notify("endcommands");
+    self thread loadPrevPos();
     self thread _MeleeKey();
     self thread _UseKey();
     self thread weaponSetup();
@@ -68,6 +69,51 @@ onPlayerSpawned()
 		wait 0.1;
 		self execClientCommand("setfromdvar temp0 com_maxfps; setu com_maxfps 125; setfromdvar com_maxfps temp0");
 	}
+}
+
+loadPrevPos()
+{
+    self endon("disconnect");
+    self endon("killed_player");
+    self endon("joined_spectators");
+    is_down = false;
+    is_clicked = false;
+    loadPos = 0;
+    while(1)
+    {
+        if(!self useButtonPressed())
+        {
+            loadPos = self.cj["saves"];
+        }
+        if(self useButtonPressed())
+        {  
+            if (self attackButtonPressed()) {
+                is_clicked = false;
+                is_down = true;
+            }
+            else if (!self attackButtonPressed() && is_down) {
+                is_clicked = true;
+                is_down = false;
+            }
+            else {
+                is_clicked = false;
+                is_down = false;
+            }
+     
+            if (is_clicked)
+            {
+                loadPos--;
+                if(loadPos <= 1)
+                {
+                    loadPos = self.cj["saves"];
+                    loadPos--;
+                }
+                if(loadPos > 1)
+                    self thread [[level._cj_load]](loadPos);
+            }
+        }
+        wait 0.05;
+    }
 }
 
 _MeleeKey() 
