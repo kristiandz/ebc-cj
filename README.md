@@ -6,6 +6,7 @@ Join our discord server: [Discord](https://discordapp.com/invite/cMXNWcT)
 
 * This is a [Codjumper](http://www.codjumper.com/) based modification for Explicit Bouncers CJ Server. Mod is still in development but fully working for a live server. There shouldn't be any bugs on the mod, if you find any please report back!
 * This repository contains all you need for a fully working CoD4 / CoD4X server, along with files to compile the complete mod. Contact me if perhaps some rawfiles are missing that were not in the mod folder at the time of the base file upload.
+* Be sure to set the codjumper gametype in your server.cfg, set g_gametype "cj"
 * Just drop the source in your cod4/mods folder and run the compiler to obtain the mod.ff, you can get the .iwd's as well
 * Feel free to contribute to the project, even if you are not a developer. All suggestions and bug reports are welcome to help us improve this mod.
 
